@@ -30,25 +30,24 @@ p{
 }
 input[type=checkbox]{
     transform: scale(4);
+    width: 60px;
     -ms-transform: scale(4);
     -webkit-transform: scale(4);
     padding: 10px;
     /*position: relative;*/
+    display: block;
     vertical-align: center;
 }
-
+/* 
 #checkboxes input {
     vertical-align: middle;
 }
 #checkboxes label span {
     vertical-align: middle;
-}
+} */
 
 label{
     font-size: 60px;
-    background-color: purple;
-    display: block;
-    width: 90vw;
     padding-left:26px;
 
     /*width:125px;*/
@@ -61,7 +60,10 @@ label{
 /*}*/
 
 .boxes {
-    display: grid;
+    display: flex;
+    background-color: purple;
+    width: 90vw;
+    align-items: center;
     /* grid-row: 2/ span 1;
     grid-column: 1/ span 2; */
     /*background-color: azure;*/
@@ -113,7 +115,7 @@ img {
     padding-right: 10px;
 }
 
-#firstTask {
+/* #firstTask {
     margin-bottom: -10em;
     margin-left: -10px;
 
@@ -128,5 +130,5 @@ img {
     margin-bottom: -10em;
     margin-left: -10px;
     
-}
+} */
 
