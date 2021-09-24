@@ -46,6 +46,7 @@ label{
 }
 
 #addTask {
+    background-color: white;
     font-family: 'Montserrat', sans-serif;
     font-size: 95px;
     height: 150px;
