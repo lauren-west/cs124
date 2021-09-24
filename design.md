@@ -38,7 +38,7 @@ It was mentioned in Design Designs that we used User Testing to decide on a penc
 - Deleted all completed items.*
 - ✨CSS Magic ✨
 
-* Our checked items are assumed to be automatically removed seconds after they have been checked, this is demonstrated between pages 6 and 7, where the checked "call mom" disappears.
+(* Our checked items are assumed to be automatically removed seconds after they have been checked, this is demonstrated between pages 6 and 7, where the checked "call mom" disappears.)
 ## Challenges We Faced
 We often found ourselves struggling to meet every expectation while simultaneously keeping our application as sleek-looking as possible. For example, we wanted a way to edit names that were both intuitive and easy, while also not cluttering the screen. At first, we had a pen in the corner of the screen that we wanted users to click on, however, through user feedback we were told the pencil icon was bothersome. The user-preferred clicking on the name to edit. This was a contemplated change to make for us, as we found that without the pencil icon there was no obvious indication for editing; however as stated by our user testers, our technique is common enough that most users would understand it intuitively anyways. Something we learned through lab 1 was that users already have a lot of experience with mobile applications, allowing us to create simpler design decisions such as clicking to edit the task names.
 ## What we are proud of
