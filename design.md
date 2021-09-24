@@ -3,8 +3,10 @@
 
 In this lab, we designed and implemented a simple interface for a mobile web app. This app manages a list of items the user desires to complete. 
 ## Design Decisions
-Design decisions we made included using list items vs tiles and using pencil icon vs touch to edit. For the first option, the team decided to use list items, seeing that it would be easier for the user to scroll through the list on mobile. Also, since items are added sequentially and deleted when checked, it seemed that the list display would be more intuitive. 
-The second design choice was much less clear--both choices had their pros and cons. Using a pencil icon to make edits would seemingly help a new user out, but touching a pencil icon was not very elegant. Using touch simplifies the mobile interface where space is a commodity, but it may not be very clear what the user should do. After User-Testing, we decided on touch to edit.
+Design decisions we made included: using list items vs tiles and using pencil icon vs touch to edit. For the first option, the team decided to use list items, seeing that it would be easier for the user to scroll through the list on mobile. Also, since items are added sequentially and deleted when checked, it seemed that the list display would be more intuitive. 
+The second design choice was much less clear--both choices had their pros and cons. Using a pencil icon to make edits would seemingly help a new user, but touching a pencil icon was not very elegant. Using touch simplifies the mobile interface where space is a commodity, but it may not be very clear what the user should do. After User-Testing, we decided on touch-to-edit.
+We decided to go for a simplistic design. In minimalist spirit, we elimated the border around our header after receiving user feedback that it looked out of place. Our goal was to have easily recognizable elements that reduced clutter for greater user experiences. 
+
 ## Alternative Design
 Originally we were considering creating a tile-based design where each task/list item was displayed as individual tiles, with a title and some alternative information below:
 image.png
@@ -23,7 +25,7 @@ Secondly, we also considered splitting up our list items by the date they were d
 
 
 ## User Testing
-It was mentioned in Design Designs that we used User Testing to decide on a pencil icon vs touch to edit. We set up an experiment and asked User A to comment on the design with the pencil feature and a design that would be touch to edit. User A said that the touch to edit was clear enough, and made for better aesthetics. We also took this test to User B, who shared similar remarks in favor of touch to edit.
+It was mentioned in Design Designs that we used User Testing to decide on a pencil icon vs touch to edit. We set up an experiment and asked User A to comment on the design with the pencil feature and a design that would be touch to edit. User A said that the touch to edit was clear enough, and made for better aesthetics. We also took this test to User B, who shared similar remarks in favor of touch to edit. User C reminded us that we did not have a list box on our main page, so we made sure to add that in our final design. Lastly, User C remarked on our radio buttons and requested them to be changed to checkboxes which we did in our final design.
 ![)](https://user-images.githubusercontent.com/54875885/134599216-2724e8e7-9b9a-4954-bc96-4c50a109f02f.png)
 
 ## Final Design
@@ -32,10 +34,12 @@ It was mentioned in Design Designs that we used User Testing to decide on a penc
 - In a non-empty list, created an item named "Eat Lunch"
 - Marked the item named "Call Mom" completed (assumes there exists an item named "Call Mom").
 - Renamed the item "Text John" to "Text John about bank statements" (assumes there exists an item named "Text John").
-- Showed only uncompleted items.
-- Deleted all completed items.
+- Showed only uncompleted items.*
+- Deleted all completed items.*
 - ✨CSS Magic ✨
+
+* Our checked items are assumed to be automatically removed seconds after they have been checked, this is demonstrated between page 6 and 7, where the checked "call mom" disappears.
 ## Challenges We Faced
-We often found ourselves struggling to meet every expectation while simultaneously keeping our application as sleek looking as possible. For example, we wanted an easy way to edit names that was both intuitive and easy, while also not cluttering the screen. At first we had a pen in the corner of the screen that we wanted users to click on, however through user feedback we were told the pencil icon was bothersome and preferably clicking on the name would be the way to edit. This was a difficult change to make for us, as we found that without the pencil icon there was no obvious indication for editing, however as stated by our user testers, our technique it is common enough that most users would understand intuitively anyways. Learning to adapt our design to the current experienced user base of the world poses many questions - what is actually needed and what is already understood - figuring these out will always be a constant challenge we believe. 
+We often found ourselves struggling to meet every expectation while simultaneously keeping our application as sleek looking as possible. For example, we wanted a way to edit names that was both intuitive and easy, while also not cluttering the screen. At first we had a pen in the corner of the screen that we wanted users to click on, however through user feedback we were told the pencil icon was bothersome. The user prefered clicking on the name to edit. This was a contemplated change to make for us, as we found that without the pencil icon there was no obvious indication for editing; however as stated by our user testers, our technique is common enough that most users would understand it intuitively anyways. Something we learned through lab 1 was that users already have a lot of experience with mobile applications, allowing us to create simpler design decisions such as clicking to edit the task names.
 ## What we are proud of
-We are very proud of our simple aesthetic. From the start we decided to apply a simple design to our app - black, white, and blue - with straight forward tasks. It is oddly difficult however to find a simple design that is simultaneously good looking and usable, which is why we had many iterations, but our final look matches exactly what we had in mind. 
+We are very proud of our simple aesthetic. From the start we decided to apply a simple design to our app - black, white, and blue - with straight forward tasks. It is oddly difficult however to find a simple design that is simultaneously good looking and usable, which is why we had many iterations, however our final design is better than we originally imagined it could be.
