@@ -7,6 +7,22 @@ Design decisions we made included: using list items vs tiles and using pencil ic
 The second design choice was much less clear--both choices had their pros and cons. Using a pencil icon to make edits would seemingly help a new user, but touching a pencil icon was not very elegant. Using touch simplifies the mobile interface where space is a commodity, but it may not be very clear what the user should do. After User-Testing, we decided on touch-to-edit.
 We decided to go for a simplistic design. In minimalist spirit, we eliminated the border around our header after receiving user feedback that it looked out of place. Our goal was to have easily recognizable elements that reduced clutter for greater user experiences. 
 
+## Walkthrough
+Opening our pages, you will see links to 7 pages.
+Page 1: This is our main app page. It is a list of to-do lists. Users can create new lists and click on a list that they would desire to view. If you click on Tasks, see page 2. If you click on To-Do, see page 4.
+
+Page 2: This is a blank list. Here you can add tasks that you desire to complete. Click on Add Task and add "Buy new John Grisham book". (See page 3).
+
+Page 3: This is the same list as the previous one, however now you have a new added task. Now, go back to the main page by swiping to the right. (See page 1).
+
+Page 4: This is the to-do list. Here you see two tasks: Text John and Call Mom. Click Add Task and add "Eat Lunch" to this page. (See page 5).
+
+Page 5: This is the same list as previously, however now you will see your new task "Eat Lunch" added. Click on the check box next to "Call Mom" to mark it as complete. (See page 6).
+
+Page 6: This is the same list in an intermediate stage. The "Call Mom" task is now checked, and will disappear/delete automatically within a few seconds. (See page 7).
+
+Page 7: This is the same list past the intermediate stage of deletion. Now, you will notice that "Call Mom" has disappeared. Now go back to the main page by swiping to the right. (See page 1).
+
 ## Alternative Design
 Originally we were considering creating a tile-based design where each task/list item was displayed as individual tiles, with a title and some alternative information below:
 image.png
