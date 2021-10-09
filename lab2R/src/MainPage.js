@@ -14,13 +14,24 @@ function ListsDisplay(props) {
     )
 }
 
+function handleAddList(props) {
+    // to have some pop up come up
+        // New List Name textbox
+        // okay at bottom to know we are done typing
+        // also a cancel in case mistake
+    // add newlist info to data
+    return () => {
+            {props.setShowAlert(true)}
+        }
+}
+
 function MainPage(props) {
     return (
         <div>
             <h1 id="MyLists">My Lists</h1>
             {props.data.map((x) => <ListsDisplay list={x} onClick={props.onListClick}/>)}
             <div id="button1">
-                <button onclick="" id="addTask">
+                <button onClick={handleAddList(props)} id="addTask">
                     <img src="plus_best.png"/>
                     <span>Add List</span>
                 </button>
@@ -28,6 +39,5 @@ function MainPage(props) {
         </div>
     )
 }
-
 
 export default MainPage;

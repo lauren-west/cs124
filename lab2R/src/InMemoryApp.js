@@ -1,7 +1,7 @@
 
 // functions in here
 // where we modify data
-const data =
+const DATA =
     [
         {
             id: 0,
@@ -22,4 +22,4 @@ const data =
     ]
 
 
-export default data;
+export default DATA;
