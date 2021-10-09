@@ -34,6 +34,15 @@ function App() {
         }))
     }
 
+    function handleDelete(filteredList) {
+        setData(data.map(list => {
+            if(selectedList === list.id) {
+                list.listItems = filteredList
+            }
+            return list;
+        }))
+    }
+
     function toggleModal(){
         setShowAlert(false);
     }
@@ -41,7 +50,7 @@ function App() {
         return (
             <div>
                 <div>
-                    <Lists setShowAlert={setShowAlert} data={data} selectedId={selectedList}/>
+                    <Lists selectedId={selectedList} handleDelete={handleDelete} setShowAlert={setShowAlert} data={data} selectedId={selectedList}/>
                 </div>
                 {showAlert && <Alert selectedId={selectedList} onClose={toggleModal} onOkItem={handleAlertOKListItem} cancelName={"Don't Add Task"} okName={"Add Task"}>
                     <div>
