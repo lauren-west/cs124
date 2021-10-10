@@ -12,78 +12,71 @@ h1 {
     grid-row: 1/ span 1;
     grid-column: 1/ span 2;
     text-align: left;
-    font-size: 100px;
+    font-size: 50px;
     font-weight: 800;
     padding: 5% 0 0 5%;
-    margin: auto 0;
 }
 
 input[type=checkbox] {
-    transform: scale(4);
-    width: 60px;
-    -ms-transform: scale(4);
-    -webkit-transform: scale(4);
-    padding: 10px;
-    /*position: relative;*/
+    transform: scale(1.5);
+    width: 40px;
     display: block;
     vertical-align: center;
 }
 
 label {
-    font-size: 45px;
-    padding-left: 26px;
+    font-size: 20px;
 
 }
 
 img {
-    width: 40px;
+    width: 20px;
     margin: auto 0;
     padding-left: 10px;
     padding-right: 20px;
 }
 
-.list-box {
-    box-sizing: border-box;
-    font-size: 45px;
-    padding: 5% 0 5% 5%;
-    width: 100%;
-    display: flex;
-    border-bottom: 1px solid black;
-}
-
 .boxes {
+    font-size: 18px;
+    font-weight: 600;
     display: flex;
     width: 90vw;
     align-items: center;
-    padding: 1em 2em 1em;
+    height: 75px;
     border-bottom: 1px solid black;
-    box-shadow: 4px 8px 8px rgba(46, 75, 82, 0.305);
-    margin: 50px auto 0;
+    margin: 10px auto 0;
+    box-sizing: border-box;
+}
+.boxes-blue{
+    font-weight: 400;
+    box-shadow: 2px 4px 4px rgba(46, 75, 82, 0.305);
     background-color: rgb(140, 171, 241);
     border-radius: 10px;
 }
 
-#addTask {
+.addTask {
     background-color: white;
     font-family: 'Montserrat', sans-serif;
-    font-size: 45px;
-    height: 150px;
+    font-size: 20px;
     width: 100%;
     border-radius: 10px;
-    border-width: 4px;
+    border-width: 2px;
     display: flex;
     align-items: center;
     justify-content: left;
     align-self: center;
+    padding: 10px;
+}
+
+.addList {
+    font-size: 18px;
+    font-weight: 600;
 }
 
 #button1 {
-    grid-row: 4/ span 1;
-    grid-column: 1/ span 2;
     align-items: center;
-    margin: 0 auto;
+    margin: 25px auto;
     width: 90vw;
-    padding-bottom: 50px;
 }
 
 #checkboxes {
@@ -91,12 +84,16 @@ img {
 }
 
 .edit-button {
-    width: 40px;
+    width: 20px;
     margin-left: auto;
-    margin-right: 5%;
+    margin-right: 5px;
 }
 .list-box:hover {
     border-radius: 10px;
     background-color: lightgray;
     cursor: pointer;
+}
+
+.back-arrow {
+    padding: 20px 0px 0px 20px;
 }

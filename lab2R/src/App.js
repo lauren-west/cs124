@@ -64,7 +64,7 @@ function App() {
         ),
         "list": (
             <>
-                <img onClick={() => setPage({type: "home"})} src={"long-arrow-alt-left-solid.svg"}/>
+                <img onClick={() => setPage({type: "home"})} src={"long-arrow-alt-left-solid.svg"} className={"back-arrow"}/>
                 <Lists handleDelete={updateListItems} setShowAlert={setShowAlert} data={data} selectedId={selectedPage.selectedId}/>
                 {renderAlert(showAlert, "Don't Add Task", "Add Task", handleAlertOKListItem)}
             </>
