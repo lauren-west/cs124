@@ -18,10 +18,7 @@ h1 {
     margin: auto 0;
 }
 
-p {
-    font-size: 45px;
-}
-input[type=checkbox]{
+input[type=checkbox] {
     transform: scale(4);
     width: 60px;
     -ms-transform: scale(4);
@@ -32,23 +29,28 @@ input[type=checkbox]{
     vertical-align: center;
 }
 
-label{
+label {
     font-size: 45px;
-    padding-left:26px;
+    padding-left: 26px;
 
 }
 
 img {
-    width: 60px;
+    width: 40px;
     margin: auto 0;
     padding-left: 10px;
     padding-right: 20px;
 }
 
 .list-box {
-    text-align: center;
+    box-sizing: border-box;
+    font-size: 45px;
+    padding: 5% 0 5% 5%;
     width: 100%;
+    display: flex;
+    border-bottom: 1px solid black;
 }
+
 .boxes {
     display: flex;
     width: 90vw;
@@ -82,9 +84,19 @@ img {
     margin: 0 auto;
     width: 90vw;
     padding-bottom: 50px;
-
 }
 
-#checkboxes{
-    margin-top: 20px; 
+#checkboxes {
+    margin-top: 20px;
+}
+
+.edit-button {
+    width: 40px;
+    margin-left: auto;
+    margin-right: 5%;
+}
+.list-box:hover {
+    border-radius: 10px;
+    background-color: lightgray;
+    cursor: pointer;
 }

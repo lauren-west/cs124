@@ -1,4 +1,3 @@
-
 // functions in here
 // where we modify data
 const DATA =
@@ -16,7 +15,7 @@ const DATA =
         {
             id: 2,
             title: "Awesome List Number 1",
-            listItems: []
+            listItems: ["Wait for Lucas to finish SGSL", "Hey Lucas!!!"]
         }
 
     ]

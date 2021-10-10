@@ -5,73 +5,72 @@ import React, {useEffect, useState, useMemo} from "react";
 import MainPage from './MainPage'
 import Lists from "./Lists";
 import DATA from "./InMemoryApp";
-import Alert from './Alert'
-
-
+import Alert from './Alert';
 
 function App() {
-  //responsible for everyhing
-  // rendering desired information
     const [showAlert, setShowAlert] = useState(false);
-    let [selectedList, setList] = useState(-1);
     let [data, setData] = useState(DATA);
+    let [selectedPage, setPage] = useState({
+        type: "home"
+    })
 
     function handleAlertOK(listName) {
         setData([...data, {
                 id: data.length,
-                title: listName, // want to throw new title data into here
+                title: listName,
                 listItems: []
-            }
+                }
             ]
         )
     }
+
+    function updateListItems(newListItems){
+        setData(data.map(list => {
+            if (selectedPage.selectedId === list.id) {
+                list.listItems = newListItems;
+            }
+            return list;
+        }))
+    }
+
     function handleAlertOKListItem(listItemName) {
-        setData(data.map(list => {
-            if(selectedList === list.id) {
-                list.listItems = [...list.listItems, listItemName];
-            }
-            return list;
-        }))
+        updateListItems([...data[selectedPage.selectedId].listItems, listItemName]);
     }
 
-    function handleDelete(filteredList) {
-        setData(data.map(list => {
-            if(selectedList === list.id) {
-                list.listItems = filteredList
-            }
-            return list;
-        }))
-    }
-
-    function toggleModal(){
+    function toggleModal() {
         setShowAlert(false);
     }
-    if (selectedList >= 0){
+
+    function renderAlert(showAlert, cancelName, okName, handleOk){
+        if (!showAlert){
+            return null
+        }
         return (
-            <div>
-                <div>
-                    <Lists selectedId={selectedList} handleDelete={handleDelete} setShowAlert={setShowAlert} data={data} selectedId={selectedList}/>
-                </div>
-                {showAlert && <Alert selectedId={selectedList} onClose={toggleModal} onOkItem={handleAlertOKListItem} cancelName={"Don't Add Task"} okName={"Add Task"}>
-                    <div>
-                    Add Task?
-                    </div>
-                </Alert>}
-            </div>
+            <Alert onClose={toggleModal} onOk={handleOk} cancelName={cancelName} okName={okName}>
+                <div>{okName}:</div>
+            </Alert>
         )
-    } else {
-        return (
-            <div>
-                <div>
-                <MainPage setShowAlert={setShowAlert} setData={setData} data={data} onListClick={(n) => setList(n)}/>
-                </div>
-                {showAlert && <Alert selectedId={selectedList} onClose={toggleModal} onOk={handleAlertOK} cancelName={"Don't Add List"} okName={"Add List"}>
-                <div>
-                    Add List?
-                </div>
-            </Alert>}
-            </div>)
     }
+
+    const pageRenderLookup = {
+        "home": (
+            <>
+                <MainPage setShowAlert={setShowAlert} setData={setData} data={data} onListClick={(n) => setPage({
+                    type: "list",
+                    selectedId: n
+                })}/>
+                {renderAlert(showAlert, "Don't Add List", "Add List", handleAlertOK)}
+            </>
+        ),
+        "list": (
+            <>
+                <img onClick={() => setPage({type: "home"})} src={"long-arrow-alt-left-solid.svg"}/>
+                <Lists handleDelete={updateListItems} setShowAlert={setShowAlert} data={data} selectedId={selectedPage.selectedId}/>
+                {renderAlert(showAlert, "Don't Add Task", "Add Task", handleAlertOKListItem)}
+            </>
+        )
+    }
+    return pageRenderLookup[selectedPage.type]
 }
 
 export default App;

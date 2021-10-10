@@ -8,12 +8,8 @@ function handleDeleteCheck(props, x){
      setTimeout(() => {
          props.handleDelete(props.data[props.selectedId].listItems.filter(listItemName => !listItemName.includes(props.listitem)))
          x(false)
-     }, 750)
+     }, 500)
 }
-
-// function isChecked(props){
-//     return props.data[props.selectedId].listItems[props.index] === props.listitem
-// }
 
 function ListsItemDisplay(props){
     let [isChecked, setChecked] = useState(false)
@@ -21,6 +17,7 @@ function ListsItemDisplay(props){
     <div id="box1" className="boxes">
         <input checked={isChecked} onChange={() => handleDeleteCheck(props, setChecked)} type="checkbox" />
         <label>{props.listitem}</label><br/>
+        <img id="edit-button" onClick={() => props.setShowAlert(true)} src={"edit-solid.svg"}></img>
     </div>
     )
 }
@@ -28,16 +25,16 @@ function ListsItemDisplay(props){
 function Lists(props)
 {
     return (
-        <div>
+        <>
             <h1>{props.data[props.selectedId].title}</h1>
-            {props.data[props.selectedId].listItems.map((x, index) => <ListsItemDisplay selectedId={props.selectedId} index={index} handleDelete={props.handleDelete} data={props.data} listitem={x}/>)}
+            {props.data[props.selectedId].listItems.map((x, index) => <ListsItemDisplay setShowAlert={props.setShowAlert} selectedId={props.selectedId} index={index} handleDelete={props.handleDelete} data={props.data} listitem={x}/>)}
             <div id="button1">
                 <button onClick={() => {props.setShowAlert(true)}} id="addTask">
                     <img src="plus_best.png"/>
                     <span>Add Task</span>
                 </button>
             </div>
-        </div>
+        </>
     )
 }
 
