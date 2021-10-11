@@ -9,6 +9,10 @@ The second design choice was much less clear--both choices had their pros and co
 
 We decided to go for a simplistic design. In minimalist spirit, we eliminated the border around our header after receiving user feedback that it looked out of place. Our goal was to have easily recognizable elements that reduced clutter for greater user experiences. 
 
+## Walkthrough
+
+* ADD THINGS *
+
 ## Alternative Design
 Originally we were considering creating a tile-based design where each task/list item was displayed as individual tiles, with a title and some alternative information below:
 image.png
@@ -24,16 +28,27 @@ Secondly, we also considered splitting up our list items by the date they were d
 
 ![](https://user-images.githubusercontent.com/54875885/134599183-414a0b2f-2302-4f1f-ae8e-d0d829456922.png)
 
-Lastly, our final design incorporated all our user testing feedback, and we went for a simple list design, where editing the text is done via clicking directly on it, and swiping to the right brings back the user to the home page. We removed all clutter that was not explicitly needed: 
+Our original final design prior to Lab 2 incorporated all our user testing feedback from Lab 1, and we went for a simple list design, where editing the text is done via clicking directly on it, and swiping to the right brings back the user to the home page. We removed all clutter that was not explicitly needed: 
 
 ![](https://user-images.githubusercontent.com/54875885/134609943-90b7deb8-aff7-428f-bb2e-06d6730671dc.jpg)
+
+![]
+
+Lastly, our final design for Lab 2 looked very similar to our Lab 1 design, however we decided to bring back the pencil-edit icon for editing names of lists/tasks and deleting lists/tasks. We reverted this change due to user-feedback that suggested that clicking and holding distinction between entering a list and editing a list name was too subtle. Further, to go back from a list into the larger list collection we added a back button in the top left. We chose to add a back button rather than simply have a swipe feature again due to user-feedback requesting a more obvious approach. Further, when adding a list/task we created a prompt feature that allows for user input and the option to cancel the addition of a new list/task.
 
 ## User Testing
 It was mentioned in Design Designs that we used User Testing to decide on a pencil icon vs touch to edit. We set up an experiment and asked User A to comment on the design with the pencil feature and a design that would be touch to edit. User A said that the touch to edit was clear enough, and made for better aesthetics. We also took this test to User B, who shared similar remarks in favor of touch to edit. User C reminded us that we did not have a list box on our main page, so we made sure to add that in our final design. Lastly, User C remarked on our radio buttons and requested them to be changed to checkboxes which we did in our final design.
 ![)](https://user-images.githubusercontent.com/54875885/134599216-2724e8e7-9b9a-4954-bc96-4c50a109f02f.png)
 
+For our Lab 2 user-testing we received the following feedback: 
+- User A stated that every item was too large, we were requested to make everything visually smaller.
+- User C was confused by the method of swiping left to go back a page, and requested a back button.
+- All users requested an edit icon as compared to a hold to edit list/task name feature.
+
+
 ## Final Design
-#### Implemented Features:
+### Implemented Features:
+#### LAB 1
 - Created an item named "Buy new John Grisham book" from a previously empty list
 - In a non-empty list, created an item named "Eat Lunch"
 - Marked the item named "Call Mom" completed (assumes there exists an item named "Call Mom").
@@ -42,8 +57,19 @@ It was mentioned in Design Designs that we used User Testing to decide on a penc
 - Deleted all completed items.*
 - ✨CSS Magic ✨
 
-(* Our checked items are assumed to be automatically removed seconds after they have been checked, this is demonstrated between pages 6 and 7, where the checked "call mom" disappears.)
+#### LAB 2
+- Added a prompt - used for "Add List", "Add Task", "Delete/Edit List", and "Delete/Edit Task" features.
+- Created a pencil-edit icon, upon click prompts user to edit/delete the element.
+- Added a back button to allow users to go back a page.
+- Completed tasks remain visible for 500ms prior to disappearing.
+
+
 ## Challenges We Faced
+#### LAB 1
 We often found ourselves struggling to meet every expectation while simultaneously keeping our application as sleek-looking as possible. For example, we wanted a way to edit names that were both intuitive and easy, while also not cluttering the screen. At first, we had a pen in the corner of the screen that we wanted users to click on, however, through user feedback we were told the pencil icon was bothersome. The user-preferred clicking on the name to edit. This was a contemplated change to make for us, as we found that without the pencil icon there was no obvious indication for editing; however as stated by our user testers, our technique is common enough that most users would understand it intuitively anyways. Something we learned through lab 1 was that users already have a lot of experience with mobile applications, allowing us to create simpler design decisions such as clicking to edit the task names.
+
+#### LAB 2
+Our main priority when porting our code to react involved avoiding repetative code and sloppy implementation methods. We struggled with finding the most efficient way to generically input code such as our prompt feature, and applying it to multiple similar but uniquely different elements. 
+
 ## What we are proud of
 We are very proud of our simple aesthetic. From the start, we decided to apply a simple design to our app - black, white, and blue - with straightforward tasks. It is oddly difficult however to find a simple design that is simultaneously good-looking and usable, which is why we had many iterations, however, our final design is better than we originally imagined it could be.
