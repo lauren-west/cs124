@@ -27,14 +27,20 @@ function App() {
     function updateListItems(newListItems){
         setData(data.map(list => {
             if (selectedPage.selectedId === list.id) {
-                list.listItems = newListItems;
+                list.listItems = newListItems
             }
             return list;
         }))
     }
 
     function handleAlertOKListItem(listItemName) {
-        updateListItems([...data[selectedPage.selectedId].listItems, listItemName]);
+        updateListItems([...data[selectedPage.selectedId].listItems,
+            {
+                id: data[selectedPage.selectedId].listItems.length,
+                text: listItemName,
+                completed: false
+            }
+        ]);
     }
 
     function toggleModal() {
@@ -65,7 +71,7 @@ function App() {
         "list": (
             <>
                 <img onClick={() => setPage({type: "home"})} src={"long-arrow-alt-left-solid.svg"} className={"back-arrow"}/>
-                <Lists handleDelete={updateListItems} setShowAlert={setShowAlert} data={data} selectedId={selectedPage.selectedId}/>
+                <Lists handleDelete={updateListItems} setShowAlert={setShowAlert} setData={setData} data={data} selectedId={selectedPage.selectedId}/>
                 {renderAlert(showAlert, "Don't Add Task", "Add Task", handleAlertOKListItem)}
             </>
         )

@@ -6,21 +6,17 @@ function Alert(props) {
         <div className={"backdrop"}>
             <div className="modal">
                 {props.children}
+                <input type="text" name="name" value={input}
+                       onChange={(e) => setInput(e.target.value)}/>
                 <div className="alert-buttons">
-                    <label>
-                        Name:
-                        <input type="text" name="name" value={input}
-                               onChange={(e) => setInput(e.target.value)}/>
-                    </label>
                     <button className={"alert-button alert-cancel"} type={"button"}
                             onClick={props.onClose}>
                         {props.cancelName}
                     </button>
                     <button className={"alert-button alert-ok"} type={"button"}
                             onClick={() => {
-                                props.onOk(input);
-                                props.onClose();
-                            }}>
+                        props.onOk(input);
+                        props.onClose();}}>
                         {props.okName}
                     </button>
                 </div>

@@ -28,8 +28,8 @@
     border-style: solid;
     margin: 0 auto;
     top: 50pt;
-    height: 100pt;
-    width: 200pt;
+    height: 60pt;
+    width: 160pt;
     padding: 10pt;
     position: relative;
 }
@@ -39,4 +39,9 @@
     display: flex;
     bottom: 0;
     right: 0;
+    padding: 5px;
+
 }
+
+/*.input-label{*/
+/*}*/

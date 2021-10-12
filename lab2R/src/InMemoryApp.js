@@ -5,7 +5,27 @@ const DATA =
         {
             id: 0,
             title: "To Do",
-            listItems: ["Call Mom", "Eat Brunch with Mom", "Tell Mom I love her", "Wash Mom's hair"]
+            listItems: [
+                {
+                    id: 0,
+                    text:"Call Mom",
+                    completed: false
+                },
+                {
+                    id: 1,
+                    text:"Eat Brunch with Mommy",
+                    completed: false
+                },
+                {
+                    id: 2,
+                    text: "Tell Mom I love her",
+                    completed: false
+                },
+                {
+                    id: 3,
+                    text: "Wash Mom's hair",
+                    completed: false
+                }]
         },
         {
             id: 1,
@@ -14,10 +34,17 @@ const DATA =
         },
         {
             id: 2,
-            title: "Awesome List Number 1",
-            listItems: ["Wait for Lucas to finish SGSL", "Hey Lucas!!!"]
+            title: "Awesome",
+            listItems: [{
+                id: 0,
+                text: "Lucas to hw",
+                completed: false
+            }, {
+                id: 1,
+                text: "Hey Lucas!!!",
+                completed: false
+            }]
         }
-
     ]
 
 
