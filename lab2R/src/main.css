@@ -85,9 +85,14 @@ img {
 
 .edit-delete-button {
     width: 20px;
-    margin-left: auto;
-    margin-right: 5px;
+
 }
+.edit-delete-button-container{
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+}
+
 .list-box:hover {
     border-radius: 10px;
     background-color: lightgray;

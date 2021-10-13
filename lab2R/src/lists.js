@@ -31,8 +31,10 @@ function ListsItemDisplay(props){
                 props.setData(Object.assign([], props.data))
             }}/>
             <label>{props.listitem.text}</label><br/>
+            <div className={"edit-delete-button-container"}>
             <img className="edit-delete-button" onClick={() => setShowAlert(true)} src={"edit-solid.svg"}></img>
             <img className="edit-delete-button" onClick={handleDelete} src={"times-solid.svg"}></img>
+            </div>
             <Alert visible={showAlert} inputValue={props.listitem.text} onClose={() => setShowAlert(false)} onOk={handleAlertOKListItem} cancelName={"Don't Edit Task"} okName={"Edit Task"}>
                 <div>Edit Task:</div>
             </Alert>
