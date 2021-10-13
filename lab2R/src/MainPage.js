@@ -8,15 +8,22 @@ function ListsDisplay(props) {
         props.list.title = listName;
         props.setData(Object.assign([], props.data))
     }
+    function handleDelete(e) {
+        e.stopPropagation()
+        props.setData(props.data.filter((list) => list.id !== props.list.id))
+    }
+
     return (
         <>
             <div onClick={() => props.onClick(props.list.id)} className="boxes" id="list-box-1">
                 <img src="list-solid.svg"/>
                 <span>{props.list.title}</span>
-                <img className="edit-button" onClick={(e) => {
+                <img className="edit-delete-button" onClick={(e) => {
                     e.stopPropagation()
                     setShowAlert(true)
                 }} src={"edit-solid.svg"}/>
+                <img className="edit-delete-button" onClick={handleDelete} src={"times-solid.svg"}></img>
+
             </div>
             <Alert inputValue={props.list.title} visible={showAlert} onClose={() => setShowAlert(false)} onOk={handleAlertOK} cancelName={"Don't Edit List"} okName={"Edit List"}>
                 <div>Edit List:</div>

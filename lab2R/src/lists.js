@@ -3,8 +3,6 @@ import {Data} from "./InMemoryApp"
 import React, {useEffect, useState, useMemo} from "react";
 import Alert from "./Alert";
 
-// function handleToggle()
-
 function ListsItemDisplay(props){
     const [checked, setChecked] = useState(props.listitem.completed)
     const [showAlert, setShowAlert] = useState(false);
@@ -12,6 +10,11 @@ function ListsItemDisplay(props){
     function handleAlertOKListItem(listItemText) {
         console.log(listItemText)
         props.listitem.text = listItemText;
+        props.setData(Object.assign([], props.data))
+    }
+    function handleDelete(e) {
+        e.stopPropagation()
+        props.list.listItems = props.list.listItems.filter((item) => item.id !== props.listitem.id)
         props.setData(Object.assign([], props.data))
     }
 
@@ -23,7 +26,8 @@ function ListsItemDisplay(props){
                 props.setData(Object.assign([], props.data))
             }}/>
             <label>{props.listitem.text}</label><br/>
-            <img className="edit-button" onClick={() => setShowAlert(true)} src={"edit-solid.svg"}></img>
+            <img className="edit-delete-button" onClick={() => setShowAlert(true)} src={"edit-solid.svg"}></img>
+            <img className="edit-delete-button" onClick={handleDelete} src={"times-solid.svg"}></img>
             <Alert visible={showAlert} inputValue={props.listitem.text} onClose={() => setShowAlert(false)} onOk={handleAlertOKListItem} cancelName={"Don't Edit Task"} okName={"Edit Task"}>
                 <div>Edit Task:</div>
             </Alert>
@@ -58,13 +62,13 @@ function Lists(props)
             {
                 props.list.listItems
                     .filter((x) => !x.completed)
-                    .map((y) => <ListsItemDisplay key={y.id} setData={props.setData} handleDelete={props.handleDelete} data={props.data} listitem={y}/>)}
+                    .map((y) => <ListsItemDisplay list={props.list} key={y.id} setData={props.setData} data={props.data} listitem={y}/>)}
             <hr/>
             <h3>Completed:</h3>
             {
             props.list.listItems
                 .filter((x) => x.completed)
-                .map((y) => <ListsItemDisplay key={y.id} setData={props.setData} handleDelete={props.handleDelete} data={props.data} listitem={y}/>)}
+                .map((y) => <ListsItemDisplay list={props.list} key={y.id} setData={props.setData} data={props.data} listitem={y}/>)}
             <div id="button1">
                 <button onClick={() => {setShowAlert(true)}} className="addTask">
                     <img src="plus-solid.svg"/>
