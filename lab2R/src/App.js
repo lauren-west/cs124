@@ -13,14 +13,14 @@ function App() {
     let [selectedPage, setPage] = useState({
         type: "home"
     })
-
-    function handleAlertOK(listName) {
-        setData([...data, {
-                id: data.length,
-                title: listName,
-                listItems: []
-                }
-            ]
+    function renderAlert(showAlert, cancelName, okName, handleOk){
+        if (!showAlert){
+            return null
+        }
+        return (
+            <Alert onClose={() => setShowAlert(false)} onOk={handleOk} cancelName={cancelName} okName={okName}>
+                <div>{okName}:</div>
+            </Alert>
         )
     }
 
@@ -43,21 +43,6 @@ function App() {
         ]);
     }
 
-    function toggleModal() {
-        setShowAlert(false);
-    }
-
-    function renderAlert(showAlert, cancelName, okName, handleOk){
-        if (!showAlert){
-            return null
-        }
-        return (
-            <Alert onClose={toggleModal} onOk={handleOk} cancelName={cancelName} okName={okName}>
-                <div>{okName}:</div>
-            </Alert>
-        )
-    }
-
     const pageRenderLookup = {
         "home": (
             <>
@@ -65,7 +50,6 @@ function App() {
                     type: "list",
                     selectedId: n
                 })}/>
-                {renderAlert(showAlert, "Don't Add List", "Add List", handleAlertOK)}
             </>
         ),
         "list": (
