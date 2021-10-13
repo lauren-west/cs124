@@ -1,11 +1,10 @@
 import logo from './logo.svg';
 import './App.css';
 import './AlertApp.css';
-import React, {useEffect, useState, useMemo} from "react";
+import React, {useState} from "react";
 import MainPage from './MainPage'
 import Lists from "./Lists";
 import DATA from "./InMemoryApp";
-import Alert from './Alert';
 
 function App() {
     const [showAlert, setShowAlert] = useState(false);
@@ -13,40 +12,11 @@ function App() {
     let [selectedPage, setPage] = useState({
         type: "home"
     })
-    function renderAlert(showAlert, cancelName, okName, handleOk){
-        if (!showAlert){
-            return null
-        }
-        return (
-            <Alert onClose={() => setShowAlert(false)} onOk={handleOk} cancelName={cancelName} okName={okName}>
-                <div>{okName}:</div>
-            </Alert>
-        )
-    }
-
-    function updateListItems(newListItems){
-        setData(data.map(list => {
-            if (selectedPage.selectedId === list.id) {
-                list.listItems = newListItems
-            }
-            return list;
-        }))
-    }
-
-    function handleAlertOKListItem(listItemName) {
-        updateListItems([...data[selectedPage.selectedId].listItems,
-            {
-                id: data[selectedPage.selectedId].listItems.length,
-                text: listItemName,
-                completed: false
-            }
-        ]);
-    }
 
     const pageRenderLookup = {
         "home": (
             <>
-                <MainPage setShowAlert={setShowAlert} setData={setData} data={data} onListClick={(n) => setPage({
+                <MainPage setData={setData} data={data} onListClick={(n) => setPage({
                     type: "list",
                     selectedId: n
                 })}/>
@@ -55,8 +25,7 @@ function App() {
         "list": (
             <>
                 <img onClick={() => setPage({type: "home"})} src={"long-arrow-alt-left-solid.svg"} className={"back-arrow"}/>
-                <Lists handleDelete={updateListItems} setShowAlert={setShowAlert} setData={setData} data={data} selectedId={selectedPage.selectedId}/>
-                {renderAlert(showAlert, "Don't Add Task", "Add Task", handleAlertOKListItem)}
+                <Lists setData={setData} data={data} list={data[selectedPage.selectedId]}/>
             </>
         )
     }
