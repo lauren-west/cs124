@@ -94,12 +94,8 @@ function App() {
 
         }
         else {
-            console.log(currentTask)
-            console.log(data[listId].listItems)
             setData(data[listId].listItems
                 .filter((listItem) => listItem[currentTask] !== listItem.id))
-            console.log(data)
-
             return data;
          }
         return data;
