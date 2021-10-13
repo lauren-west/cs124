@@ -1,38 +1,63 @@
 import './main.css'
 import React, {useState} from "react";
-
-
-// function EditList(props){
-//     props.list.id
-//     props.setShowEditAlert(true)
-// }
+import Alert from "./Alert";
 
 function ListsDisplay(props) {
+    const [showAlert, setShowAlert] = useState(false);
+    function handleAlertOK(listName) {
+        props.list.title = listName;
+        props.setData(Object.assign([], props.data))
+    }
+    function handleDelete(e) {
+        e.stopPropagation()
+        props.setData(props.data.filter((list) => list.id !== props.list.id))
+    }
+
     return (
-        <div onClick={() => props.onClick(props.list.id)} className="boxes" id="list-box-1">
-            <img src="list-solid.svg"/>
-            <span>{props.list.title}</span>
-            <img className="edit-button" onClick={(e) => {
-                props.setListId(props.list.id)
-                e.stopPropagation()
-                props.setShowEditAlert(true)
-                // EditList()
-            }} src={"edit-solid.svg"}/>
-        </div>
+        <>
+            <div onClick={() => props.onClick(props.list.id)} className="boxes" id="list-box-1">
+                <img src="list-solid.svg"/>
+                <span>{props.list.title}</span>
+                <img className="edit-delete-button" onClick={(e) => {
+                    e.stopPropagation()
+                    setShowAlert(true)
+                }} src={"edit-solid.svg"}/>
+                <img className="edit-delete-button" onClick={handleDelete} src={"times-solid.svg"}></img>
+
+            </div>
+            <Alert inputValue={props.list.title} visible={showAlert} onClose={() => setShowAlert(false)} onOk={handleAlertOK} cancelName={"Don't Edit List"} okName={"Edit List"}>
+                <div>Edit List:</div>
+            </Alert>
+        </>
     )
 }
 
 function MainPage(props) {
+    const [showAlert, setShowAlert] = useState(false);
+
+    function handleAlertOK(listName) {
+        props.setData([...props.data, {
+                id: props.data.length,
+                title: listName,
+                listItems: []
+            }
+            ]
+        )
+    }
+
     return (
         <>
             <h1 id="MyLists">My Lists</h1>
-            {props.data.map((x) => <ListsDisplay setListId={props.setListId} setShowEditAlert={props.setShowEditAlert} list={x} onClick={props.onListClick}/>)}
+            {props.data.map((x) => <ListsDisplay setData={props.setData} data={props.data} list={x} onClick={props.onListClick}/>)}
             <div id="button1">
-                <button onClick={() => props.setShowAlert(true)} className="addList addTask">
+                <button onClick={() => setShowAlert(true)} className="addList addTask">
                     <img src="plus-solid.svg"/>
                     <span>Add List</span>
                 </button>
             </div>
+            <Alert inputValue={""} visible={showAlert} onClose={() => setShowAlert(false)} onOk={handleAlertOK} cancelName={"Don't Add List"} okName={"Add List"}>
+                <div>Add List:</div>
+            </Alert>
         </>
     )
 }
