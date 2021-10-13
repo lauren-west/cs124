@@ -3,6 +3,11 @@ import React, {useState} from "react";
 import Alert from "./Alert";
 
 function ListsDisplay(props) {
+    const [showAlert, setShowAlert] = useState(false);
+    function handleAlertOK(listName) {
+        props.list.title = listName;
+        props.setData(Object.assign([], props.data))
+    }
     return (
         <>
             <div onClick={() => props.onClick(props.list.id)} className="boxes" id="list-box-1">
@@ -10,8 +15,12 @@ function ListsDisplay(props) {
                 <span>{props.list.title}</span>
                 <img className="edit-button" onClick={(e) => {
                     e.stopPropagation()
+                    setShowAlert(true)
                 }} src={"edit-solid.svg"}/>
             </div>
+            <Alert inputValue={props.list.title} visible={showAlert} onClose={() => setShowAlert(false)} onOk={handleAlertOK} cancelName={"Don't Edit List"} okName={"Edit List"}>
+                <div>Edit List:</div>
+            </Alert>
         </>
     )
 }
@@ -39,7 +48,7 @@ function MainPage(props) {
                     <span>Add List</span>
                 </button>
             </div>
-            <Alert visible={showAlert} onClose={() => setShowAlert(false)} onOk={handleAlertOK} cancelName={"Don't Add List"} okName={"Add List"}>
+            <Alert inputValue={""} visible={showAlert} onClose={() => setShowAlert(false)} onOk={handleAlertOK} cancelName={"Don't Add List"} okName={"Add List"}>
                 <div>Add List:</div>
             </Alert>
         </>

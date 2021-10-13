@@ -15,12 +15,10 @@ function App() {
 
     const pageRenderLookup = {
         "home": (
-            <>
                 <MainPage setData={setData} data={data} onListClick={(n) => setPage({
                     type: "list",
                     selectedId: n
                 })}/>
-            </>
         ),
         "list": (
             <>

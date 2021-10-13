@@ -1,7 +1,7 @@
 import {useState} from "react";
 
 function Alert(props) {
-    let [input, setInput] = useState("");
+    let [input, setInput] = useState(props.inputValue);
     if (!props.visible){
         return null;
     }
