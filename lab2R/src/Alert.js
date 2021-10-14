@@ -18,6 +18,7 @@ function Alert(props) {
                     </button>
                     <button className={"alert-button alert-ok"} type={"button"}
                             onClick={() => {
+                                setInput("");
                                 props.onOk(input);
                                 props.onClose();}}>
                         {props.okName}
