@@ -26,7 +26,6 @@ Our final design for delete/edit:
 
 
 
-##Include images/drawings of delete button in both ways
 
 ## Walkthrough
 
