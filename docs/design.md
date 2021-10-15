@@ -16,6 +16,7 @@ We also made a decision about how a user would delete lists and tasks. Initially
 ## Walkthrough
 
 We are currently in the homepage of our site. From here, we can click on various lists. The default lists we have in our submission are Todo and Task. Notice that on this page, we can add more lists, and we can edit the names and delete current lists. In our walkthrough, we ask you to click on the Todo list next.
+
 ![walk1](https://user-images.githubusercontent.com/54875885/137417697-55486e01-4e88-4579-bc58-d1b738acc8b4.jpg)
 
 Now, we are in the Todo list. Try to click on the checkbox to complete "Order sd card on Amazon." See the task move to the completed section. 
