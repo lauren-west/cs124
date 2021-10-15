@@ -9,11 +9,11 @@ The second design choice was much less clear--both choices had their pros and co
 
 We decided to go for a simplistic design. In minimalist spirit, we eliminated the border around our header after receiving user feedback that it looked out of place. Our goal was to have easily recognizable elements that reduced clutter for greater user experiences. 
 
-We also made a decision regarding how to delete lists and tasks. Initially, we planned to make our delete button within our edit pop up. This was in an effort to make sure that the user doesn't unintentionally delete an item.
+We also made a decision about how a user would delete lists and tasks. Initially, we planned to make our delete button within our edit pop-up. This was in an effort to make sure that the user doesn't unintentionally delete an item. However, User A voiced the concern that it may be too difficult for them to find the delete. We determined that deleting a list or task on our mobile site was a low-impact, albeit destructive, action. For those reasons, we decided to change our design, creating a visible delete button for each list and task.
 
 ## Walkthrough
 
-* ADD THINGS *
+* ADD THINGS
 
 ## Alternative Design
 Originally we were considering creating a tile-based design where each task/list item was displayed as individual tiles, with a title and some alternative information below:
