@@ -16,16 +16,22 @@ We also made a decision about how a user would delete lists and tasks. Initially
 ## Walkthrough
 
 We are currently in the homepage of our site. From here, we can click on various lists. The default lists we have in our submission are Todo and Task. Notice that on this page, we can add more lists, and we can edit the names and delete current lists. In our walkthrough, we ask you to click on the Todo list next.
+![walk1](https://user-images.githubusercontent.com/54875885/137417697-55486e01-4e88-4579-bc58-d1b738acc8b4.jpg)
 
 Now, we are in the Todo list. Try to click on the checkbox to complete "Order sd card on Amazon." See the task move to the completed section. 
+![walk2](https://user-images.githubusercontent.com/54875885/137417714-9bdeb334-d3c4-4147-8276-f1c7fa43a7f7.jpg)
 
-Try clicking on the edit button next to Call Mom. Notice that the task we are editing shows up automatically in the textbox. Try changing the name to "Call Mom tomorrow," and click the "Edit Task Button" to confirm your changes. 
+Try clicking on the edit button next to Call Mom. Notice that the task we are editing shows up automatically in the textbox. 
+![walk3](https://user-images.githubusercontent.com/54875885/137417723-d04da98e-c289-4412-8daf-303feabfc6f3.jpg)
+
+Try changing the name to "Call Mom tomorrow," and click the "Edit Task Button" to confirm your changes. 
+![walk4](https://user-images.githubusercontent.com/54875885/137417753-3867a973-92a8-455e-87ce-9c9272ac84f0.jpg)
 
 Please delete the "Text John" task. See that the task is now gone!
-
-
+![walk5](https://user-images.githubusercontent.com/54875885/137417766-317154dc-cd94-4175-898e-a91575567db3.jpg)
 
 If you would like, go back, and click on the "Tasks" lists, or even try adding your own lists. Title it whatever you would like. Continue playing around with the application in anyway you see fit.
+![Walk6](https://user-images.githubusercontent.com/54875885/137417773-b5f92da9-0f41-49e0-a1f9-f228a7d575c5.jpg)
 
 ## Alternative Design
 Originally we were considering creating a tile-based design where each task/list item was displayed as individual tiles, with a title and some alternative information below:
@@ -46,9 +52,9 @@ Our original final design prior to Lab 2 incorporated all our user testing feedb
 
 ![](https://user-images.githubusercontent.com/54875885/134609943-90b7deb8-aff7-428f-bb2e-06d6730671dc.jpg)
 
-![]
+![image](https://user-images.githubusercontent.com/54875885/137417522-c6a2440b-9775-4cdc-984f-0cce7e0b5117.png)
 
-Lastly, our final design for Lab 2 looked very similar to our Lab 1 design, however we decided to bring back the pencil-edit icon for editing names of lists/tasks and deleting lists/tasks. We reverted this change due to user-feedback that suggested that clicking and holding distinction between entering a list and editing a list name was too subtle. Further, to go back from a list into the larger list collection we added a back button in the top left. We chose to add a back button rather than simply have a swipe feature again due to user-feedback requesting a more obvious approach. Further, when adding a list/task we created a prompt feature that allows for user input and the option to cancel the addition of a new list/task.
+Lastly, our final design for Lab 2 looked very similar to our Lab 1 design, however we decided to bring back the pencil-edit icon for editing names of lists/tasks and added a delete button for each list/task as seen above. We reverted this change due to user-feedback that suggested that clicking and holding distinction between entering a list and editing a list name was too subtle. Further, to go back from a list into the larger list collection we added a back button in the top left. We chose to add a back button rather than simply have a swipe feature again due to user-feedback requesting a more obvious approach. Further, when adding a list/task we created a prompt feature that allows for user input and the option to cancel the addition of a new list/task.
 
 ## User Testing
 It was mentioned in Design Designs that we used User Testing to decide on a pencil icon vs touch to edit. We set up an experiment and asked User A to comment on the design with the pencil feature and a design that would be touch to edit. User A said that the touch to edit was clear enough, and made for better aesthetics. We also took this test to User B, who shared similar remarks in favor of touch to edit. User C reminded us that we did not have a list box on our main page, so we made sure to add that in our final design. Lastly, User C remarked on our radio buttons and requested them to be changed to checkboxes which we did in our final design.
