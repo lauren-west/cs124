@@ -8,43 +8,30 @@ const DATA =
             listItems: [
                 {
                     id: 0,
-                    text:"Call Mom",
+                    text:"Order sd card on Amazon",
                     completed: false
                 },
                 {
                     id: 1,
-                    text:"Eat Brunch with Mommy",
+                    text:"Call Mom",
                     completed: false
                 },
                 {
                     id: 2,
-                    text: "Tell Mom I love her",
+                    text: "Text John",
                     completed: false
-                },
-                {
-                    id: 3,
-                    text: "Wash Mom's hair",
-                    completed: false
-                }]
+                }
+               ]
         },
         {
             id: 1,
             title: "Task",
-            listItems: []
-        },
-        {
-            id: 2,
-            title: "Awesome",
             listItems: [{
                 id: 0,
-                text: "Lucas to hw",
-                completed: false
-            }, {
-                id: 1,
-                text: "Hey Lucas!!!",
+                text: "Buy new John Grisham Book",
                 completed: false
             }]
-        }
+        },
     ]
 
 
