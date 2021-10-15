@@ -11,6 +11,17 @@ We decided to go for a simplistic design. In minimalist spirit, we eliminated th
 ##show this in a drawing
 
 We also made a decision about how a user would delete lists and tasks. Initially, we planned to make our delete button within our edit pop-up. This was in an effort to make sure that the user doesn't unintentionally delete an item. However, User A voiced the concern that it may be too difficult for them to find the delete. We determined that deleting a list or task on our mobile site was a low-impact, albeit destructive, action. For those reasons, we decided to change our design, creating a visible delete button for each list and task.
+
+Our original design thought for delete/edit:
+
+![image](https://user-images.githubusercontent.com/54875885/137418892-13c672db-1a76-4292-84d4-da61c694c726.png)
+
+Our final design for delete/edit:
+
+![image](https://user-images.githubusercontent.com/54875885/137418905-37a725ee-dd0b-4fcc-ba8b-7cf074791331.png)
+
+
+
 ##Include images/drawings of delete button in both ways
 
 ## Walkthrough
