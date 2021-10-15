@@ -25,7 +25,7 @@ const DATA =
         },
         {
             id: 1,
-            title: "Task",
+            title: "Tasks",
             listItems: [{
                 id: 0,
                 text: "Buy new John Grisham Book",

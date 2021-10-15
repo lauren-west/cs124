@@ -15,7 +15,17 @@ We also made a decision about how a user would delete lists and tasks. Initially
 
 ## Walkthrough
 
-* ADD THINGS
+We are currently in the homepage of our site. From here, we can click on various lists. The default lists we have in our submission are Todo and Task. Notice that on this page, we can add more lists, and we can edit the names and delete current lists. In our walkthrough, we ask you to click on the Todo list next.
+
+Now, we are in the Todo list. Try to click on the checkbox to complete "Order sd card on Amazon." See the task move to the completed section. 
+
+Try clicking on the edit button next to Call Mom. Notice that the task we are editing shows up automatically in the textbox. Try changing the name to "Call Mom tomorrow," and click the "Edit Task Button" to confirm your changes. 
+
+Please delete the "Text John" task. See that the task is now gone!
+
+
+
+If you would like, go back, and click on the "Tasks" lists, or even try adding your own lists. Title it whatever you would like. Continue playing around with the application in anyway you see fit.
 
 ## Alternative Design
 Originally we were considering creating a tile-based design where each task/list item was displayed as individual tiles, with a title and some alternative information below:
