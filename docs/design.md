@@ -8,8 +8,10 @@ Design decisions we made included: using list items vs tiles and using pencil ic
 The second design choice was much less clear--both choices had their pros and cons. Using a pencil icon to make edits would seemingly help a new user, but touching a pencil icon was not very elegant. Using touch simplifies the mobile interface where space is a commodity, but it may not be very clear what the user should do. At first, we decided on touch-to-edit, however further user testing changed our minds and we brought back the pencil-edit icon. The main reason was due to the difficult distinction between clicking to enter a list versus editing its name, and thus in order to avoid confusion we used the pencil-edit icon.
 
 We decided to go for a simplistic design. In minimalist spirit, we eliminated the border around our header after receiving user feedback that it looked out of place. Our goal was to have easily recognizable elements that reduced clutter for greater user experiences. 
+##show this in a drawing
 
 We also made a decision about how a user would delete lists and tasks. Initially, we planned to make our delete button within our edit pop-up. This was in an effort to make sure that the user doesn't unintentionally delete an item. However, User A voiced the concern that it may be too difficult for them to find the delete. We determined that deleting a list or task on our mobile site was a low-impact, albeit destructive, action. For those reasons, we decided to change our design, creating a visible delete button for each list and task.
+##Include images/drawings of delete button in both ways
 
 ## Walkthrough
 
