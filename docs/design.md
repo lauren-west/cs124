@@ -9,6 +9,8 @@ The second design choice was much less clear--both choices had their pros and co
 
 We decided to go for a simplistic design. In minimalist spirit, we eliminated the border around our header after receiving user feedback that it looked out of place. Our goal was to have easily recognizable elements that reduced clutter for greater user experiences. 
 
+We also made a decision regarding how to delete lists and tasks. Initially, we planned to make our delete button within our edit pop up. This was in an effort to make sure that the user doesn't unintentionally delete an item.
+
 ## Walkthrough
 
 * ADD THINGS *
