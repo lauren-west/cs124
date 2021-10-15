@@ -2,6 +2,11 @@ import {useState} from "react";
 
 function Alert(props) {
     let [input, setInput] = useState(props.inputValue);
+    function handleClose(){
+        setInput(props.inputValue);
+        props.onClose();
+    }
+
     if (!props.visible){
         return null;
     }
@@ -13,14 +18,14 @@ function Alert(props) {
                        onChange={(e) => setInput(e.target.value)}/>
                 <div className="alert-buttons">
                     <button className={"alert-button alert-cancel"} type={"button"}
-                            onClick={props.onClose}>
+                            onClick={handleClose}>
                         {props.cancelName}
                     </button>
                     <button className={"alert-button alert-ok"} type={"button"}
                             onClick={() => {
-                                setInput("");
                                 props.onOk(input);
-                                props.onClose();}}>
+                                handleClose();
+                                setInput("");}}>
                         {props.okName}
                     </button>
                 </div>
