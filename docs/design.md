@@ -8,24 +8,46 @@ Design decisions we made included: using list items vs tiles and using pencil ic
 The second design choice was much less clear--both choices had their pros and cons. Using a pencil icon to make edits would seemingly help a new user, but touching a pencil icon was not very elegant. Using touch simplifies the mobile interface where space is a commodity, but it may not be very clear what the user should do. At first, we decided on touch-to-edit, however further user testing changed our minds and we brought back the pencil-edit icon. The main reason was due to the difficult distinction between clicking to enter a list versus editing its name, and thus in order to avoid confusion we used the pencil-edit icon.
 
 We decided to go for a simplistic design. In minimalist spirit, we eliminated the border around our header after receiving user feedback that it looked out of place. Our goal was to have easily recognizable elements that reduced clutter for greater user experiences. 
-##show this in a drawing
+
+Our updated minimalist deisgn:
+
+![image](https://user-images.githubusercontent.com/54875885/137419050-5f976fed-ed06-4251-a0d0-820cf5e0f74d.png)
+
 
 We also made a decision about how a user would delete lists and tasks. Initially, we planned to make our delete button within our edit pop-up. This was in an effort to make sure that the user doesn't unintentionally delete an item. However, User A voiced the concern that it may be too difficult for them to find the delete. We determined that deleting a list or task on our mobile site was a low-impact, albeit destructive, action. For those reasons, we decided to change our design, creating a visible delete button for each list and task.
+
+Our original design thought for delete/edit:
+
+![image](https://user-images.githubusercontent.com/54875885/137418892-13c672db-1a76-4292-84d4-da61c694c726.png)
+
+Our final design for delete/edit:
+
+![image](https://user-images.githubusercontent.com/54875885/137418905-37a725ee-dd0b-4fcc-ba8b-7cf074791331.png)
+
+
+
 ##Include images/drawings of delete button in both ways
 
 ## Walkthrough
 
 We are currently in the homepage of our site. From here, we can click on various lists. The default lists we have in our submission are Todo and Task. Notice that on this page, we can add more lists, and we can edit the names and delete current lists. In our walkthrough, we ask you to click on the Todo list next.
 
-Now, we are in the Todo list. Try to click on the checkbox to complete "Order sd card on Amazon." See the task move to the completed section. 
+![walk1](https://user-images.githubusercontent.com/54875885/137417697-55486e01-4e88-4579-bc58-d1b738acc8b4.jpg)
 
-Try clicking on the edit button next to Call Mom. Notice that the task we are editing shows up automatically in the textbox. Try changing the name to "Call Mom tomorrow," and click the "Edit Task Button" to confirm your changes. 
+Now, we are in the Todo list. Try to click on the checkbox to complete "Order sd card on Amazon." See the task move to the completed section. 
+![walk2](https://user-images.githubusercontent.com/54875885/137417714-9bdeb334-d3c4-4147-8276-f1c7fa43a7f7.jpg)
+
+Try clicking on the edit button next to Call Mom. Notice that the task we are editing shows up automatically in the textbox. 
+![walk3](https://user-images.githubusercontent.com/54875885/137417723-d04da98e-c289-4412-8daf-303feabfc6f3.jpg)
+
+Try changing the name to "Call Mom tomorrow," and click the "Edit Task Button" to confirm your changes. 
+![walk4](https://user-images.githubusercontent.com/54875885/137417753-3867a973-92a8-455e-87ce-9c9272ac84f0.jpg)
 
 Please delete the "Text John" task. See that the task is now gone!
-
-
+![walk5](https://user-images.githubusercontent.com/54875885/137417766-317154dc-cd94-4175-898e-a91575567db3.jpg)
 
 If you would like, go back, and click on the "Tasks" lists, or even try adding your own lists. Title it whatever you would like. Continue playing around with the application in anyway you see fit.
+![Walk6](https://user-images.githubusercontent.com/54875885/137417773-b5f92da9-0f41-49e0-a1f9-f228a7d575c5.jpg)
 
 ## Alternative Design
 Originally we were considering creating a tile-based design where each task/list item was displayed as individual tiles, with a title and some alternative information below:
@@ -46,9 +68,9 @@ Our original final design prior to Lab 2 incorporated all our user testing feedb
 
 ![](https://user-images.githubusercontent.com/54875885/134609943-90b7deb8-aff7-428f-bb2e-06d6730671dc.jpg)
 
-![]
+![image](https://user-images.githubusercontent.com/54875885/137417522-c6a2440b-9775-4cdc-984f-0cce7e0b5117.png)
 
-Lastly, our final design for Lab 2 looked very similar to our Lab 1 design, however we decided to bring back the pencil-edit icon for editing names of lists/tasks and deleting lists/tasks. We reverted this change due to user-feedback that suggested that clicking and holding distinction between entering a list and editing a list name was too subtle. Further, to go back from a list into the larger list collection we added a back button in the top left. We chose to add a back button rather than simply have a swipe feature again due to user-feedback requesting a more obvious approach. Further, when adding a list/task we created a prompt feature that allows for user input and the option to cancel the addition of a new list/task.
+Lastly, our final design for Lab 2 looked very similar to our Lab 1 design, however we decided to bring back the pencil-edit icon for editing names of lists/tasks and added a delete button for each list/task as seen above. We reverted this change due to user-feedback that suggested that clicking and holding distinction between entering a list and editing a list name was too subtle. Further, to go back from a list into the larger list collection we added a back button in the top left. We chose to add a back button rather than simply have a swipe feature again due to user-feedback requesting a more obvious approach. Further, when adding a list/task we created a prompt feature that allows for user input and the option to cancel the addition of a new list/task.
 
 ## User Testing
 It was mentioned in Design Designs that we used User Testing to decide on a pencil icon vs touch to edit. We set up an experiment and asked User A to comment on the design with the pencil feature and a design that would be touch to edit. User A said that the touch to edit was clear enough, and made for better aesthetics. We also took this test to User B, who shared similar remarks in favor of touch to edit. User C reminded us that we did not have a list box on our main page, so we made sure to add that in our final design. Lastly, User C remarked on our radio buttons and requested them to be changed to checkboxes which we did in our final design.
@@ -72,10 +94,11 @@ For our Lab 2 user-testing we received the following feedback:
 - ✨CSS Magic ✨
 
 #### LAB 2
-- Added a prompt - used for "Add List", "Add Task", "Delete/Edit List", and "Delete/Edit Task" features.
-- Created a pencil-edit icon, upon click prompts user to edit/delete the element.
+- Added a prompt - used for "Add List", "Add Task", "Edit List", and "Edit Task" features.
+- Created a pencil-edit icon, upon click prompts user to edit the element.
+- Added a delete button next to List and Task elements
 - Added a back button to allow users to go back a page.
-- Completed tasks remain visible for 500ms prior to disappearing.
+- Completed tasks go down to a completed task section.
 
 
 ## Challenges We Faced
@@ -84,6 +107,7 @@ We often found ourselves struggling to meet every expectation while simultaneous
 
 #### LAB 2
 Our main priority when porting our code to react involved avoiding repetitive code and sloppy implementation methods. We carefully thought through what our components should be, and came to Office Hours to improve upon our design. We also struggled with finding the most efficient way to generically write our pop-up -- we wanted to reuse it to both edit and add lists and tasks. At first, we were unsure about how to accomplish this. In the end, it involved learning about how to passing props (specific items with good names) and using state in a meaningful way in React. 
+We struggled with finding the most efficient way to generically input code such as our prompt feature, and applying it to multiple similar but uniquely different elements. Specifically, we had to refactor our code multiple times in order to make our implementation simple yet effective, covering both the edit list/task feature and the add list/task feature. This took multiple iterations but we learned through the process that repeated drafts and restructuring of code tends to clear a lot of bugs and mistakes up, so while it was time consuming and challenging we are happy to have gone through it.
 
 ## What we are proud of
 #### Lab 1
