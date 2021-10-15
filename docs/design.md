@@ -8,7 +8,11 @@ Design decisions we made included: using list items vs tiles and using pencil ic
 The second design choice was much less clear--both choices had their pros and cons. Using a pencil icon to make edits would seemingly help a new user, but touching a pencil icon was not very elegant. Using touch simplifies the mobile interface where space is a commodity, but it may not be very clear what the user should do. At first, we decided on touch-to-edit, however further user testing changed our minds and we brought back the pencil-edit icon. The main reason was due to the difficult distinction between clicking to enter a list versus editing its name, and thus in order to avoid confusion we used the pencil-edit icon.
 
 We decided to go for a simplistic design. In minimalist spirit, we eliminated the border around our header after receiving user feedback that it looked out of place. Our goal was to have easily recognizable elements that reduced clutter for greater user experiences. 
-##show this in a drawing
+
+Our updated minimalist deisgn:
+
+![image](https://user-images.githubusercontent.com/54875885/137419050-5f976fed-ed06-4251-a0d0-820cf5e0f74d.png)
+
 
 We also made a decision about how a user would delete lists and tasks. Initially, we planned to make our delete button within our edit pop-up. This was in an effort to make sure that the user doesn't unintentionally delete an item. However, User A voiced the concern that it may be too difficult for them to find the delete. We determined that deleting a list or task on our mobile site was a low-impact, albeit destructive, action. For those reasons, we decided to change our design, creating a visible delete button for each list and task.
 
@@ -90,10 +94,11 @@ For our Lab 2 user-testing we received the following feedback:
 - ✨CSS Magic ✨
 
 #### LAB 2
-- Added a prompt - used for "Add List", "Add Task", "Delete/Edit List", and "Delete/Edit Task" features.
-- Created a pencil-edit icon, upon click prompts user to edit/delete the element.
+- Added a prompt - used for "Add List", "Add Task", "Edit List", and "Edit Task" features.
+- Created a pencil-edit icon, upon click prompts user to edit the element.
+- Added a delete button next to List and Task elements
 - Added a back button to allow users to go back a page.
-- Completed tasks remain visible for 500ms prior to disappearing.
+- Completed tasks go down to a completed task section.
 
 
 ## Challenges We Faced
@@ -101,7 +106,7 @@ For our Lab 2 user-testing we received the following feedback:
 We often found ourselves struggling to meet every expectation while simultaneously keeping our application as sleek-looking as possible. For example, we wanted a way to edit names that were both intuitive and easy, while also not cluttering the screen. At first, we had a pen in the corner of the screen that we wanted users to click on, however, through user feedback we were told the pencil icon was bothersome. The user-preferred clicking on the name to edit. This was a contemplated change to make for us, as we found that without the pencil icon there was no obvious indication for editing; however as stated by our user testers, our technique is common enough that most users would understand it intuitively anyways. Something we learned through lab 1 was that users already have a lot of experience with mobile applications, allowing us to create simpler design decisions such as clicking to edit the task names.
 
 #### LAB 2
-Our main priority when porting our code to react involved avoiding repetative code and sloppy implementation methods. We struggled with finding the most efficient way to generically input code such as our prompt feature, and applying it to multiple similar but uniquely different elements. 
+Our main priority when porting our code to react involved avoiding repetative code and sloppy implementation methods. We struggled with finding the most efficient way to generically input code such as our prompt feature, and applying it to multiple similar but uniquely different elements. Specifically, we had to refactor our code multiple times in order to make our implementation simple yet effective, covering both the edit list/task feature and the add list/task feature. This took multiple iterations but we learned through the process that repeated drafts and restructuring of code tends to clear a lot of bugs and mistakes up, so while it was time consuming and challenging we are happy to have gone through it.
 
 ## What we are proud of
 We are very proud of our simple aesthetic. From the start, we decided to apply a simple design to our app - black, white, and blue - with straightforward tasks. It is oddly difficult however to find a simple design that is simultaneously good-looking and usable, which is why we had many iterations, however, our final design is better than we originally imagined it could be.
