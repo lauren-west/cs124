@@ -4,15 +4,39 @@ import React, {useState} from "react";
 import MainPage from './MainPage'
 import Lists from "./Lists";
 import DATA from "./InMemoryApp";
+import {generateUniqueID} from "web-vitals/dist/modules/lib/generateUniqueID";
+import firebase from "firebase/compat";
+import {useCollection, useDocument, DocumentDataHook, DocumentHook} from "react-firebase-hooks/firestore";
+
+const firebaseConfig = {
+    apiKey: "AIzaSyCd9qqxvMpEKpBzwfWcc2tlRFa6ICaLH_s",
+    authDomain: "hmc-cs124-fa21-labs.firebaseapp.com",
+    projectId: "hmc-cs124-fa21-labs",
+    storageBucket: "hmc-cs124-fa21-labs.appspot.com",
+    messagingSenderId: "949410042946",
+    appId: "1:949410042946:web:0113b139a7e3cd1cc709db"
+};
+
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
 
 function App() {
+    const collectionName = "lwest-hmc-tasks"
     const [showAlert, setShowAlert] = useState(false);
     const [showEditAlert, setShowEditAlert] = useState(false);
-    let [currentTask, setCurrentTask] = useState("");
-    let [data, setData] = useState(DATA);
-    let [listId, setListId] = useState(0);
-    let [selectedPage, setPage] = useState({
+    const [currentTask, setCurrentTask] = useState("");
+    const [data, setData] = useState(DATA);
+    const [listId, setListId] = useState(0);
+    const [selectedPage, setPage] = useState({
         type: "home"
+    })
+
+    const collectionRef = db.collection(collectionName);
+
+    const docRef = collectionRef.doc(generateUniqueID())
+
+    docRef.set({
+            created: firebase.database.ServerValue.TIMESTAMP
     })
 
     const pageRenderLookup = {
