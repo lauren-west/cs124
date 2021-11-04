@@ -10,16 +10,6 @@ function ShowEditAlert(props) {
     props.setShowEditAlert(true)
 }
 
-async function readASingleDocument(docname){
-    const mySnapshot = await getDoc(docname);
-    if (mySnapshot.exists()){
-        const docData = mySnapshot.data();
-        return docData;
-    }
-    return 0;
-}
-
-
 function ListsItemDisplay(props){
     console.log(props.currentTasks);
     const [checked, setChecked] = useState(props.completed); //useState(props.listitem.completed)
