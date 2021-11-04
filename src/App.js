@@ -57,11 +57,12 @@ function App() {
         setPage({type: "home"});
     }
 
-    function addListItem(list, itemName){
+    function addListItem(list, itemName, priority){
         const Task = {
             id: generateUniqueID(),
             title: itemName,
-            completed: false
+            completed: false,
+            priority: "low" // planning on low, medium, high
         }
         list.collection(list.id).doc(Task.id).set(Task)
         setFetch(false)
@@ -72,18 +73,19 @@ function App() {
         const q = collectionRef.doc(id).collection(id);
         const querySnapshot = await getDocs(q);
         querySnapshot.forEach((doc) => {
-            currTasks.push([doc.data().id, doc.data().title, doc.data().completed]);
+            currTasks.push([doc.data().id, doc.data().title, doc.data().completed, doc.data().priority]);
         });
         return currTasks;
     }
 
-    async function updateTask(listid, taskid, title_val, comp_value){
+    async function updateTask(listid, taskid, title_val, comp_value, priority_value){
         await collectionRef.doc(listid)
             .collection(listid)
             .doc(taskid)
             .update({
                 title: title_val,
                 completed: comp_value,
+                priority: priority_value
             });
         setFetch(false)
     }
@@ -105,7 +107,7 @@ function App() {
         "list": (
             <>
                 <img onClick={() => setFetchAndPage()} src={"long-arrow-alt-left-solid.svg"} className={"back-arrow"}/>
-                <Lists deleteTask={deleteTask} updateTask={updateTask} setFetch={setFetch} fetch={hasFetchedTask} getDocInfo={getDocInfo} addListItem={addListItem} data={data.filter((x) => x.id == selectedPage.selectedId)} list={collectionRef.doc(selectedPage.selectedId) }/>
+                <Lists deleteTask={deleteTask} updateTask={updateTask} setFetch={setFetch} fetch={hasFetchedTask} getDocInfo={getDocInfo} addListItem={addListItem} data={data.filter((x) => x.id == selectedPage.selectedId)} list={collectionRef.doc(selectedPage.selectedId)}/>
             </>
         )
     }

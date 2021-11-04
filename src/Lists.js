@@ -30,7 +30,7 @@ function ListsItemDisplay(props){
     return (
         <div id="box1" className="boxes boxes-blue">
             <input checked={checked} type="checkbox" onChange={() => {
-                props.updateTask(props.list.id, props.id, props.listitem, !props.completed)
+                props.updateTask(props.list.id, props.id, props.listitem, !props.completed, props.priority)
                 // props.setData(Object.assign([], props.data))
                 console.log("add completed attribute")
             }}/>
@@ -50,14 +50,14 @@ function Lists(props) {
     const [showAlert, setShowAlert] = useState(false);
     const [currentTasks, setTasks] = useState([]);
 
-    function updateListItems(newListItems) {
-        props.setData(props.data.map(list => {
-            if (list.id === props.list.id) {
-                list.listItems = newListItems
-            }
-            return list;
-        }))
-    }
+    // function updateListItems(newListItems) {
+    //     props.setData(props.data.map(list => {
+    //         if (list.id === props.list.id) {
+    //             list.listItems = newListItems
+    //         }
+    //         return list;
+    //     }))
+    // }
 
     if (!props.fetch) {
         props.getDocInfo(props.list.id).then((x) => setTasks(x));
@@ -67,10 +67,10 @@ function Lists(props) {
     return (
         <>
             <h1>{props.data[0].title}</h1>
-            {currentTasks.filter((y) => !y[2]).map((x) => <ListsItemDisplay deleteTask={props.deleteTask} updateTask={props.updateTask} setTasks={setTasks} currentTasks={currentTasks} list={props.list} setData={props.setData} data={props.data} id={x[0]} listitem={x[1]} completed={x[2]}/>)}
+            {currentTasks.filter((y) => !y[2]).map((x) => <ListsItemDisplay deleteTask={props.deleteTask} updateTask={props.updateTask} setTasks={setTasks} currentTasks={currentTasks} list={props.list} setData={props.setData} data={props.data} id={x[0]} listitem={x[1]} completed={x[2]} priority={x[3]}/>)}
             <hr/>
             <h3>Completed:</h3>
-            {currentTasks.filter((y) => y[2]).map((x) => <ListsItemDisplay deleteTask={props.deleteTask} updateTask={props.updateTask} setTasks={setTasks} currentTasks={currentTasks} list={props.list} setData={props.setData} data={props.data} id={x[0]} listitem={x[1]} completed={x[2]}/>)}
+            {currentTasks.filter((y) => y[2]).map((x) => <ListsItemDisplay deleteTask={props.deleteTask} updateTask={props.updateTask} setTasks={setTasks} currentTasks={currentTasks} list={props.list} setData={props.setData} data={props.data} id={x[0]} listitem={x[1]} completed={x[2]} priority={x[3]}/>)}
             <div id="button1">
                 <button onClick={() => {setShowAlert(true)}} className="addTask">
                     <img src="plus-solid.svg"/>
