@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './AlertApp.css';
 import React, {useState} from "react";
 import MainPage from './MainPage'

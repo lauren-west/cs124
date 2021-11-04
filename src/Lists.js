@@ -30,7 +30,6 @@ function ListsItemDisplay(props){
     return (
         <div id="box1" className="boxes boxes-blue">
             <input checked={checked} type="checkbox" onChange={() => {
-                setChecked(!props.completed)
                 props.updateTask(props.list.id, props.id, props.listitem, !props.completed)
                 // props.setData(Object.assign([], props.data))
                 console.log("add completed attribute")
