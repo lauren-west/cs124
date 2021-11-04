@@ -26,29 +26,30 @@ function ListsItemDisplay(props){
     const [checked, setChecked] = useState(props.completed); //useState(props.listitem.completed)
     const [showAlert, setShowAlert] = useState(false);
 
-    function handleAlertOKListItem(listItemText) {
-        props.listitem.text = listItemText;
-        props.setData(Object.assign([], props.data))
+    function handleAlertOKListItem(listitem) {
+        props.updateTask(props.list.id, props.id, listitem, props.completed)
+        // props.listitem.text = listItemText;
+        // props.setData(Object.assign([], props.data))
     }
-    // function handleDelete(e) {
-    //     e.stopPropagation()
-    //     props.list.listItems = props.list.listItems.filter((item) => item.id !== props.id)
-    //     props.setData(Object.assign([], props.data))
-    // }
+    function handleDelete(e) {
+        e.stopPropagation()
+        props.deleteTask(props.list.id, props.id)
+        // props.list.listItems = props.list.listItems.filter((item) => item.id !== props.id)
+        // props.setData(Object.assign([], props.data))
+    }
 
     return (
         <div id="box1" className="boxes boxes-blue">
             <input checked={checked} type="checkbox" onChange={() => {
-                props.updateTask(props.list.id, props.id, props.title, !props.completed)
-                // props.listitem.completed = !props.listitem.completed
-                // setChecked(props.listitem.completed)
+                setChecked(!props.completed)
+                props.updateTask(props.list.id, props.id, props.listitem, !props.completed)
                 // props.setData(Object.assign([], props.data))
                 console.log("add completed attribute")
             }}/>
             <label>{props.listitem}</label><br/>
             <div className={"edit-delete-button-container"}>
             <img className="edit-delete-button" onClick={() => setShowAlert(true)} src={"edit-solid.svg"}></img>
-            <img className="edit-delete-button" onClick={(e) => props.handleTaskDelete(e)} src={"times-solid.svg"}></img>
+            <img className="edit-delete-button" onClick={(e) => handleDelete(e)} src={"times-solid.svg"}></img>
             </div>
             <Alert visible={showAlert} inputValue={props.listitem} onClose={() => setShowAlert(false)} onOk={handleAlertOKListItem} cancelName={"Don't Edit Task"} okName={"Edit Task"}>
                 <div>Edit Task:</div>
@@ -79,7 +80,7 @@ function Lists(props) {
         <>
             {console.log("hi")}
             <h1>{props.data[0].title}</h1>
-            {currentTasks.map((x) => <ListsItemDisplay updateTask={props.updateTask} setTasks={setTasks} currentTasks={currentTasks} list={props.list} setData={props.setData} data={props.data} id={x[0]} listitem={x[1]} completed={x[2]}/>)}
+            {currentTasks.map((x) => <ListsItemDisplay deleteTask={props.deleteTask} updateTask={props.updateTask} setTasks={setTasks} currentTasks={currentTasks} list={props.list} setData={props.setData} data={props.data} id={x[0]} listitem={x[1]} completed={x[2]}/>)}
             {/*{for (x of liststuff) <ListsItemDisplay list={props.list} key={0} setData={props.setData} data={props.data} listitem={x}/>}*/}
             {/*{currentTasks.map((y) => <ListsItemDisplay list={props.list} key={y.id} setData={props.setData} data={props.data} listitem={y}/>)}*/}
 
@@ -93,10 +94,8 @@ function Lists(props) {
             {/*{*/}
             {/*.filter((x) => !x.completed)*/}
             {/*{ props.list.collection("Tasks").map((y) => <ListsItemDisplay list={props.list.collection("Tasks")} key={y.id} setData={props.setData} data={props.data} listitem={y}/>)}*/}
-            {/*<hr/>*/}
-            {/*<h3>Completed:</h3>*/}
-            {/*{*/}
-            {/*{*/}
+            <hr/>
+            <h3>Completed:</h3>
             {/*props.list.listItems*/}
             {/*    .filter((x) => x.completed)*/}
             {/*    .map((y) => <ListsItemDisplay list={props.list} key={y.id} setData={props.setData} data={props.data} listitem={y}/>)}*/}

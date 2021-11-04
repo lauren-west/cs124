@@ -5,7 +5,7 @@ import MainPage from './MainPage'
 import Lists from "./Lists";
 import firebase from "firebase/compat";
 import {useCollection} from "react-firebase-hooks/firestore";
-import {collection, doc, setDoc, query, where, getDoc, getDocs, updateDoc} from "firebase/firestore";
+import {collection, doc, setDoc, query, where, getDoc, getDocs, updateDoc, deleteDoc} from "firebase/firestore";
 import {generateUniqueID} from "web-vitals/dist/modules/lib/generateUniqueID";
 
 const firebaseConfig = {
@@ -57,12 +57,6 @@ function App() {
         e.stopPropagation()
     }
 
-    function handleTaskDelete(e, listid, taskid){
-        // console.log()
-        // collectionRef.doc(id).delete()
-        e.stopPropagation()
-    }
-
     function setFetchAndPage(){
         setFetch(false);
         setPage({type: "home"});
@@ -91,9 +85,11 @@ function App() {
     }
 
     async function updateTask(listid, taskid, title_val, comp_value){
-
-        await collectionRef
-            .doc(listid)
+        console.log(listid)
+        console.log(taskid)
+        console.log(title_val)
+        console.log(comp_value)
+        await collectionRef.doc(listid)
             .collection(listid)
             .doc(taskid)
             .update({
@@ -101,14 +97,15 @@ function App() {
                 completed: comp_value,
             });
         setFetch(false)
-
-        // await updateDoc(collectionRef.doc(listid).collection(listid).doc(taskid), {element: value}).then();
-
-
-        // await collectionRef.doc(listid).collection(listid).doc(taskid).update({element: value}).then();
-        // setFetch(false)
     }
 
+    async function deleteTask(listid, taskid){
+        console.log("SUPPOSEDLY DELETING")
+        await collectionRef.doc(listid).collection(listid).doc(taskid).delete();
+        // await deleteDoc(collectionRef.doc(listid).collection(listid).doc(taskid));
+        setFetch(false)
+
+    }
 
     const pageRenderLookup = {
         "home": (
@@ -123,7 +120,7 @@ function App() {
             <>
                 {console.log("rendering lists!... ", selectedPage)}
                 <img onClick={() => setFetchAndPage()} src={"long-arrow-alt-left-solid.svg"} className={"back-arrow"}/>
-                <Lists updateTask={updateTask} setFetch={setFetch} fetch={hasFetchedTask} getDocInfo={getDocInfo} addListItem={addListItem} deleteListItem={handleTaskDelete} data={data.filter((x) => x.id == selectedPage.selectedId)} list={collectionRef.doc(selectedPage.selectedId) }/>
+                <Lists deleteTask={deleteTask} updateTask={updateTask} setFetch={setFetch} fetch={hasFetchedTask} getDocInfo={getDocInfo} addListItem={addListItem} data={data.filter((x) => x.id == selectedPage.selectedId)} list={collectionRef.doc(selectedPage.selectedId) }/>
             </>
         )
     }
