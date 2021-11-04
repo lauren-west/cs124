@@ -20,7 +20,7 @@ const db = firebase.firestore();
 
 function App() {
 
-    const collectionName = "lewing-hmc-tasks"
+    const collectionName = "lewing-hmc-tasks2"
     const query = db.collection(collectionName);
     const [hasFetchedTask, setFetch] = useState(false);
     let collectionRef = db.collection(collectionName)
@@ -62,7 +62,7 @@ function App() {
             id: generateUniqueID(),
             title: itemName,
             completed: false,
-            priority: "low" // planning on low, medium, high
+            priority: priority // planning on low, medium, high
         }
         list.collection(list.id).doc(Task.id).set(Task)
         setFetch(false)
@@ -90,6 +90,12 @@ function App() {
         setFetch(false)
     }
 
+    async function updateList(id, title_val){
+        await collectionRef.doc(id).update({
+                title: title_val
+            })
+    }
+
     async function deleteTask(listid, taskid){
         await collectionRef.doc(listid).collection(listid).doc(taskid).delete();
         setFetch(false)
@@ -98,7 +104,7 @@ function App() {
 
     const pageRenderLookup = {
         "home": (
-                <MainPage handleDelete={handleDeleteList} setData={handleAddList} data={data} onListClick={(n) =>
+                <MainPage updateList={updateList} handleDelete={handleDeleteList} setData={handleAddList} data={data} onListClick={(n) =>
                     setPage({
                     type: "list",
                     selectedId: n

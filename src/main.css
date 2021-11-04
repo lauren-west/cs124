@@ -29,6 +29,10 @@ label {
 
 }
 
+.priority-label{
+    font-size: 12px;
+}
+
 img {
     width: 20px;
     margin: auto 0;

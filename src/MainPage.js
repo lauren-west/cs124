@@ -5,9 +5,24 @@ import Alert from "./Alert";
 function ListsDisplay(props) {
     const [showAlert, setShowAlert] = useState(false);
     function handleAlertOK(listName) {
-        props.list.title = listName;
-        props.setData(Object.assign([], props.data))
+
     }
+
+    function handleEdit(inputVal) {
+        props.updateList(props.list.id, inputVal)
+    }
+
+    // async function updateTask(listid, taskid, title_val, comp_value, priority_value){
+    //     await collectionRef.doc(listid)
+    //         .collection(listid)
+    //         .doc(taskid)
+    //         .update({
+    //             title: title_val,
+    //             completed: comp_value,
+    //             priority: priority_value
+    //         });
+    //     setFetch(false)
+    // }
     // function handleDelete(e) {
     //     e.stopPropagation()
     //     props.setData(props.data.filter((list) => list.id !== props.list.id))
@@ -30,7 +45,7 @@ function ListsDisplay(props) {
                 </div>
 
             </div>
-            <Alert inputValue={props.list.title} visible={showAlert} onClose={() => setShowAlert(false)} onOk={handleAlertOK} cancelName={"Don't Edit List"} okName={"Edit List"}>
+            <Alert inputValue={props.list.title} visible={showAlert} onClose={() => setShowAlert(false)} onOk={handleEdit} cancelName={"Don't Edit List"} okName={"Edit List"}>
                 <div>Edit List:</div>
             </Alert>
         </>
@@ -47,7 +62,7 @@ function MainPage(props) {
     return (
         <>
             <h1 id="MyLists">My Lists</h1>
-            {props.data.map((x) => <ListsDisplay handleDelete={props.handleDelete} setData={props.setData} data={props.data} list={x} onClick={props.onListClick}/>)}
+            {props.data.map((x) => <ListsDisplay handleDelete={props.handleDelete} updateList={props.updateList} setData={props.setData} data={props.data} list={x} onClick={props.onListClick}/>)}
             <div id="button1">
                 <button onClick={() => setShowAlert(true)} className="addList addTask">
                     <img src="plus-solid.svg"/>
