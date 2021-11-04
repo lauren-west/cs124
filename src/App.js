@@ -19,12 +19,9 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 
-
-
 function App() {
 
     const collectionName = "lewing-hmc-tasks"
-    const subCollectionName = "Tasks"
     const query = db.collection(collectionName);
     const [hasFetchedTask, setFetch] = useState(false);
     let collectionRef = db.collection(collectionName)
@@ -52,7 +49,6 @@ function App() {
 
 
     function handleDeleteList(id, e){
-        //console.log(id)
         collectionRef.doc(id).delete()
         e.stopPropagation()
     }
@@ -77,8 +73,6 @@ function App() {
         const q = collectionRef.doc(id).collection(id);
         const querySnapshot = await getDocs(q);
         querySnapshot.forEach((doc) => {
-            // doc.data() is never undefined for query doc snapshots
-            // console.log(doc.id, " => ", doc.data().title);
             currTasks.push([doc.data().id, doc.data().title, doc.data().completed]);
         });
         return currTasks;
@@ -100,9 +94,7 @@ function App() {
     }
 
     async function deleteTask(listid, taskid){
-        console.log("SUPPOSEDLY DELETING")
         await collectionRef.doc(listid).collection(listid).doc(taskid).delete();
-        // await deleteDoc(collectionRef.doc(listid).collection(listid).doc(taskid));
         setFetch(false)
 
     }
@@ -110,7 +102,6 @@ function App() {
     const pageRenderLookup = {
         "home": (
                 <MainPage handleDelete={handleDeleteList} setData={handleAddList} data={data} onListClick={(n) =>
-                    // console.log("transfering from main to lists page... selectedID:", n) &&
                     setPage({
                     type: "list",
                     selectedId: n
@@ -118,7 +109,6 @@ function App() {
         ),
         "list": (
             <>
-                {console.log("rendering lists!... ", selectedPage)}
                 <img onClick={() => setFetchAndPage()} src={"long-arrow-alt-left-solid.svg"} className={"back-arrow"}/>
                 <Lists deleteTask={deleteTask} updateTask={updateTask} setFetch={setFetch} fetch={hasFetchedTask} getDocInfo={getDocInfo} addListItem={addListItem} data={data.filter((x) => x.id == selectedPage.selectedId)} list={collectionRef.doc(selectedPage.selectedId) }/>
             </>

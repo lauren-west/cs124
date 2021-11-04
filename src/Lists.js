@@ -1,5 +1,4 @@
 import "./main.css"
-import {Data} from "./InMemoryApp"
 import React, {useEffect, useState, useMemo} from "react";
 import Alert from "./Alert";
 import {useCollection} from "react-firebase-hooks/firestore";
