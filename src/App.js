@@ -5,7 +5,7 @@ import MainPage from './MainPage'
 import Lists from "./Lists";
 import firebase from "firebase/compat";
 import {useCollection} from "react-firebase-hooks/firestore";
-import {collection, doc, setDoc, query, where, getDoc, getDocs} from "firebase/firestore";
+import {collection, doc, setDoc, query, where, getDoc, getDocs, updateDoc} from "firebase/firestore";
 import {generateUniqueID} from "web-vitals/dist/modules/lib/generateUniqueID";
 
 const firebaseConfig = {
@@ -45,7 +45,7 @@ function App() {
     function handleAddList(listName) {
         const List = {
             id: generateUniqueID(),
-            title: listName
+            title: listName,
         }
         collectionRef.doc(List.id).set(List)
     }
@@ -63,10 +63,16 @@ function App() {
         e.stopPropagation()
     }
 
+    function setFetchAndPage(){
+        setFetch(false);
+        setPage({type: "home"});
+    }
+
     function addListItem(list, itemName){
         const Task = {
             id: generateUniqueID(),
-            title: itemName
+            title: itemName,
+            completed: false
         }
         list.collection(list.id).doc(Task.id).set(Task)
         setFetch(false)
@@ -79,9 +85,28 @@ function App() {
         querySnapshot.forEach((doc) => {
             // doc.data() is never undefined for query doc snapshots
             // console.log(doc.id, " => ", doc.data().title);
-            currTasks.push(doc.data().title);
+            currTasks.push([doc.data().id, doc.data().title, doc.data().completed]);
         });
         return currTasks;
+    }
+
+    async function updateTask(listid, taskid, title_val, comp_value){
+
+        await collectionRef
+            .doc(listid)
+            .collection(listid)
+            .doc(taskid)
+            .update({
+                title: title_val,
+                completed: comp_value,
+            });
+        setFetch(false)
+
+        // await updateDoc(collectionRef.doc(listid).collection(listid).doc(taskid), {element: value}).then();
+
+
+        // await collectionRef.doc(listid).collection(listid).doc(taskid).update({element: value}).then();
+        // setFetch(false)
     }
 
 
@@ -97,8 +122,8 @@ function App() {
         "list": (
             <>
                 {console.log("rendering lists!... ", selectedPage)}
-                <img onClick={() => setPage({type: "home"})} src={"long-arrow-alt-left-solid.svg"} className={"back-arrow"}/>
-                <Lists setFetch={setFetch} fetch={hasFetchedTask} getDocInfo={getDocInfo} addListItem={addListItem} deleteListItem={handleTaskDelete} data={data.filter((x) => x.id == selectedPage.selectedId)} list={collectionRef.doc(selectedPage.selectedId) }/>
+                <img onClick={() => setFetchAndPage()} src={"long-arrow-alt-left-solid.svg"} className={"back-arrow"}/>
+                <Lists updateTask={updateTask} setFetch={setFetch} fetch={hasFetchedTask} getDocInfo={getDocInfo} addListItem={addListItem} deleteListItem={handleTaskDelete} data={data.filter((x) => x.id == selectedPage.selectedId)} list={collectionRef.doc(selectedPage.selectedId) }/>
             </>
         )
     }

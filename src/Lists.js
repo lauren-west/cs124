@@ -22,35 +22,37 @@ async function readASingleDocument(docname){
 
 
 function ListsItemDisplay(props){
-    // const [checked, setChecked] = useState(props.listitem.completed)
-    // const [showAlert, setShowAlert] = useState(false);
+    console.log(props.currentTasks);
+    const [checked, setChecked] = useState(props.completed); //useState(props.listitem.completed)
+    const [showAlert, setShowAlert] = useState(false);
 
-    // function handleAlertOKListItem(listItemText) {
-    //     console.log(listIemText)
-    //     props.listitem.text = listItemText;
-    //     props.setData(Object.assign([], props.data))
-    // }
+    function handleAlertOKListItem(listItemText) {
+        props.listitem.text = listItemText;
+        props.setData(Object.assign([], props.data))
+    }
     // function handleDelete(e) {
     //     e.stopPropagation()
-    //     props.list.listItems = props.list.listItems.filter((item) => item.id !== props.listitem.id)
+    //     props.list.listItems = props.list.listItems.filter((item) => item.id !== props.id)
     //     props.setData(Object.assign([], props.data))
     // }
-    console.log("props.listitem", props.listitem)
+
     return (
         <div id="box1" className="boxes boxes-blue">
-            {/*<input checked={checked} type="checkbox" onChange={() => {*/}
-            {/*    props.listitem.completed = !props.listitem.completed*/}
-            {/*    setChecked(props.listitem.completed)*/}
-            {/*    props.setData(Object.assign([], props.data))*/}
-            {/*}}/>*/}
+            <input checked={checked} type="checkbox" onChange={() => {
+                props.updateTask(props.list.id, props.id, props.title, !props.completed)
+                // props.listitem.completed = !props.listitem.completed
+                // setChecked(props.listitem.completed)
+                // props.setData(Object.assign([], props.data))
+                console.log("add completed attribute")
+            }}/>
             <label>{props.listitem}</label><br/>
             <div className={"edit-delete-button-container"}>
-            {/*<img className="edit-delete-button" onClick={() => setShowAlert(true)} src={"edit-solid.svg"}></img>*/}
-            {/*<img className="edit-delete-button" onClick={(e) => props.handleTaskDelete(e)} src={"times-solid.svg"}></img>*/}
+            <img className="edit-delete-button" onClick={() => setShowAlert(true)} src={"edit-solid.svg"}></img>
+            <img className="edit-delete-button" onClick={(e) => props.handleTaskDelete(e)} src={"times-solid.svg"}></img>
             </div>
-            {/*<Alert visible={showAlert} inputValue={props.listitem.text} onClose={() => setShowAlert(false)} onOk={handleAlertOKListItem} cancelName={"Don't Edit Task"} okName={"Edit Task"}>*/}
-            {/*    <div>Edit Task:</div>*/}
-            {/*</Alert>*/}
+            <Alert visible={showAlert} inputValue={props.listitem} onClose={() => setShowAlert(false)} onOk={handleAlertOKListItem} cancelName={"Don't Edit Task"} okName={"Edit Task"}>
+                <div>Edit Task:</div>
+            </Alert>
         </div>
     )
 }
@@ -77,7 +79,7 @@ function Lists(props) {
         <>
             {console.log("hi")}
             <h1>{props.data[0].title}</h1>
-            <ListsItemDisplay list={props.list} key={0} setData={props.setData} data={props.data} listitem={currentTasks}/>
+            {currentTasks.map((x) => <ListsItemDisplay updateTask={props.updateTask} setTasks={setTasks} currentTasks={currentTasks} list={props.list} setData={props.setData} data={props.data} id={x[0]} listitem={x[1]} completed={x[2]}/>)}
             {/*{for (x of liststuff) <ListsItemDisplay list={props.list} key={0} setData={props.setData} data={props.data} listitem={x}/>}*/}
             {/*{currentTasks.map((y) => <ListsItemDisplay list={props.list} key={y.id} setData={props.setData} data={props.data} listitem={y}/>)}*/}
 
