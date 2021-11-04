@@ -79,10 +79,6 @@ function App() {
     }
 
     async function updateTask(listid, taskid, title_val, comp_value){
-        console.log(listid)
-        console.log(taskid)
-        console.log(title_val)
-        console.log(comp_value)
         await collectionRef.doc(listid)
             .collection(listid)
             .doc(taskid)

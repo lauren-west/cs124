@@ -67,7 +67,6 @@ function Lists(props) {
 
     return (
         <>
-            {console.log("hi")}
             <h1>{props.data[0].title}</h1>
             {currentTasks.filter((y) => !y[2]).map((x) => <ListsItemDisplay deleteTask={props.deleteTask} updateTask={props.updateTask} setTasks={setTasks} currentTasks={currentTasks} list={props.list} setData={props.setData} data={props.data} id={x[0]} listitem={x[1]} completed={x[2]}/>)}
             <hr/>
