@@ -8,10 +8,12 @@ function ListsDisplay(props) {
         props.list.title = listName;
         props.setData(Object.assign([], props.data))
     }
-    function handleDelete(e) {
-        e.stopPropagation()
-        props.setData(props.data.filter((list) => list.id !== props.list.id))
-    }
+    // function handleDelete(e) {
+    //     e.stopPropagation()
+    //     props.setData(props.data.filter((list) => list.id !== props.list.id))
+    //
+    //
+    // }
 
     return (
         <>
@@ -23,7 +25,8 @@ function ListsDisplay(props) {
                         e.stopPropagation()
                         setShowAlert(true)
                     }} src={"edit-solid.svg"}/>
-                    <img className="edit-delete-button" onClick={handleDelete} src={"times-solid.svg"}></img>
+                    <img className="edit-delete-button" onClick={(e) => props.handleDelete(props.list.id, e)} src={"times-solid.svg"}></img>
+                {/*    (e) => props.handleDelete(e.target.id)*/}
                 </div>
 
             </div>
@@ -38,19 +41,13 @@ function MainPage(props) {
     const [showAlert, setShowAlert] = useState(false);
 
     function handleAlertOK(listName) {
-        props.setData([...props.data, {
-                id: props.data.length,
-                title: listName,
-                listItems: []
-            }
-            ]
-        )
+        props.setData(listName)
     }
 
     return (
         <>
             <h1 id="MyLists">My Lists</h1>
-            {props.data.map((x) => <ListsDisplay setData={props.setData} data={props.data} list={x} onClick={props.onListClick}/>)}
+            {props.data.map((x) => <ListsDisplay handleDelete={props.handleDelete} setData={props.setData} data={props.data} list={x} onClick={props.onListClick}/>)}
             <div id="button1">
                 <button onClick={() => setShowAlert(true)} className="addList addTask">
                     <img src="plus-solid.svg"/>
