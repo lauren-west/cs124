@@ -2,7 +2,7 @@ import {useState} from "react";
 
 function Alert(props) {
     let [input, setInput] = useState(props.inputValue);
-    let [priority, setPriority] = useState("")
+    let [priority, setPriority] = useState(props.priority)
     function handleClose(){
         console.log(priority);
         setInput(props.inputValue);
@@ -19,13 +19,14 @@ function Alert(props) {
                 {props.children}
                 <input type="text" name="name" value={input}
                        onChange={(e) => setInput(e.target.value)}/>
+
                 {props.task &&
                 <div>
                     <label className={"priority-label"} htmlFor="priority-levels">Priority</label>
                     <select name="priority-levels" id="priority-levels" onChange={(e) => setPriority(e.target.value)}>
-                        <option value="low">Low</option>
-                        <option value="medium">Medium</option>
-                        <option value="high">High</option>
+                        <option selected={priority === "low" ? true: false} value="low">Low</option>
+                        <option selected={priority === "medium" ? true: false} value="medium">Medium</option>
+                        <option selected={priority === "high" ? true: false} value="high">High</option>
                     </select>
                 </div>}
 

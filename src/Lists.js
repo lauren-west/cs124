@@ -61,7 +61,7 @@ function ListsItemDisplay(props){
             <img className="edit-delete-button" onClick={() => setShowAlert(true)} src={"edit-solid.svg"}></img>
             <img className="edit-delete-button" onClick={(e) => handleDelete(e)} src={"times-solid.svg"}></img>
             </div>
-            <Alert task={true} visible={showAlert} inputValue={props.listitem} onClose={() => setShowAlert(false)} onOk={handleAlertOKListItem} cancelName={"Don't Edit Task"} okName={"Edit Task"}>
+            <Alert priority={props.priority} task={true} visible={showAlert} inputValue={props.listitem} onClose={() => setShowAlert(false)} onOk={handleAlertOKListItem} cancelName={"Don't Edit Task"} okName={"Edit Task"}>
                 <div>Edit Task:</div>
             </Alert>
         </div>
@@ -101,7 +101,7 @@ function Lists(props) {
                     <span>Add Task</span>
                 </button>
             </div>
-            <Alert visible={showAlert}  onClose={() => setShowAlert(false)} onOk={(input) => props.addListItem(props.list, input, "low") } cancelName={"Don't Add Task"} okName={"Add Task"}>
+            <Alert priority={props.priority} task={true} visible={showAlert}  onClose={() => setShowAlert(false)} onOk={(input) => props.addListItem(props.list, input, "low") } cancelName={"Don't Add Task"} okName={"Add Task"}>
                 <div>Add Task:</div>
             </Alert>
         </>
