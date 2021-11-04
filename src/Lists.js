@@ -80,25 +80,10 @@ function Lists(props) {
         <>
             {console.log("hi")}
             <h1>{props.data[0].title}</h1>
-            {currentTasks.map((x) => <ListsItemDisplay deleteTask={props.deleteTask} updateTask={props.updateTask} setTasks={setTasks} currentTasks={currentTasks} list={props.list} setData={props.setData} data={props.data} id={x[0]} listitem={x[1]} completed={x[2]}/>)}
-            {/*{for (x of liststuff) <ListsItemDisplay list={props.list} key={0} setData={props.setData} data={props.data} listitem={x}/>}*/}
-            {/*{currentTasks.map((y) => <ListsItemDisplay list={props.list} key={y.id} setData={props.setData} data={props.data} listitem={y}/>)}*/}
-
-            {/*<ListsItemDisplay list={props.data[0]} key={props.data[0].id} setData={props.setData} data={props.data} listitem={"Call me"}/>*/}
-
-            {/*{props.list.collection("Tasks")[0]}*/}
-            {/*props.list.collection("Tasks").*/}
-            {/*.filter((x) => !x.completed)*/}
-            {/*.map((y) => <ListsItemDisplay list={props.list} key={y.id} setData={props.setData} data={props.data} listitem={y}/>)}*/}
-            {/*<p>{props.data[0]}</p>*/}
-            {/*{*/}
-            {/*.filter((x) => !x.completed)*/}
-            {/*{ props.list.collection("Tasks").map((y) => <ListsItemDisplay list={props.list.collection("Tasks")} key={y.id} setData={props.setData} data={props.data} listitem={y}/>)}*/}
+            {currentTasks.filter((y) => !y[2]).map((x) => <ListsItemDisplay deleteTask={props.deleteTask} updateTask={props.updateTask} setTasks={setTasks} currentTasks={currentTasks} list={props.list} setData={props.setData} data={props.data} id={x[0]} listitem={x[1]} completed={x[2]}/>)}
             <hr/>
             <h3>Completed:</h3>
-            {/*props.list.listItems*/}
-            {/*    .filter((x) => x.completed)*/}
-            {/*    .map((y) => <ListsItemDisplay list={props.list} key={y.id} setData={props.setData} data={props.data} listitem={y}/>)}*/}
+            {currentTasks.filter((y) => y[2]).map((x) => <ListsItemDisplay deleteTask={props.deleteTask} updateTask={props.updateTask} setTasks={setTasks} currentTasks={currentTasks} list={props.list} setData={props.setData} data={props.data} id={x[0]} listitem={x[1]} completed={x[2]}/>)}
             <div id="button1">
                 <button onClick={() => {setShowAlert(true)}} className="addTask">
                     <img src="plus-solid.svg"/>
