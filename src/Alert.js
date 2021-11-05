@@ -42,7 +42,15 @@ function Alert(props) {
                     </button>
                     <button className={"alert-button alert-ok"} type={"button"}
                             onClick={() => {
-                                props.onOk(input, priority);
+
+                                if (props.task && !props.edit){
+                                    if (!priority){
+                                        setPriority("tiny");
+                                    }
+                                    props.onAddTaskOkay(props.listWithoutId, input, priority);
+                                }else {
+                                    props.onOk(input, priority)
+                                }
                                 handleClose();
                                 if (!props.edit){
                                     setInput("")

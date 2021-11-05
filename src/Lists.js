@@ -104,7 +104,7 @@ function Lists(props) {
                     <span>Add Task</span>
                 </button>
             </div>
-            <Alert edit={false} priority={props.priority} task={true} visible={showAlert}  onClose={() => setShowAlert(false)} onOk={(input) => props.addListItem(props.list, input, "tiny") } cancelName={"Don't Add"} okName={"Add"}>
+            <Alert edit={false} priority={props.priority} task={true} visible={showAlert}  onClose={() => setShowAlert(false)} listWithoutId={props.list} list={props.list.id} onOk={console.log("Oops")} onAddTaskOkay={props.addListItem} cancelName={"Don't Add"} okName={"Add"}>
                 <div>Add Task:</div>
             </Alert>
         </>
