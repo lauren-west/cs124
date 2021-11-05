@@ -51,8 +51,6 @@ function ListsItemDisplay(props){
         <div id="box1" className="boxes boxes-blue">
             <input checked={props.completed} type="checkbox" onChange={() => {
                 props.updateTask(props.list.id, props.id, props.listitem, !props.completed, props.priority)
-                // props.setData(Object.assign([], props.data))
-                console.log("add completed attribute")
             }}/>
             <label>{props.listitem}</label><br/>
 
@@ -80,7 +78,6 @@ function Lists(props) {
     function deleteCompleted(elmo){
         elmo.filter((y) => y.completed).map((x) => props.deleteTask(props.list.id, x.id))
     }
-
 
     return (
         <>
