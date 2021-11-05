@@ -25,6 +25,7 @@ function ListsItemDisplay(props){
         props.deleteTask(props.list.id, props.id)
 
     }
+
     function showPriorityImage(priority){
         if (priority == "high"){
             return (
@@ -76,6 +77,9 @@ function Lists(props) {
     const [value, loading, error] = useCollection(props.collectionRef.doc(props.list.id).collection(props.list.id).orderBy(filter))
     const elmo = loading === false ? value.docs.map((element)=> element.data()) : []
 
+    function deleteCompleted(elmo){
+        elmo.filter((y) => y.completed).map((x) => props.deleteTask(props.list.id, x.id))
+    }
 
 
     return (
@@ -92,7 +96,7 @@ function Lists(props) {
             {elmo.filter((y) => !y.completed).map((x) => <ListsItemDisplay deleteTask={props.deleteTask} updateTask={props.updateTask} setTasks={setTasks} currentTasks={currentTasks} list={props.list} setData={props.setData} data={props.data} id={x.id} listitem={x.title} completed={x.completed} priority={x.priority}/>)}
             <hr/>
             <h3 className={"completed"}>Completed:</h3>
-            <button className={"completed-button"}>Delete All Completed</button>
+            <button className={"completed-button"} onClick={() => deleteCompleted(elmo)}>Delete All Completed</button>
             {elmo.filter((y) => y.completed).map((x) => <ListsItemDisplay deleteTask={props.deleteTask} updateTask={props.updateTask} setTasks={setTasks} currentTasks={currentTasks} list={props.list} setData={props.setData} data={props.data} id={x.id} listitem={x.title} completed={x.completed} priority={x.priority}/>)}
             <div id="button1">
                 <button onClick={() => {setShowAlert(true)}} className="addTask">
