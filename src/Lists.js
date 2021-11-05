@@ -60,7 +60,7 @@ function ListsItemDisplay(props){
             <img className="edit-delete-button" onClick={() => setShowAlert(true)} src={"edit-solid.svg"}></img>
             <img className="edit-delete-button" onClick={(e) => handleDelete(e)} src={"times-solid.svg"}></img>
             </div>
-            <Alert edit={true} priority={props.priority} task={true} visible={showAlert} inputValue={props.listitem} onClose={() => setShowAlert(false)} onOk={handleAlertOKListItem} cancelName={"Don't Edit Task"} okName={"Edit Task"}>
+            <Alert edit={true} priority={props.priority} task={true} visible={showAlert} inputValue={props.listitem} onClose={() => setShowAlert(false)} onOk={handleAlertOKListItem} cancelName={"Don't Save"} okName={"Save"}>
                 <div>Edit Task:</div>
             </Alert>
         </div>
@@ -90,9 +90,6 @@ function Lists(props) {
                 </select>
             </div>
             {elmo.filter((y) => !y.completed).map((x) => <ListsItemDisplay deleteTask={props.deleteTask} updateTask={props.updateTask} setTasks={setTasks} currentTasks={currentTasks} list={props.list} setData={props.setData} data={props.data} id={x.id} listitem={x.title} completed={x.completed} priority={x.priority}/>)}
-            {/*{elmo.filter((y) => !y.completed).filter((z) => z.priority == "high").map((x) => <ListsItemDisplay deleteTask={props.deleteTask} updateTask={props.updateTask} setTasks={setTasks} currentTasks={currentTasks} list={props.list} setData={props.setData} data={props.data} id={x.id} listitem={x.title} completed={x.completed} priority={x.priority}/>)}*/}
-            {/*{elmo.filter((y) => !y.completed).filter((z) => z.priority == "medium").map((x) => <ListsItemDisplay deleteTask={props.deleteTask} updateTask={props.updateTask} setTasks={setTasks} currentTasks={currentTasks} list={props.list} setData={props.setData} data={props.data} id={x.id} listitem={x.title} completed={x.completed} priority={x.priority}/>)}*/}
-            {/*{elmo.filter((y) => !y.completed).filter((z) => z.priority == "tiny").map((x) => <ListsItemDisplay deleteTask={props.deleteTask} updateTask={props.updateTask} setTasks={setTasks} currentTasks={currentTasks} list={props.list} setData={props.setData} data={props.data} id={x.id} listitem={x.title} completed={x.completed} priority={x.priority}/>)}*/}
             <hr/>
             <h3>Completed:</h3>
             {elmo.filter((y) => y.completed).map((x) => <ListsItemDisplay deleteTask={props.deleteTask} updateTask={props.updateTask} setTasks={setTasks} currentTasks={currentTasks} list={props.list} setData={props.setData} data={props.data} id={x.id} listitem={x.title} completed={x.completed} priority={x.priority}/>)}
@@ -102,7 +99,7 @@ function Lists(props) {
                     <span>Add Task</span>
                 </button>
             </div>
-            <Alert edit={false} priority={props.priority} task={true} visible={showAlert}  onClose={() => setShowAlert(false)} onOk={(input) => props.addListItem(props.list, input, "tiny") } cancelName={"Don't Add Task"} okName={"Add Task"}>
+            <Alert edit={false} priority={props.priority} task={true} visible={showAlert}  onClose={() => setShowAlert(false)} onOk={(input) => props.addListItem(props.list, input, "tiny") } cancelName={"Don't Add"} okName={"Add"}>
                 <div>Add Task:</div>
             </Alert>
         </>

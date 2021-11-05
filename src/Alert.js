@@ -1,26 +1,49 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
+
 
 function Alert(props) {
     let [input, setInput] = useState(props.inputValue);
-    let [priority, setPriority] = useState(props.priority)
+    let [priority, setPriority] = useState(props.priority);
+
     function handleClose(){
-        console.log(priority);
         setInput(props.inputValue);
         props.onClose();
     }
 
+    // useEffect(() => {
+    //     document.addEventListener('keyup', (event) => {
+    //         console.log("yucky blucky fruit cake", props);
+    //         if(event.key === "Escape" ) {
+    //             if (!props.visible) {
+    //                 return;
+    //             }
+    //             console.log("Escape Hit")
+    //         }
+    //         if(event.key === "Enter" ) {
+    //             if (!props.visible) {
+    //                 return;
+    //             }
+    //             console.log("Enter Hit")
+    //             // props.onOk(input, priority);
+    //             // handleClose();
+    //         }
+    //     });
+    // }, [])
+
     if (!props.visible){
         return null;
     }
+    // document.getElementById('#textfield').focus();
     // {console.log(setInput(props.inputValue))}
+
+
     return (
         <div className={"backdrop"}>
             <div className="modal">
                 {props.children}
-                <input type="text" name="name" value={input}
-                       onChange={(e) => setInput(e.target.value)}/>
 
-                {props.task &&
+                <input autoFocus={true} id="textfield" type="text" name="name" value={input}
+                       onChange={(e) => setInput(e.target.value)}/>
                 <div>
                     <label className={"priority-label"} htmlFor="priority-levels">Priority</label>
                     <select name="priority-levels" id="priority-levels" onChange={(e) => setPriority(e.target.value)}>
@@ -28,7 +51,7 @@ function Alert(props) {
                         <option selected={priority === "medium" ? true: false} value="medium">Medium</option>
                         <option selected={priority === "high" ? true: false} value="high">High</option>
                     </select>
-                </div>}
+                </div>
 
                 <div className="alert-buttons">
                     <button className={"alert-button alert-cancel"} type={"button"}
@@ -41,7 +64,7 @@ function Alert(props) {
                                 handleClose();
                                 if (!props.edit){
                                     setInput("")
-                                }else{
+                                } else{
                                     setInput(input)
                                 }}}>
                         {props.okName}
