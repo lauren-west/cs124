@@ -16,6 +16,9 @@ h1 {
     font-weight: 800;
     padding: 5% 0 0 5%;
 }
+.priority-img{
+    width: 10px;
+}
 
 input[type=checkbox] {
     transform: scale(1.5);

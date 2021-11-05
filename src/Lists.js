@@ -28,13 +28,13 @@ function ListsItemDisplay(props){
         if (priority == "high"){
             return (
                 <div>
-            <img className="edit-delete-button" onClick={() => setShowAlert(true)} src={"exclamation-solid.svg"}></img>
-            <img className="edit-delete-button" onClick={() => setShowAlert(true)} src={"exclamation-solid.svg"}></img>
+            <img className="priority-img" onClick={() => setShowAlert(true)} src={"exclamation-solid.svg"}></img>
+            <img className="priority-img" onClick={() => setShowAlert(true)} src={"exclamation-solid.svg"}></img>
                 </div>)
         } else if (priority == "medium"){
             return (
                 <div>
-                    <img className="edit-delete-button" onClick={() => setShowAlert(true)} src={"exclamation-solid.svg"}></img>
+                    <img className="priority-img" onClick={() => setShowAlert(true)} src={"exclamation-solid.svg"}></img>
                 </div>
             )
         } else {
@@ -47,7 +47,7 @@ function ListsItemDisplay(props){
 
     return (
         <div id="box1" className="boxes boxes-blue">
-            <input checked={checked} type="checkbox" onChange={() => {
+            <input checked={props.completed} type="checkbox" onChange={() => {
                 props.updateTask(props.list.id, props.id, props.listitem, !props.completed, props.priority)
                 // props.setData(Object.assign([], props.data))
                 console.log("add completed attribute")
