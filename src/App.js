@@ -28,7 +28,6 @@ function App() {
     if (!loading) {
         value.docs.map(async (x) => console.log((await getDoc(x.ref)).data().title))
     }
-
     const data = loading === false ? value.docs.map((element)=> element.data()) : []
 
     const [showAlert, setShowAlert] = useState(false);
@@ -70,11 +69,12 @@ function App() {
 
     async function getDocInfo(id){
         let currTasks = [];
-        const q = collectionRef.doc(id).collection(id);
-        const querySnapshot = await getDocs(q);
-        querySnapshot.forEach((doc) => {
-            currTasks.push([doc.data().id, doc.data().title, doc.data().completed, doc.data().priority]);
-        });
+        if(!loading){
+            const q = collectionRef.doc(id).collection(id);
+            const querySnapshot = await getDocs(q);
+            querySnapshot.forEach((doc) => {
+                currTasks.push([doc.data().id, doc.data().title, doc.data().completed, doc.data().priority]);
+        });}
         return currTasks;
     }
 
@@ -113,7 +113,7 @@ function App() {
         "list": (
             <>
                 <img onClick={() => setFetchAndPage()} src={"long-arrow-alt-left-solid.svg"} className={"back-arrow"}/>
-                <Lists deleteTask={deleteTask} updateTask={updateTask} setFetch={setFetch} fetch={hasFetchedTask} getDocInfo={getDocInfo} addListItem={addListItem} data={data.filter((x) => x.id == selectedPage.selectedId)} list={collectionRef.doc(selectedPage.selectedId)}/>
+                <Lists collectionRef={collectionRef} query={useCollection} deleteTask={deleteTask} updateTask={updateTask} setFetch={setFetch} fetch={loading} data={data.filter((x) => x.id == selectedPage.selectedId)}  getDocInfo={getDocInfo} addListItem={addListItem} list={collectionRef.doc(selectedPage.selectedId)}/>
             </>
         )
     }

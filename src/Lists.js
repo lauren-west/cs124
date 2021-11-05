@@ -2,7 +2,7 @@ import "./main.css"
 import React, {useEffect, useState, useMemo} from "react";
 import Alert from "./Alert";
 import {useCollection} from "react-firebase-hooks/firestore";
-import {collection, doc, setDoc, query, where, getDoc, getDocs} from "firebase/firestore";
+import {collection, doc, setDoc, where, getDoc, getDocs} from "firebase/firestore";
 import firebase from "firebase/compat";
 
 function ShowEditAlert(props) {
@@ -17,14 +17,12 @@ function ListsItemDisplay(props){
 
     function handleAlertOKListItem(listitem, priority) {
         props.updateTask(props.list.id, props.id, listitem, props.completed, priority)
-        // props.listitem.text = listItemText;
-        // props.setData(Object.assign([], props.data))
+
     }
     function handleDelete(e) {
         e.stopPropagation()
         props.deleteTask(props.list.id, props.id)
-        // props.list.listItems = props.list.listItems.filter((item) => item.id !== props.id)
-        // props.setData(Object.assign([], props.data))
+
     }
     function showPriorityImage(priority){
         if (priority == "high"){
@@ -71,30 +69,20 @@ function ListsItemDisplay(props){
 function Lists(props) {
     const [showAlert, setShowAlert] = useState(false);
     const [currentTasks, setTasks] = useState([]);
+    const query = props.collectionRef;
+    const [value, loading, error] = useCollection(props.collectionRef.doc(props.list.id).collection(props.list.id))
+    const elmo = loading === false ? value.docs.map((element)=> element.data()) : []
 
-    // function updateListItems(newListItems) {
-    //     props.setData(props.data.map(list => {
-    //         if (list.id === props.list.id) {
-    //             list.listItems = newListItems
-    //         }
-    //         return list;
-    //     }))
-    // }
-
-    if (!props.fetch) {
-        props.getDocInfo(props.list.id).then((x) => setTasks(x));
-        props.setFetch(true);
-    }
 
     return (
         <>
             <h1>{props.data[0].title}</h1>
-            {currentTasks.filter((y) => !y[2]).filter((z) => z[3] == "high").map((x) => <ListsItemDisplay deleteTask={props.deleteTask} updateTask={props.updateTask} setTasks={setTasks} currentTasks={currentTasks} list={props.list} setData={props.setData} data={props.data} id={x[0]} listitem={x[1]} completed={x[2]} priority={x[3]}/>)}
-            {currentTasks.filter((y) => !y[2]).filter((z) => z[3] == "medium").map((x) => <ListsItemDisplay deleteTask={props.deleteTask} updateTask={props.updateTask} setTasks={setTasks} currentTasks={currentTasks} list={props.list} setData={props.setData} data={props.data} id={x[0]} listitem={x[1]} completed={x[2]} priority={x[3]}/>)}
-            {currentTasks.filter((y) => !y[2]).filter((z) => z[3] == "low").map((x) => <ListsItemDisplay deleteTask={props.deleteTask} updateTask={props.updateTask} setTasks={setTasks} currentTasks={currentTasks} list={props.list} setData={props.setData} data={props.data} id={x[0]} listitem={x[1]} completed={x[2]} priority={x[3]}/>)}
+            {elmo.filter((y) => !y.completed).filter((z) => z.priority == "high").map((x) => <ListsItemDisplay deleteTask={props.deleteTask} updateTask={props.updateTask} setTasks={setTasks} currentTasks={currentTasks} list={props.list} setData={props.setData} data={props.data} id={x.id} listitem={x.title} completed={x.completed} priority={x.priority}/>)}
+            {elmo.filter((y) => !y.completed).filter((z) => z.priority == "medium").map((x) => <ListsItemDisplay deleteTask={props.deleteTask} updateTask={props.updateTask} setTasks={setTasks} currentTasks={currentTasks} list={props.list} setData={props.setData} data={props.data} id={x.id} listitem={x.title} completed={x.completed} priority={x.priority}/>)}
+            {elmo.filter((y) => !y.completed).filter((z) => z.priority == "low").map((x) => <ListsItemDisplay deleteTask={props.deleteTask} updateTask={props.updateTask} setTasks={setTasks} currentTasks={currentTasks} list={props.list} setData={props.setData} data={props.data} id={x.id} listitem={x.title} completed={x.completed} priority={x.priority}/>)}
             <hr/>
             <h3>Completed:</h3>
-            {currentTasks.filter((y) => y[2]).map((x) => <ListsItemDisplay deleteTask={props.deleteTask} updateTask={props.updateTask} setTasks={setTasks} currentTasks={currentTasks} list={props.list} setData={props.setData} data={props.data} id={x[0]} listitem={x[1]} completed={x[2]} priority={x[3]}/>)}
+            {elmo.filter((y) => y.completed).map((x) => <ListsItemDisplay deleteTask={props.deleteTask} updateTask={props.updateTask} setTasks={setTasks} currentTasks={currentTasks} list={props.list} setData={props.setData} data={props.data} id={x.id} listitem={x.title} completed={x.completed} priority={x.priority}/>)}
             <div id="button1">
                 <button onClick={() => {setShowAlert(true)}} className="addTask">
                     <img src="plus-solid.svg"/>
