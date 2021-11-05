@@ -29,7 +29,12 @@ In Lab 3 we have added priorities to tasks. Now each task can be one of three pr
 
 We also added a way to organize by filters our list in Lab 3, you can do so via our filter drop down. The different filters are: creation date, alphabetical, and lastly by priority. The filter is also a simple drop down, just like adding a priority, and it can be changed at will. 
 
-Lastly in Lab 3 we added a "delete all completed" feature. This will allow for users to more quickly delete their checked lists.
+Further in Lab 3 we added a "delete all completed" feature. This will allow for users to more quickly delete their checked lists.
+
+Lastly we took advice from our design lecture and aligned our elements properly and changed our fonts to match those recommended. 
+
+![imglab4](https://user-images.githubusercontent.com/54875885/140462252-cf768e90-90e3-452c-a879-7aa7fe7c12d3.jpg)
+
 
 ## Walkthrough
 
