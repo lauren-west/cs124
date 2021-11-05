@@ -1,41 +1,22 @@
-import {useEffect, useState} from "react";
+import {useCallback, useEffect, useState} from "react";
 
 
 function Alert(props) {
     let [input, setInput] = useState(props.inputValue);
     let [priority, setPriority] = useState(props.priority);
+    console.log(props.visible);
+    const handlekeyPress = useCallback((event) => {
+        console.log(props.visible);
+    }, [props.visible]);
 
     function handleClose(){
         setInput(props.inputValue);
         props.onClose();
     }
 
-    // useEffect(() => {
-    //     document.addEventListener('keyup', (event) => {
-    //         console.log("yucky blucky fruit cake", props);
-    //         if(event.key === "Escape" ) {
-    //             if (!props.visible) {
-    //                 return;
-    //             }
-    //             console.log("Escape Hit")
-    //         }
-    //         if(event.key === "Enter" ) {
-    //             if (!props.visible) {
-    //                 return;
-    //             }
-    //             console.log("Enter Hit")
-    //             // props.onOk(input, priority);
-    //             // handleClose();
-    //         }
-    //     });
-    // }, [])
-
     if (!props.visible){
         return null;
     }
-    // document.getElementById('#textfield').focus();
-    // {console.log(setInput(props.inputValue))}
-
 
     return (
         <div className={"backdrop"}>

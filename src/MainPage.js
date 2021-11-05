@@ -12,24 +12,6 @@ function ListsDisplay(props) {
         props.updateList(props.list.id, inputVal)
     }
 
-    // async function updateTask(listid, taskid, title_val, comp_value, priority_value){
-    //     await collectionRef.doc(listid)
-    //         .collection(listid)
-    //         .doc(taskid)
-    //         .update({
-    //             title: title_val,
-    //             completed: comp_value,
-    //             priority: priority_value
-    //         });
-    //     setFetch(false)
-    // }
-    // function handleDelete(e) {
-    //     e.stopPropagation()
-    //     props.setData(props.data.filter((list) => list.id !== props.list.id))
-    //
-    //
-    // }
-
     return (
         <>
             <div onClick={() => props.onClick(props.list.id)} className="boxes" id="list-box-1">

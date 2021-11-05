@@ -91,7 +91,8 @@ function Lists(props) {
             </div>
             {elmo.filter((y) => !y.completed).map((x) => <ListsItemDisplay deleteTask={props.deleteTask} updateTask={props.updateTask} setTasks={setTasks} currentTasks={currentTasks} list={props.list} setData={props.setData} data={props.data} id={x.id} listitem={x.title} completed={x.completed} priority={x.priority}/>)}
             <hr/>
-            <h3>Completed:</h3>
+            <h3 className={"completed"}>Completed:</h3>
+            <button className={"completed-button"}>Delete All Completed</button>
             {elmo.filter((y) => y.completed).map((x) => <ListsItemDisplay deleteTask={props.deleteTask} updateTask={props.updateTask} setTasks={setTasks} currentTasks={currentTasks} list={props.list} setData={props.setData} data={props.data} id={x.id} listitem={x.title} completed={x.completed} priority={x.priority}/>)}
             <div id="button1">
                 <button onClick={() => {setShowAlert(true)}} className="addTask">
