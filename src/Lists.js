@@ -3,6 +3,7 @@ import React, {useEffect, useState, useMemo} from "react";
 import Alert from "./Alert";
 import {useCollection} from "react-firebase-hooks/firestore";
 import {collection, doc, setDoc, where, getDoc, getDocs} from "firebase/firestore";
+import { query, orderBy, limit } from "firebase/firestore";
 import firebase from "firebase/compat";
 
 function ShowEditAlert(props) {
@@ -59,7 +60,7 @@ function ListsItemDisplay(props){
             <img className="edit-delete-button" onClick={() => setShowAlert(true)} src={"edit-solid.svg"}></img>
             <img className="edit-delete-button" onClick={(e) => handleDelete(e)} src={"times-solid.svg"}></img>
             </div>
-            <Alert priority={props.priority} task={true} visible={showAlert} inputValue={props.listitem} onClose={() => setShowAlert(false)} onOk={handleAlertOKListItem} cancelName={"Don't Edit Task"} okName={"Edit Task"}>
+            <Alert edit={true} priority={props.priority} task={true} visible={showAlert} inputValue={props.listitem} onClose={() => setShowAlert(false)} onOk={handleAlertOKListItem} cancelName={"Don't Edit Task"} okName={"Edit Task"}>
                 <div>Edit Task:</div>
             </Alert>
         </div>
@@ -69,17 +70,29 @@ function ListsItemDisplay(props){
 function Lists(props) {
     const [showAlert, setShowAlert] = useState(false);
     const [currentTasks, setTasks] = useState([]);
+    const [filter, setFilter] = useState("title");
+    console.log(filter)
     const query = props.collectionRef;
-    const [value, loading, error] = useCollection(props.collectionRef.doc(props.list.id).collection(props.list.id))
+    const [value, loading, error] = useCollection(props.collectionRef.doc(props.list.id).collection(props.list.id).orderBy(filter))
     const elmo = loading === false ? value.docs.map((element)=> element.data()) : []
+
 
 
     return (
         <>
             <h1>{props.data[0].title}</h1>
-            {elmo.filter((y) => !y.completed).filter((z) => z.priority == "high").map((x) => <ListsItemDisplay deleteTask={props.deleteTask} updateTask={props.updateTask} setTasks={setTasks} currentTasks={currentTasks} list={props.list} setData={props.setData} data={props.data} id={x.id} listitem={x.title} completed={x.completed} priority={x.priority}/>)}
-            {elmo.filter((y) => !y.completed).filter((z) => z.priority == "medium").map((x) => <ListsItemDisplay deleteTask={props.deleteTask} updateTask={props.updateTask} setTasks={setTasks} currentTasks={currentTasks} list={props.list} setData={props.setData} data={props.data} id={x.id} listitem={x.title} completed={x.completed} priority={x.priority}/>)}
-            {elmo.filter((y) => !y.completed).filter((z) => z.priority == "low").map((x) => <ListsItemDisplay deleteTask={props.deleteTask} updateTask={props.updateTask} setTasks={setTasks} currentTasks={currentTasks} list={props.list} setData={props.setData} data={props.data} id={x.id} listitem={x.title} completed={x.completed} priority={x.priority}/>)}
+            <div className={"filters"}>
+            <label className={"filter-dropdown"} htmlFor="filters">Filters</label>
+                <select name="filters" id="filter-select" onChange={(e) => setFilter(e.target.value)}>
+                    <option value="title">Name</option>
+                    <option value="created">Creation Date</option>
+                    <option value="priority">Priority</option>
+                </select>
+            </div>
+            {elmo.filter((y) => !y.completed).map((x) => <ListsItemDisplay deleteTask={props.deleteTask} updateTask={props.updateTask} setTasks={setTasks} currentTasks={currentTasks} list={props.list} setData={props.setData} data={props.data} id={x.id} listitem={x.title} completed={x.completed} priority={x.priority}/>)}
+            {/*{elmo.filter((y) => !y.completed).filter((z) => z.priority == "high").map((x) => <ListsItemDisplay deleteTask={props.deleteTask} updateTask={props.updateTask} setTasks={setTasks} currentTasks={currentTasks} list={props.list} setData={props.setData} data={props.data} id={x.id} listitem={x.title} completed={x.completed} priority={x.priority}/>)}*/}
+            {/*{elmo.filter((y) => !y.completed).filter((z) => z.priority == "medium").map((x) => <ListsItemDisplay deleteTask={props.deleteTask} updateTask={props.updateTask} setTasks={setTasks} currentTasks={currentTasks} list={props.list} setData={props.setData} data={props.data} id={x.id} listitem={x.title} completed={x.completed} priority={x.priority}/>)}*/}
+            {/*{elmo.filter((y) => !y.completed).filter((z) => z.priority == "tiny").map((x) => <ListsItemDisplay deleteTask={props.deleteTask} updateTask={props.updateTask} setTasks={setTasks} currentTasks={currentTasks} list={props.list} setData={props.setData} data={props.data} id={x.id} listitem={x.title} completed={x.completed} priority={x.priority}/>)}*/}
             <hr/>
             <h3>Completed:</h3>
             {elmo.filter((y) => y.completed).map((x) => <ListsItemDisplay deleteTask={props.deleteTask} updateTask={props.updateTask} setTasks={setTasks} currentTasks={currentTasks} list={props.list} setData={props.setData} data={props.data} id={x.id} listitem={x.title} completed={x.completed} priority={x.priority}/>)}
@@ -89,7 +102,7 @@ function Lists(props) {
                     <span>Add Task</span>
                 </button>
             </div>
-            <Alert priority={props.priority} task={true} visible={showAlert}  onClose={() => setShowAlert(false)} onOk={(input) => props.addListItem(props.list, input, "low") } cancelName={"Don't Add Task"} okName={"Add Task"}>
+            <Alert edit={false} priority={props.priority} task={true} visible={showAlert}  onClose={() => setShowAlert(false)} onOk={(input) => props.addListItem(props.list, input, "tiny") } cancelName={"Don't Add Task"} okName={"Add Task"}>
                 <div>Add Task:</div>
             </Alert>
         </>

@@ -4,7 +4,7 @@ import MainPage from './MainPage'
 import Lists from "./Lists";
 import firebase from "firebase/compat";
 import {useCollection} from "react-firebase-hooks/firestore";
-import {collection, doc, setDoc, query, where, getDoc, getDocs, updateDoc, deleteDoc} from "firebase/firestore";
+import {collection, doc, setDoc, query, where, getDoc, getDocs, updateDoc, deleteDoc, Timestamp} from "firebase/firestore";
 import {generateUniqueID} from "web-vitals/dist/modules/lib/generateUniqueID";
 
 const firebaseConfig = {
@@ -61,7 +61,8 @@ function App() {
             id: generateUniqueID(),
             title: itemName,
             completed: false,
-            priority: priority // planning on low, medium, high
+            priority: priority, // planning on tiny, medium, high
+            created: firebase.database.ServerValue.TIMESTAMP
         }
         list.collection(list.id).doc(Task.id).set(Task)
         setFetch(false)

@@ -24,7 +24,7 @@ function Alert(props) {
                 <div>
                     <label className={"priority-label"} htmlFor="priority-levels">Priority</label>
                     <select name="priority-levels" id="priority-levels" onChange={(e) => setPriority(e.target.value)}>
-                        <option selected={priority === "low" ? true: false} value="low">Low</option>
+                        <option selected={priority === "tiny" ? true: false} value="tiny">Low</option>
                         <option selected={priority === "medium" ? true: false} value="medium">Medium</option>
                         <option selected={priority === "high" ? true: false} value="high">High</option>
                     </select>
@@ -39,8 +39,11 @@ function Alert(props) {
                             onClick={() => {
                                 props.onOk(input, priority);
                                 handleClose();
-                                setInput("")
-                                ;}}>
+                                if (!props.edit){
+                                    setInput("")
+                                }else{
+                                    setInput(input)
+                                }}}>
                         {props.okName}
                     </button>
                 </div>
