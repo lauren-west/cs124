@@ -25,6 +25,7 @@ function Alert(props) {
 
                 <input autoFocus={true} id="textfield" type="text" name="name" value={input}
                        onChange={(e) => setInput(e.target.value)}/>
+                {props.task &&
                 <div>
                     <label className={"priority-label"} htmlFor="priority-levels">Priority</label>
                     <select name="priority-levels" id="priority-levels" onChange={(e) => setPriority(e.target.value)}>
@@ -32,7 +33,7 @@ function Alert(props) {
                         <option selected={priority === "medium" ? true: false} value="medium">Medium</option>
                         <option selected={priority === "high" ? true: false} value="high">High</option>
                     </select>
-                </div>
+                </div>}
 
                 <div className="alert-buttons">
                     <button className={"alert-button alert-cancel"} type={"button"}

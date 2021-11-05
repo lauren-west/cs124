@@ -27,7 +27,7 @@ function ListsDisplay(props) {
                 </div>
 
             </div>
-            <Alert edit={true} inputValue={props.list.title} visible={showAlert} onClose={() => setShowAlert(false)} onOk={handleEdit} cancelName={"Don't Save"} okName={"Save"}>
+            <Alert task={false} edit={true} inputValue={props.list.title} visible={showAlert} onClose={() => setShowAlert(false)} onOk={handleEdit} cancelName={"Don't Save"} okName={"Save"}>
                 <div>Edit List:</div>
             </Alert>
         </>
@@ -51,7 +51,7 @@ function MainPage(props) {
                     <span>Add List</span>
                 </button>
             </div>
-            <Alert edit={false} inputValue={""} visible={showAlert} onClose={() => setShowAlert(false)} onOk={handleAlertOK} cancelName={"Don't Add"} okName={"Add"}>
+            <Alert task={false} edit={false} inputValue={""} visible={showAlert} onClose={() => setShowAlert(false)} onOk={handleAlertOK} cancelName={"Don't Add"} okName={"Add"}>
                 <div>Add List:</div>
             </Alert>
         </>
