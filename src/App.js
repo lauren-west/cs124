@@ -6,20 +6,16 @@ import firebase from "firebase/compat";
 import {useCollection} from "react-firebase-hooks/firestore";
 import {collection, doc, setDoc, query, where, getDoc, getDocs, updateDoc, deleteDoc, Timestamp} from "firebase/firestore";
 import {generateUniqueID} from "web-vitals/dist/modules/lib/generateUniqueID";
-import { getAnalytics } from "firebase/analytics";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyB8G1WCYinf4GWK7GMzLkP8PlLujGnNqHM",
-    authDomain: "cs124-lab.firebaseapp.com",
-    projectId: "cs124-lab",
-    storageBucket: "cs124-lab.appspot.com",
-    messagingSenderId: "385341419353",
-    appId: "1:385341419353:web:fe357b4ea465efcdff2648",
-    measurementId: "G-PB2T6D5MN8"
+    apiKey: "AIzaSyCcQ6XCOvMIA7pHME4bWBgy_7OVy_7XErA",
+    authDomain: "cs124-fall2021.firebaseapp.com",
+    projectId: "cs124-fall2021",
+    storageBucket: "cs124-fall2021.appspot.com",
+    messagingSenderId: "264318304667",
+    appId: "1:264318304667:web:4be8d27a02811b1ccd613e"
 };
-
-const app = firebase.initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 
 function App() {
@@ -47,7 +43,6 @@ function App() {
             title: listName,
         }
         collectionRef.doc(List.id).set(List)
-
     }
 
 
