@@ -6,16 +6,20 @@ import firebase from "firebase/compat";
 import {useCollection} from "react-firebase-hooks/firestore";
 import {collection, doc, setDoc, query, where, getDoc, getDocs, updateDoc, deleteDoc, Timestamp} from "firebase/firestore";
 import {generateUniqueID} from "web-vitals/dist/modules/lib/generateUniqueID";
+import { getAnalytics } from "firebase/analytics";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyCcQ6XCOvMIA7pHME4bWBgy_7OVy_7XErA",
-    authDomain: "cs124-fall2021.firebaseapp.com",
-    projectId: "cs124-fall2021",
-    storageBucket: "cs124-fall2021.appspot.com",
-    messagingSenderId: "264318304667",
-    appId: "1:264318304667:web:4be8d27a02811b1ccd613e"
+    apiKey: "AIzaSyB8G1WCYinf4GWK7GMzLkP8PlLujGnNqHM",
+    authDomain: "cs124-lab.firebaseapp.com",
+    projectId: "cs124-lab",
+    storageBucket: "cs124-lab.appspot.com",
+    messagingSenderId: "385341419353",
+    appId: "1:385341419353:web:fe357b4ea465efcdff2648",
+    measurementId: "G-PB2T6D5MN8"
 };
-firebase.initializeApp(firebaseConfig);
+
+const app = firebase.initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
 const db = firebase.firestore();
 
 function App() {
@@ -43,6 +47,7 @@ function App() {
             title: listName,
         }
         collectionRef.doc(List.id).set(List)
+
     }
 
 
@@ -75,7 +80,7 @@ function App() {
             const querySnapshot = await getDocs(q);
             querySnapshot.forEach((doc) => {
                 currTasks.push([doc.data().id, doc.data().title, doc.data().completed, doc.data().priority]);
-        });}
+            });}
         return currTasks;
     }
 
@@ -93,8 +98,8 @@ function App() {
 
     async function updateList(id, title_val){
         await collectionRef.doc(id).update({
-                title: title_val
-            })
+            title: title_val
+        })
     }
 
     async function deleteTask(listid, taskid){
@@ -105,8 +110,8 @@ function App() {
 
     const pageRenderLookup = {
         "home": (
-                <MainPage updateList={updateList} handleDelete={handleDeleteList} setData={handleAddList} data={data} onListClick={(n) =>
-                    setPage({
+            <MainPage updateList={updateList} handleDelete={handleDeleteList} setData={handleAddList} data={data} onListClick={(n) =>
+                setPage({
                     type: "list",
                     selectedId: n
                 })}/>
