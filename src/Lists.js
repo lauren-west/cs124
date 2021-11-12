@@ -70,7 +70,6 @@ function Lists(props) {
     const [showAlert, setShowAlert] = useState(false);
     const [currentTasks, setTasks] = useState([]);
     const [filter, setFilter] = useState("title");
-    console.log(filter)
     const query = props.collectionRef;
     const [value, loading, error] = useCollection(props.collectionRef.doc(props.list.id).collection(props.list.id).orderBy(filter))
     const elmo = loading === false ? value.docs.map((element)=> element.data()) : []
