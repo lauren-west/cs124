@@ -6,9 +6,7 @@ function Alert(props) {
     let [priority, setPriority] = useState(props.priority);
     const handlekeyPress = useCallback((event) => {
     }, [props.visible]);
-    if (!priority){
-        setPriority("tiny");
-    }
+
     function handleClose(){
         setInput(props.inputValue);
         props.onClose();
