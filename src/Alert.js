@@ -4,11 +4,11 @@ import {useCallback, useEffect, useState} from "react";
 function Alert(props) {
     let [input, setInput] = useState(props.inputValue);
     let [priority, setPriority] = useState(props.priority);
+    console.log(props.visible);
     const handlekeyPress = useCallback((event) => {
+        console.log(props.visible);
     }, [props.visible]);
-    if (!priority){
-        setPriority("tiny");
-    }
+
     function handleClose(){
         setInput(props.inputValue);
         props.onClose();
