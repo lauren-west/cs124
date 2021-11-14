@@ -1,4 +1,4 @@
-# Lab 1
+# Lab 3
 ##### Lucas Ewing and Lauren West
 
 In this lab, we designed and implemented a simple interface for a mobile web app. This app manages a list of items the user desires to complete. Our web app is written in React and has full functionality. 
@@ -25,6 +25,15 @@ Our final design for delete/edit:
 ![image](https://user-images.githubusercontent.com/54875885/137418905-37a725ee-dd0b-4fcc-ba8b-7cf074791331.png)
 
 
+In Lab 3 we have added priorities to tasks. Now each task can be one of three priorities: High priority, Medium priority, Low priority. WE chose our names based off of USER C and their input into the decision between using numbers to indicate priority or simple strings. They felt that it made more sense using strings. The way to recognize a tasks priority is via the number of exclamation marks: (2 !! = high priority, 1 ! = medium priority, 0 ! = low priority.) 
+
+We also added a way to organize by filters our list in Lab 3, you can do so via our filter drop down. The different filters are: creation date, alphabetical, and lastly by priority. The filter is also a simple drop down, just like adding a priority, and it can be changed at will. 
+
+Further in Lab 3 we added a "delete all completed" feature. This will allow for users to more quickly delete their checked lists.
+
+Lastly we took advice from our design lecture and aligned our elements properly and changed our fonts to match those recommended. 
+
+![imglab4](https://user-images.githubusercontent.com/54875885/140462252-cf768e90-90e3-452c-a879-7aa7fe7c12d3.jpg)
 
 
 ## Walkthrough
@@ -72,6 +81,14 @@ Lastly, our final design for Lab 2 looked very similar to our Lab 1 design, howe
 ![image](https://user-images.githubusercontent.com/54875885/137417522-c6a2440b-9775-4cdc-984f-0cce7e0b5117.png)
 
 
+Our Lab 3 design follows similarly to Lab 2, however there are a few new features.
+
+Here you can see the filter feature, click on the filter and select the way you want your list organized. You can select one of the three filters at a time.
+
+You may also click the "delete all completed" button. This will remove all of the completed items.
+
+
+
 ## User Testing
 It was mentioned in Design Designs that we used User Testing to decide on a pencil icon vs touch to edit. We set up an experiment and asked User A to comment on the design with the pencil feature and a design that would be touch to edit. User A said that the touch to edit was clear enough, and made for better aesthetics. We also took this test to User B, who shared similar remarks in favor of touch to edit. User C reminded us that we did not have a list box on our main page, so we made sure to add that in our final design. Lastly, User C remarked on our radio buttons and requested them to be changed to checkboxes which we did in our final design.
 ![)](https://user-images.githubusercontent.com/54875885/134599216-2724e8e7-9b9a-4954-bc96-4c50a109f02f.png)
@@ -80,6 +97,11 @@ For our Lab 2 user-testing we received the following feedback:
 - User A stated that every item was too large, we were requested to make everything visually smaller.
 - User C was confused by the method of swiping left to go back a page, and requested a back button.
 - All users requested an edit icon as compared to a hold to edit list/task name feature.
+
+For our Lab 3 user-resting we received the following feedback:
+- User C stated that they prefer a simple priority system that uses strings instead of numbers to indicate priority level.
+- User D, a new tester, wanted the filter list location moved from the right of the screen to the left above the task items.
+- User D also wanted the add/edit list buttons spaced apart further.
 
 
 ## Final Design
@@ -100,6 +122,12 @@ For our Lab 2 user-testing we received the following feedback:
 - Added a back button to allow users to go back a page.
 - Completed tasks go down to a completed task section.
 
+#### LAB 3
+- Added a filter button - used for filtering between "name", "creation date", "priority."
+- Added an auto focus feature for the alert pop up - automatically places the user inside the input box
+- Updated the tab icon
+- Added a "delete all completed button"
+
 
 ## Challenges We Faced
 #### LAB 1
@@ -109,8 +137,13 @@ We often found ourselves struggling to meet every expectation while simultaneous
 Our main priority when porting our code to react involved avoiding repetitive code and sloppy implementation methods. We carefully thought through what our components should be, and came to Office Hours to improve upon our design. We also struggled with finding the most efficient way to generically write our pop-up -- we wanted to reuse it to both edit and add lists and tasks. At first, we were unsure about how to accomplish this. In the end, it involved learning about how to passing props (specific items with good names) and using state in a meaningful way in React. 
 We struggled with finding the most efficient way to generically input code such as our prompt feature, and applying it to multiple similar but uniquely different elements. Specifically, we had to refactor our code multiple times in order to make our implementation simple yet effective, covering both the edit list/task feature and the add list/task feature. This took multiple iterations but we learned through the process that repeated drafts and restructuring of code tends to clear a lot of bugs and mistakes up, so while it was time consuming and challenging we are happy to have gone through it.
 
+#### LAB 3
+We ran into numerous bugs during this lab. In total, we spent over 20 hours working on understanding firebase and debugging issues. One of the hardest challenges was understanding how to use Firestores' subcollections and the modification of data within a subcollecion. Further, we had so many issues with how our page renderd (and the amount of times it updated) that it took us an entire day to solve them. Lastly we struggled through adding keypress events as our code repeatedly called the enter and escape key more than one time causing huge errors, which we have yet to solve but plan on working on in Lab 4.
+
 ## What we are proud of
-#### Lab 1
+#### LAB 1
 We are very proud of our simple aesthetic. From the start, we decided to apply a simple design to our app - black, white, and blue - with straightforward tasks. It is oddly difficult however to find a simple design that is simultaneously good-looking and usable, which is why we had many iterations, however, our final design is better than we originally imagined it could be. 
-#### Lab 2
+#### LAB 2
 We are very proud of the working functionality. At first, we had deleted items from our list by indexing by ids; however, when we had missing ids, we were indexing incorrectly (because we started at zero, even when the zeroth element had been deleted). This caused various issues, such as the next item in the list appearing as completed. To fix this, we stopped indexing by ids, instead, we filtered out the target list or list item by their id. This fixed our issue, and having our deleting function as desired is something we are proud of.
+#### LAB 3
+We are most proud of our own drive to complete this lab. This past week we spent numerous hours every night working on the project and debugging it. We are confident that we have grown a lot as both developers and designers over this lab, and have a stronger grasp on firebase. Further our struggle with rendering taught us important lessons in reading documents provided by the developers. Our intuition when it comes to bugs has also grown immensely. Debugging is a very important skill when it comes to development and we are proud to be flexing our debugging muscles so well.

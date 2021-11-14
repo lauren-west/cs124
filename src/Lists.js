@@ -1,7 +1,10 @@
 import "./main.css"
-import {Data} from "./InMemoryApp"
 import React, {useEffect, useState, useMemo} from "react";
 import Alert from "./Alert";
+import {useCollection} from "react-firebase-hooks/firestore";
+import {collection, doc, setDoc, where, getDoc, getDocs} from "firebase/firestore";
+import { query, orderBy, limit } from "firebase/firestore";
+import firebase from "firebase/compat";
 
 function ShowEditAlert(props) {
     props.setCurrentTask(props.listitem.id)
@@ -9,80 +12,99 @@ function ShowEditAlert(props) {
 }
 
 function ListsItemDisplay(props){
-    const [checked, setChecked] = useState(props.listitem.completed)
+    console.log(props.currentTasks);
+    const [checked, setChecked] = useState(props.completed); //useState(props.listitem.completed)
     const [showAlert, setShowAlert] = useState(false);
 
-    function handleAlertOKListItem(listItemText) {
-        console.log(listItemText)
-        props.listitem.text = listItemText;
-        props.setData(Object.assign([], props.data))
+    function handleAlertOKListItem(listitem, priority) {
+        props.updateTask(props.list.id, props.id, listitem, props.completed, priority)
+
     }
     function handleDelete(e) {
         e.stopPropagation()
-        props.list.listItems = props.list.listItems.filter((item) => item.id !== props.listitem.id)
-        props.setData(Object.assign([], props.data))
+        props.deleteTask(props.list.id, props.id)
+
+    }
+
+    function showPriorityImage(priority){
+        if (priority == "high"){
+            return (
+                <div>
+            <img className="priority-img" onClick={() => setShowAlert(true)} src={"exclamation-solid.svg"}></img>
+            <img className="priority-img" onClick={() => setShowAlert(true)} src={"exclamation-solid.svg"}></img>
+                </div>)
+        } else if (priority == "medium"){
+            return (
+                <div>
+                    <img className="priority-img" onClick={() => setShowAlert(true)} src={"exclamation-solid.svg"}></img>
+                </div>
+            )
+        } else {
+            return (
+                <div>
+                </div>
+            )
+        }
     }
 
     return (
         <div id="box1" className="boxes boxes-blue">
-            <input checked={checked} type="checkbox" onChange={() => {
-                props.listitem.completed = !props.listitem.completed
-                setChecked(props.listitem.completed)
-                props.setData(Object.assign([], props.data))
+            <input checked={props.completed} type="checkbox" onChange={() => {
+                props.updateTask(props.list.id, props.id, props.listitem, !props.completed, props.priority)
+                // props.setData(Object.assign([], props.data))
+                console.log("add completed attribute")
             }}/>
-            <label>{props.listitem.text}</label><br/>
+            <label>{props.listitem}</label><br/>
+
             <div className={"edit-delete-button-container"}>
+                {showPriorityImage(props.priority)}
             <img className="edit-delete-button" onClick={() => setShowAlert(true)} src={"edit-solid.svg"}></img>
-            <img className="edit-delete-button" onClick={handleDelete} src={"times-solid.svg"}></img>
+            <img className="edit-delete-button" onClick={(e) => handleDelete(e)} src={"times-solid.svg"}></img>
             </div>
-            <Alert visible={showAlert} inputValue={props.listitem.text} onClose={() => setShowAlert(false)} onOk={handleAlertOKListItem} cancelName={"Don't Edit Task"} okName={"Edit Task"}>
+            <Alert edit={true} priority={props.priority} task={true} visible={showAlert} inputValue={props.listitem} onClose={() => setShowAlert(false)} onOk={handleAlertOKListItem} cancelName={"Don't Save"} okName={"Save"}>
                 <div>Edit Task:</div>
             </Alert>
         </div>
     )
 }
 
-function Lists(props)
-{
+function Lists(props) {
     const [showAlert, setShowAlert] = useState(false);
+    const [currentTasks, setTasks] = useState([]);
+    const [filter, setFilter] = useState("title");
+    console.log(filter)
+    const query = props.collectionRef;
+    const [value, loading, error] = useCollection(props.collectionRef.doc(props.list.id).collection(props.list.id).orderBy(filter))
+    const elmo = loading === false ? value.docs.map((element)=> element.data()) : []
 
-    function handleAlertOKListItem(listItemName) {
-        updateListItems([...props.list.listItems,
-            {
-                id: props.list.listItems.length,
-                text: listItemName,
-                completed: false
-            }
-        ]);
+    function deleteCompleted(elmo){
+        elmo.filter((y) => y.completed).map((x) => props.deleteTask(props.list.id, x.id))
     }
-    function updateListItems(newListItems){
-        props.setData(props.data.map(list => {
-            if (list.id === props.list.id) {
-                list.listItems = newListItems
-            }
-            return list;
-        }))
-    }
+
+
     return (
         <>
-            <h1>{props.list.title}</h1>
-            {
-                props.list.listItems
-                    .filter((x) => !x.completed)
-                    .map((y) => <ListsItemDisplay list={props.list} key={y.id} setData={props.setData} data={props.data} listitem={y}/>)}
+            <h1>{props.data[0].title}</h1>
+            <div className={"filters"}>
+            <label className={"filter-dropdown"} htmlFor="filters">Filters</label>
+                <select name="filters" id="filter-select" onChange={(e) => setFilter(e.target.value)}>
+                    <option value="title">Name</option>
+                    <option value="created">Creation Date</option>
+                    <option value="priority">Priority</option>
+                </select>
+            </div>
+            {elmo.filter((y) => !y.completed).map((x) => <ListsItemDisplay deleteTask={props.deleteTask} updateTask={props.updateTask} setTasks={setTasks} currentTasks={currentTasks} list={props.list} setData={props.setData} data={props.data} id={x.id} listitem={x.title} completed={x.completed} priority={x.priority}/>)}
             <hr/>
-            <h3>Completed:</h3>
-            {
-            props.list.listItems
-                .filter((x) => x.completed)
-                .map((y) => <ListsItemDisplay list={props.list} key={y.id} setData={props.setData} data={props.data} listitem={y}/>)}
+            <h3 className={"completed"}>Completed:</h3>
+            <button className={"completed-button"} onClick={() => deleteCompleted(elmo)}>Delete All Completed</button>
+            {elmo.filter((y) => y.completed).map((x) => <ListsItemDisplay deleteTask={props.deleteTask} updateTask={props.updateTask} setTasks={setTasks} currentTasks={currentTasks} list={props.list} setData={props.setData} data={props.data} id={x.id} listitem={x.title} completed={x.completed} priority={x.priority}/>)}
             <div id="button1">
                 <button onClick={() => {setShowAlert(true)}} className="addTask">
                     <img src="plus-solid.svg"/>
                     <span>Add Task</span>
                 </button>
             </div>
-            <Alert visible={showAlert}  onClose={() => setShowAlert(false)} onOk={handleAlertOKListItem} cancelName={"Don't Add Task"} okName={"Add Task"}>
+            <Alert edit={false} priority={props.priority} task={true} visible={showAlert}  onClose={() => setShowAlert(false)} listWithoutId={props.list} list={props.list.id} onOk={console.log("Oops")} onAddTaskOkay={props.addListItem} cancelName={"Don't Add"} okName={"Add"}>
                 <div>Add Task:</div>
             </Alert>
         </>

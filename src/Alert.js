@@ -1,7 +1,14 @@
-import {useState} from "react";
+import {useCallback, useEffect, useState} from "react";
+
 
 function Alert(props) {
     let [input, setInput] = useState(props.inputValue);
+    let [priority, setPriority] = useState(props.priority);
+    console.log(props.visible);
+    const handlekeyPress = useCallback((event) => {
+        console.log(props.visible);
+    }, [props.visible]);
+
     function handleClose(){
         setInput(props.inputValue);
         props.onClose();
@@ -10,12 +17,24 @@ function Alert(props) {
     if (!props.visible){
         return null;
     }
+
     return (
         <div className={"backdrop"}>
             <div className="modal">
                 {props.children}
-                <input type="text" name="name" value={input}
+
+                <input autoFocus={true} id="textfield" type="text" name="name" value={input}
                        onChange={(e) => setInput(e.target.value)}/>
+                {props.task &&
+                <div>
+                    <label className={"priority-label"} htmlFor="priority-levels">Priority</label>
+                    <select name="priority-levels" id="priority-levels" onChange={(e) => setPriority(e.target.value)}>
+                        <option selected={priority === "tiny" ? true: false} value="tiny">Low</option>
+                        <option selected={priority === "medium" ? true: false} value="medium">Medium</option>
+                        <option selected={priority === "high" ? true: false} value="high">High</option>
+                    </select>
+                </div>}
+
                 <div className="alert-buttons">
                     <button className={"alert-button alert-cancel"} type={"button"}
                             onClick={handleClose}>
@@ -23,9 +42,21 @@ function Alert(props) {
                     </button>
                     <button className={"alert-button alert-ok"} type={"button"}
                             onClick={() => {
-                                props.onOk(input);
+
+                                if (props.task && !props.edit){
+                                    if (!priority){
+                                        setPriority("tiny");
+                                    }
+                                    props.onAddTaskOkay(props.listWithoutId, input, priority);
+                                }else {
+                                    props.onOk(input, priority)
+                                }
                                 handleClose();
-                                setInput("");}}>
+                                if (!props.edit){
+                                    setInput("")
+                                } else{
+                                    setInput(input)
+                                }}}>
                         {props.okName}
                     </button>
                 </div>

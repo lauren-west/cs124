@@ -28,8 +28,8 @@
     border-style: solid;
     margin: 0 auto;
     top: 50pt;
-    height: 60pt;
-    width: 160pt;
+    height: 80pt;
+    width: 180pt;
     padding: 10pt;
     position: relative;
 }
@@ -42,6 +42,13 @@
     padding: 5px;
 
 }
+.alert-ok{
+    margin: 5px;
+}
+.alert-cancel{
+    margin: 5px;
+}
+.priority-label{
+    margin-right: 5px;
+}
 
-/*.input-label{*/
-/*}*/
