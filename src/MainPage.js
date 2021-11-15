@@ -15,14 +15,14 @@ function ListsDisplay(props) {
     return (
         <>
             <div onClick={() => props.onClick(props.list.id)} className="boxes" id="list-box-1">
-                <img src="list-solid.svg"/>
+                <img alt={"List Icon"} src="list-solid.svg"/>
                 <span>{props.list.title}</span>
                 <div className={"edit-delete-button-container"}>
                     <img className="edit-delete-button" onClick={(e) => {
                         e.stopPropagation()
                         setShowAlert(true)
-                    }} src={"edit-solid.svg"}/>
-                    <img className="edit-delete-button" onClick={(e) => props.handleDelete(props.list.id, e)} src={"times-solid.svg"}></img>
+                    }} alt={"Edit Pen"} src={"edit-solid.svg"}/>
+                    <img alt={"Delete X"} className="edit-delete-button" onClick={(e) => props.handleDelete(props.list.id, e)} src={"times-solid.svg"}></img>
                 {/*    (e) => props.handleDelete(e.target.id)*/}
                 </div>
 
@@ -47,7 +47,7 @@ function MainPage(props) {
             {props.data.map((x) => <ListsDisplay handleDelete={props.handleDelete} updateList={props.updateList} setData={props.setData} data={props.data} list={x} onClick={props.onListClick}/>)}
             <div id="button1">
                 <button onClick={() => setShowAlert(true)} className="addList addTask">
-                    <img src="plus-solid.svg"/>
+                    <img alt={"Add +"} src="plus-solid.svg"/>
                     <span>Add List</span>
                 </button>
             </div>

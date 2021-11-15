@@ -30,13 +30,13 @@ function ListsItemDisplay(props){
         if (priority == "high"){
             return (
                 <div>
-            <img className="priority-img" onClick={() => setShowAlert(true)} src={"exclamation-solid.svg"}></img>
-            <img className="priority-img" onClick={() => setShowAlert(true)} src={"exclamation-solid.svg"}></img>
+            <img className="priority-img" onClick={() => setShowAlert(true)} alt={"Exclatmation Point"} src={"exclamation-solid.svg"}></img>
+            <img className="priority-img" onClick={() => setShowAlert(true)} alt={"Exclatmation Point"} src={"exclamation-solid.svg"}></img>
                 </div>)
         } else if (priority == "medium"){
             return (
                 <div>
-                    <img className="priority-img" onClick={() => setShowAlert(true)} src={"exclamation-solid.svg"}></img>
+                    <img className="priority-img" alt={"Exclatmation Point"} onClick={() => setShowAlert(true)} src={"exclamation-solid.svg"}></img>
                 </div>
             )
         } else {
@@ -56,8 +56,8 @@ function ListsItemDisplay(props){
 
             <div className={"edit-delete-button-container"}>
                 {showPriorityImage(props.priority)}
-            <img className="edit-delete-button" onClick={() => setShowAlert(true)} src={"edit-solid.svg"}></img>
-            <img className="edit-delete-button" onClick={(e) => handleDelete(e)} src={"times-solid.svg"}></img>
+            <img className="edit-delete-button" alt={"Edit Pen"} onClick={() => setShowAlert(true)} src={"edit-solid.svg"}></img>
+            <img className="edit-delete-button" alt={"Delete X"} onClick={(e) => handleDelete(e)} src={"times-solid.svg"}></img>
             </div>
             <Alert edit={true} priority={props.priority} task={true} visible={showAlert} inputValue={props.listitem} onClose={() => setShowAlert(false)} onOk={handleAlertOKListItem} cancelName={"Don't Save"} okName={"Save"}>
                 <div>Edit Task:</div>
@@ -96,7 +96,7 @@ function Lists(props) {
             {elmo.filter((y) => y.completed).map((x) => <ListsItemDisplay deleteTask={props.deleteTask} updateTask={props.updateTask} setTasks={setTasks} currentTasks={currentTasks} list={props.list} setData={props.setData} data={props.data} id={x.id} listitem={x.title} completed={x.completed} priority={x.priority}/>)}
             <div id="button1">
                 <button onClick={() => {setShowAlert(true)}} className="addTask">
-                    <img src="plus-solid.svg"/>
+                    <img alt={"Add +"} src="plus-solid.svg"/>
                     <span>Add Task</span>
                 </button>
             </div>
