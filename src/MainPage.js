@@ -14,15 +14,18 @@ function ListsDisplay(props) {
 
     return (
         <>
-            <div onClick={() => props.onClick(props.list.id)} className="boxes" id="list-box-1">
+            <div tabIndex="0" onKeyPress={(event ) => props.onClick(props.list.id)} onClick={() => props.onClick(props.list.id)} className="boxes" id="list-box-1">
                 <img alt={"List Icon"} src="list-solid.svg"/>
                 <span>{props.list.title}</span>
                 <div className={"edit-delete-button-container"}>
-                    <img className="edit-delete-button" onClick={(e) => {
+                    <img tabIndex="0" className="edit-delete-button" onClick={(e) => {
+                        e.stopPropagation()
+                        setShowAlert(true)
+                    }} onKeyPress={(e) => {
                         e.stopPropagation()
                         setShowAlert(true)
                     }} alt={"Edit Pen"} src={"edit-solid.svg"}/>
-                    <img alt={"Delete X"} className="edit-delete-button" onClick={(e) => props.handleDelete(props.list.id, e)} src={"times-solid.svg"}></img>
+                    <img tabIndex="0" alt={"Delete X"} className="edit-delete-button" onKeyPress={(e) => props.handleDelete(props.list.id, e)} onClick={(e) => props.handleDelete(props.list.id, e)} src={"times-solid.svg"}></img>
                 {/*    (e) => props.handleDelete(e.target.id)*/}
                 </div>
 

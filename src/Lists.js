@@ -49,15 +49,15 @@ function ListsItemDisplay(props){
 
     return (
         <div id="box1" className="boxes boxes-blue">
-            <input checked={props.completed} type="checkbox" onChange={() => {
+            <input tabIndex="0" checked={props.completed} type="checkbox" onChange={() => {
                 props.updateTask(props.list.id, props.id, props.listitem, !props.completed, props.priority)
             }}/>
             <label>{props.listitem}</label><br/>
 
             <div className={"edit-delete-button-container"}>
                 {showPriorityImage(props.priority)}
-            <img className="edit-delete-button" alt={"Edit Pen"} onClick={() => setShowAlert(true)} src={"edit-solid.svg"}></img>
-            <img className="edit-delete-button" alt={"Delete X"} onClick={(e) => handleDelete(e)} src={"times-solid.svg"}></img>
+            <img tabIndex="0" className="edit-delete-button" alt={"Edit Pen"} onClick={() => setShowAlert(true)} src={"edit-solid.svg"}></img>
+            <img tabIndex="0" className="edit-delete-button" alt={"Delete X"} onClick={(e) => handleDelete(e)} src={"times-solid.svg"}></img>
             </div>
             <Alert edit={true} priority={props.priority} task={true} visible={showAlert} inputValue={props.listitem} onClose={() => setShowAlert(false)} onOk={handleAlertOKListItem} cancelName={"Don't Save"} okName={"Save"}>
                 <div>Edit Task:</div>
