@@ -23,6 +23,7 @@ function ListsDisplay(props) {
                         setShowAlert(true)
                     }} onKeyPress={(e) => {
                         e.stopPropagation()
+                        e.preventDefault()
                         {(e.key === "Enter"||e.code === "Space") &&
                         setShowAlert(true)}
                     }} alt={"Edit Pen"} src={"edit-solid.svg"}/>

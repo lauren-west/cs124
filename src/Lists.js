@@ -48,7 +48,7 @@ function ListsItemDisplay(props){
     }
 
     return (
-        <div id="box1" className="boxes boxes-blue">    
+        <div id="box1" className="boxes boxes-blue">
             <input onKeyPress={(event) => {(event.key === "Enter"||event.code === "Space") &&
                 props.updateTask(props.list.id, props.id, props.listitem, !props.completed, props.priority)}} tabIndex="0" checked={props.completed} type="checkbox" onChange={() => {
                 props.updateTask(props.list.id, props.id, props.listitem, !props.completed, props.priority) 
@@ -57,7 +57,8 @@ function ListsItemDisplay(props){
 
             <div className={"edit-delete-button-container"}>
                 {showPriorityImage(props.priority)}
-            <img tabIndex="0" className="edit-delete-button" alt={"Edit Pen"} onKeyPress={(event) => {(event.key === "Enter"||event.code === "Space") && setShowAlert(true)}} onClick={() => setShowAlert(true)} src={"edit-solid.svg"}></img>
+            <img tabIndex="0" className="edit-delete-button" alt={"Edit Pen"} onKeyPress={(event) => {event.preventDefault()
+                {(event.key === "Enter"||event.code === "Space") && setShowAlert(true)}}} onClick={() => setShowAlert(true)} src={"edit-solid.svg"}></img>
             <img tabIndex="0" className="edit-delete-button" alt={"Delete X"} onKeyPress={(event) => {(event.key === "Enter"||event.code === "Space") && handleDelete(event)}} onClick={(e) => handleDelete(e)} src={"times-solid.svg"}></img>
             </div>
             <Alert edit={true} priority={props.priority} task={true} visible={showAlert} inputValue={props.listitem} onClose={() => setShowAlert(false)} onOk={handleAlertOKListItem} cancelName={"Don't Save"} okName={"Save"}>
