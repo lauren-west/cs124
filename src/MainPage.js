@@ -1,12 +1,13 @@
 import './main.css'
 import React, {useState} from "react";
 import Alert from "./Alert";
+import Wrapper from "./Wrapper";
 
 function ListsDisplay(props) {
     const [showAlert, setShowAlert] = useState(false);
-    function handleAlertOK(listName) {
-
-    }
+    // function handleAlertOK(listName) {
+    //
+    // }
 
     function handleEdit(inputVal) {
         props.updateList(props.list.id, inputVal)
@@ -47,7 +48,7 @@ function MainPage(props) {
     }
 
     return (
-        <>
+        <Wrapper>
             <h1 id="MyLists">My Lists</h1>
             {props.data.map((x) => <ListsDisplay handleDelete={props.handleDelete} updateList={props.updateList} setData={props.setData} data={props.data} list={x} onClick={props.onListClick}/>)}
             <div id="button1">
@@ -59,7 +60,7 @@ function MainPage(props) {
             <Alert task={false} edit={false} inputValue={""} visible={showAlert} onClose={() => setShowAlert(false)} onOk={handleAlertOK} cancelName={"Don't Add"} okName={"Add"}>
                 <div>Add List:</div>
             </Alert>
-        </>
+        </Wrapper>
     )
 }
 

@@ -5,6 +5,7 @@ import {useCollection} from "react-firebase-hooks/firestore";
 import {collection, doc, setDoc, where, getDoc, getDocs} from "firebase/firestore";
 import { query, orderBy, limit } from "firebase/firestore";
 import firebase from "firebase/compat";
+import Wrapper from "./Wrapper";
 
 function ShowEditAlert(props) {
     props.setCurrentTask(props.listitem.id)
@@ -49,7 +50,8 @@ function ListsItemDisplay(props){
 
     return (
         <div id="box1" className="boxes boxes-blue">
-            <input onKeyPress={(event) => {(event.key === "Enter"||event.code === "Space") &&
+            <input onKeyUp={(event) => {
+                (event.key === "Enter"||event.code === "Space") &&
                 props.updateTask(props.list.id, props.id, props.listitem, !props.completed, props.priority)}} tabIndex="0" checked={props.completed} type="checkbox" onChange={() => {
                 props.updateTask(props.list.id, props.id, props.listitem, !props.completed, props.priority) 
             }}/>
@@ -81,7 +83,7 @@ function Lists(props) {
     }
 
     return (
-        <>
+        <Wrapper>
             <h1>{props.data[0].title}</h1>
             <div className={"filters"}>
             <label className={"filter-dropdown"} htmlFor="filters">Filters</label>
@@ -105,7 +107,7 @@ function Lists(props) {
             <Alert edit={false} priority={props.priority} task={true} visible={showAlert}  onClose={() => setShowAlert(false)} listWithoutId={props.list} list={props.list.id} onOk={console.log("Oops")} onAddTaskOkay={props.addListItem} cancelName={"Don't Add"} okName={"Add"}>
                 <div>Add Task:</div>
             </Alert>
-        </>
+        </Wrapper>
     )
 }
 
