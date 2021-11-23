@@ -162,3 +162,5 @@ We are very proud of the working functionality. At first, we had deleted items f
 We are most proud of our own drive to complete this lab. This past week we spent numerous hours every night working on the project and debugging it. We are confident that we have grown a lot as both developers and designers over this lab, and have a stronger grasp on firebase. Further our struggle with rendering taught us important lessons in reading documents provided by the developers. Our intuition when it comes to bugs has also grown immensely. Debugging is a very important skill when it comes to development and we are proud to be flexing our debugging muscles so well.
 #### LAB 4
 We are happy that we already had implemented many of the needed new features, so in a sense we are proud of our forethought! Additionally, we are proud of making our app fully accessible, allowing all users to experience it the same.
+
+Here is a video showing our accessibility features added in Lab 4: https://youtu.be/Jtm5VIOKVt0
