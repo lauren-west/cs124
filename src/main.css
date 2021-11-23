@@ -236,3 +236,6 @@ img {
 .back-arrow {
     padding: 20px 0px 0px 20px;
 }
+#filter-select{
+    margin: 10px;
+}

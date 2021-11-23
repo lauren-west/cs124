@@ -76,10 +76,10 @@ function Lists(props) {
     const [filter, setFilter] = useState("title");
     const query = props.collectionRef;
     const [value, loading, error] = useCollection(props.collectionRef.doc(props.list.id).collection(props.list.id).orderBy(filter))
-    const elmo = loading === false ? value.docs.map((element)=> element.data()) : []
+    const tasks = loading === false ? value.docs.map((element)=> element.data()) : []
 
-    function deleteCompleted(elmo){
-        elmo.filter((y) => y.completed).map((x) => props.deleteTask(props.list.id, x.id))
+    function deleteCompleted(tasks){
+        tasks.filter((y) => y.completed).map((x) => props.deleteTask(props.list.id, x.id))
     }
 
     return (
@@ -93,11 +93,11 @@ function Lists(props) {
                     <option value="priority">Priority</option>
                 </select>
             </div>
-            {elmo.filter((y) => !y.completed).map((x) => <ListsItemDisplay deleteTask={props.deleteTask} updateTask={props.updateTask} setTasks={setTasks} currentTasks={currentTasks} list={props.list} setData={props.setData} data={props.data} id={x.id} listitem={x.title} completed={x.completed} priority={x.priority}/>)}
+            {tasks.filter((y) => !y.completed).map((x) => <ListsItemDisplay deleteTask={props.deleteTask} updateTask={props.updateTask} setTasks={setTasks} currentTasks={currentTasks} list={props.list} setData={props.setData} data={props.data} id={x.id} listitem={x.title} completed={x.completed} priority={x.priority}/>)}
             <hr/>
             <h3 className={"completed"}>Completed:</h3>
-            <button className={"completed-button"} onClick={() => deleteCompleted(elmo)}>Delete All Completed</button>
-            {elmo.filter((y) => y.completed).map((x) => <ListsItemDisplay deleteTask={props.deleteTask} updateTask={props.updateTask} setTasks={setTasks} currentTasks={currentTasks} list={props.list} setData={props.setData} data={props.data} id={x.id} listitem={x.title} completed={x.completed} priority={x.priority}/>)}
+            <button className={"completed-button"} onClick={() => deleteCompleted(tasks)}>Delete All Completed</button>
+            {tasks.filter((y) => y.completed).map((x) => <ListsItemDisplay deleteTask={props.deleteTask} updateTask={props.updateTask} setTasks={setTasks} currentTasks={currentTasks} list={props.list} setData={props.setData} data={props.data} id={x.id} listitem={x.title} completed={x.completed} priority={x.priority}/>)}
             <div id="button1">
                 <button onClick={() => {setShowAlert(true)}} className="addTask">
                     <img alt={"Add +"} src="plus-solid.svg"/>
