@@ -1,12 +1,13 @@
 import './main.css'
 import React, {useState} from "react";
 import Alert from "./Alert";
+import Wrapper from "./Wrapper";
 
 function ListsDisplay(props) {
     const [showAlert, setShowAlert] = useState(false);
-    function handleAlertOK(listName) {
-
-    }
+    // function handleAlertOK(listName) {
+    //
+    // }
 
     function handleEdit(inputVal) {
         props.updateList(props.list.id, inputVal)
@@ -14,15 +15,20 @@ function ListsDisplay(props) {
 
     return (
         <>
-            <div onClick={() => props.onClick(props.list.id)} className="boxes" id="list-box-1">
-                <img src="list-solid.svg"/>
+            <div tabIndex="0" onKeyPress={(event) => {(event.key === "Enter"||event.code === "Space") && props.onClick(props.list.id)}} onClick={() => props.onClick(props.list.id)} className="boxes" id="list-box-1">
+                <img alt={"List Icon"} src="list-solid.svg"/>
                 <span>{props.list.title}</span>
                 <div className={"edit-delete-button-container"}>
-                    <img className="edit-delete-button" onClick={(e) => {
+                    <img tabIndex="0" className="edit-delete-button" onClick={(e) => {
                         e.stopPropagation()
                         setShowAlert(true)
-                    }} src={"edit-solid.svg"}/>
-                    <img className="edit-delete-button" onClick={(e) => props.handleDelete(props.list.id, e)} src={"times-solid.svg"}></img>
+                    }} onKeyPress={(e) => {
+                        e.stopPropagation()
+                        e.preventDefault()
+                        {(e.key === "Enter"||e.code === "Space") &&
+                        setShowAlert(true)}
+                    }} alt={"Edit Pen"} src={"edit-solid.svg"}/>
+                    <img tabIndex="0" alt={"Delete X"} className="edit-delete-button" onKeyPress={(e) => {e.key === "Enter" && props.handleDelete(props.list.id, e)}} onClick={(e) => props.handleDelete(props.list.id, e)} src={"times-solid.svg"}></img>
                 {/*    (e) => props.handleDelete(e.target.id)*/}
                 </div>
 
@@ -42,19 +48,19 @@ function MainPage(props) {
     }
 
     return (
-        <>
+        <Wrapper>
             <h1 id="MyLists">My Lists</h1>
             {props.data.map((x) => <ListsDisplay handleDelete={props.handleDelete} updateList={props.updateList} setData={props.setData} data={props.data} list={x} onClick={props.onListClick}/>)}
             <div id="button1">
                 <button onClick={() => setShowAlert(true)} className="addList addTask">
-                    <img src="plus-solid.svg"/>
+                    <img alt={"Add +"} src="plus-solid.svg"/>
                     <span>Add List</span>
                 </button>
             </div>
             <Alert task={false} edit={false} inputValue={""} visible={showAlert} onClose={() => setShowAlert(false)} onOk={handleAlertOK} cancelName={"Don't Add"} okName={"Add"}>
                 <div>Add List:</div>
             </Alert>
-        </>
+        </Wrapper>
     )
 }
 
