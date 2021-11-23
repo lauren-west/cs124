@@ -107,7 +107,7 @@ For our Lab 3 user-resting we received the following feedback:
 - User D also wanted the add/edit list buttons spaced apart further.
 
 For our Lab 4 
-
+- User C requested for left alignment of our "Filter" and "Delete Completed" sections.
 
 ## Final Design
 ### Implemented Features:
@@ -133,6 +133,11 @@ For our Lab 4
 - Updated the tab icon
 - Added a "delete all completed button"
 
+#### LAB 4
+- Added "alt" attributes to all images
+- Made everything tabbable.
+- Added full keyboard functionality
+
 
 ## Challenges We Faced
 #### LAB 1
@@ -145,6 +150,9 @@ We struggled with finding the most efficient way to generically input code such 
 #### LAB 3
 We ran into numerous bugs during this lab. In total, we spent over 20 hours working on understanding firebase and debugging issues. One of the hardest challenges was understanding how to use Firestores' subcollections and the modification of data within a subcollecion. Further, we had so many issues with how our page renderd (and the amount of times it updated) that it took us an entire day to solve them. Lastly we struggled through adding keypress events as our code repeatedly called the enter and escape key more than one time causing huge errors, which we have yet to solve but plan on working on in Lab 4.
 
+#### LAB 4
+We struggled for a little while with figuring out how to get our lists to tab in the right order, yet after some research we were able to solve the problem quickly. Luckily we did not have to edit the way we display our lists for this lab as we already allowed multiple lists displayed at once. In general because we had already completed many of the requirements for this lab we did not have too many challenges.
+
 ## What we are proud of
 #### LAB 1
 We are very proud of our simple aesthetic. From the start, we decided to apply a simple design to our app - black, white, and blue - with straightforward tasks. It is oddly difficult however to find a simple design that is simultaneously good-looking and usable, which is why we had many iterations, however, our final design is better than we originally imagined it could be. 
@@ -152,3 +160,5 @@ We are very proud of our simple aesthetic. From the start, we decided to apply a
 We are very proud of the working functionality. At first, we had deleted items from our list by indexing by ids; however, when we had missing ids, we were indexing incorrectly (because we started at zero, even when the zeroth element had been deleted). This caused various issues, such as the next item in the list appearing as completed. To fix this, we stopped indexing by ids, instead, we filtered out the target list or list item by their id. This fixed our issue, and having our deleting function as desired is something we are proud of.
 #### LAB 3
 We are most proud of our own drive to complete this lab. This past week we spent numerous hours every night working on the project and debugging it. We are confident that we have grown a lot as both developers and designers over this lab, and have a stronger grasp on firebase. Further our struggle with rendering taught us important lessons in reading documents provided by the developers. Our intuition when it comes to bugs has also grown immensely. Debugging is a very important skill when it comes to development and we are proud to be flexing our debugging muscles so well.
+#### LAB 4
+We are happy that we already had implemented many of the needed new features, so in a sense we are proud of our forethought! Additionally, we are proud of making our app fully accessible, allowing all users to experience it the same.
