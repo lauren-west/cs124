@@ -1,4 +1,4 @@
-# Lab 3
+# Lab 4
 ##### Lucas Ewing and Lauren West
 
 In this lab, we designed and implemented a simple interface for a mobile web app. This app manages a list of items the user desires to complete. Our web app is written in React and has full functionality. 
@@ -88,6 +88,9 @@ Here you can see the filter feature, click on the filter and select the way you 
 You may also click the "delete all completed" button. This will remove all of the completed items.
 
 
+We updated our design slightly in Lab 4 so that depending on the screen size accessing our app more items display at once.
+
+
 
 ## User Testing
 It was mentioned in Design Designs that we used User Testing to decide on a pencil icon vs touch to edit. We set up an experiment and asked User A to comment on the design with the pencil feature and a design that would be touch to edit. User A said that the touch to edit was clear enough, and made for better aesthetics. We also took this test to User B, who shared similar remarks in favor of touch to edit. User C reminded us that we did not have a list box on our main page, so we made sure to add that in our final design. Lastly, User C remarked on our radio buttons and requested them to be changed to checkboxes which we did in our final design.
@@ -102,6 +105,8 @@ For our Lab 3 user-resting we received the following feedback:
 - User C stated that they prefer a simple priority system that uses strings instead of numbers to indicate priority level.
 - User D, a new tester, wanted the filter list location moved from the right of the screen to the left above the task items.
 - User D also wanted the add/edit list buttons spaced apart further.
+
+For our Lab 4 
 
 
 ## Final Design
