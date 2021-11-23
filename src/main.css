@@ -41,21 +41,75 @@ label {
     font-size: 12px;
 }
 
-.filters{
-    padding: 5% 0 0 5%;
+img {
+    width: 20px;
+    margin: auto 0;
+    padding-left: 10px;
+    padding-right: 20px;
+}
+
+.boxes {
+    font-size: 18px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    height: 75px;
+    border-bottom: 1px solid black;
+    margin: 10px auto 0;
+    box-sizing: border-box;
+}
+.boxes-blue{
+    font-weight: 400;
+    box-shadow: 2px 4px 4px rgba(46, 75, 82, 0.305);
+    background-color: rgb(140, 171, 241);
+    border-radius: 10px;
+}
+
+.wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 5%;
+}body {
+     font-family: 'Montserrat', sans-serif;
+     display: grid;
+     grid-template-rows: 100px 1fr 1fr;
+     grid-template-columns: 1fr;
+     height: 100vh;
+     width: 100vw;
+     margin: 0;
+ }
+
+button {
+    font-family: 'Montserrat', sans-serif;
+}
+
+h1 {
+    grid-row: 1/ span 1;
+    grid-column: 1/ span 2;
+    text-align: left;
+    font-size: 42px;
+    font-weight: 800;
+}
+
+.priority-img{
+    width: 10px;
+    padding: 1px;
+}
+
+input[type=checkbox] {
+    transform: scale(1.5);
+    width: 40px;
+    display: block;
+    vertical-align: center;
+}
+
+label {
+    font-size: 20px;
 
 }
 
-.completed{
-    padding: 5% 0 0 5%;
-}
-.completed-button{
-    margin: 0 0 0 5%;
-    padding: 5px;
-}
-
-.filter-dropdown{
-    padding-right: 10px;
+.priority-label{
+    font-size: 12px;
 }
 
 img {
@@ -85,6 +139,54 @@ img {
 .wrapper {
     max-width: 1200px;
     margin: 0 auto;
+}
+
+.addTask {
+    background-color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    width: 100%;
+    border-radius: 10px;
+    border-width: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    align-self: center;
+    padding: 10px;
+}
+
+.addList {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+#button1 {
+    align-items: center;
+    margin: 25px auto;
+}
+
+#checkboxes {
+    margin-top: 20px;
+}
+
+.edit-delete-button {
+    width: 20px;
+
+}
+.edit-delete-button-container{
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+}
+
+.list-box:hover {
+    border-radius: 10px;
+    background-color: lightgray;
+    cursor: pointer;
+}
+
+.back-arrow {
+    padding: 20px 0px 0px 20px;
 }
 
 .addTask {
