@@ -1,6 +1,6 @@
 # cs124
 
-In lab2, we created a React Application that helps people manage their tasks. 
+We created a React Application that helps people manage their tasks. 
 
 View our running application at this link: https://lauren-west.github.io/cs124/
 
