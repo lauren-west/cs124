@@ -239,3 +239,21 @@ img {
 #filter-select{
     margin: 10px;
 }
+.homeName {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 32px;
+    padding: 10px;
+}
+.authbuttons{
+    display: flex;
+    justify-content: center;
+    margin-left: 30%;
+    margin-right: 30%;
+    flex-direction: column;
+}
+.authOption{
+    text-align: center;
+}
+.authitems{
+    margin-bottom: 10px;
+}
