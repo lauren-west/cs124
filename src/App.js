@@ -130,10 +130,6 @@ function App(props) {
         });
     }
 
-    function handleSignOut(){
-        setPage({type: "signIn"});
-
-    }
 
 
     // End Auth
@@ -204,6 +200,10 @@ function App(props) {
     //     setFetch(false)
     //
     // }
+    function handleSignOut(){
+        setPage({type: "trueHome"});
+
+    }
 
     const pageRenderLookup = {
         "signIn": (
@@ -244,8 +244,7 @@ function App(props) {
         ),
         "home": (
             <div>
-                {console.log(user)}
-                <SignedInPage {...props} user={user}/>
+                <SignedInPage {...props} user={user} signOut={() => handleSignOut()}/>
             </div>
         )
     }
@@ -272,11 +271,6 @@ function SignedInPage(props) {
         type: "home"
     })
 
-
-    function handleSignOut(){
-        setPage({type: "signIn"});
-
-    }
 
 
     // End Auth
@@ -351,7 +345,7 @@ function SignedInPage(props) {
         "home": (
             <>
                 <signedInPage/>
-                <button onClick={() => handleSignOut()}> Sign Out </button>
+                <button onClick={() => props.signOut()}> Sign Out </button>
                 <MainPage updateList={updateList} handleDelete={handleDeleteList} setData={handleAddList} data={data} onListClick={(n) =>
                     setPage({
                         type: "list",
