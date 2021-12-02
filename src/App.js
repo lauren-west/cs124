@@ -64,6 +64,8 @@ function App(props) {
     const [userEmail, setEmail] = useState("");
     const [userPassword, setPassword] = useState("");
     const [user, setUser] = useState("");
+    const [passwordValid, setValidity] = useState(true)
+    const [signupValid, setSignupValid] = useState(true);
 
     function handleSignUp(email, password) {
         createUserWithEmailAndPassword(auth, email, password)
@@ -80,6 +82,7 @@ function App(props) {
                 const errorCode = error.code;
                 const errorMessage = error.message;
                 console.log("try signing up again!")
+                setSignupValid(false);
 
                 // ..
             });
@@ -103,7 +106,8 @@ function App(props) {
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
-                console.log("try signing in again!")
+                console.log("try signing in again!");
+                setValidity(false);
             });
     }
 
@@ -113,20 +117,25 @@ function App(props) {
                 // This gives you a Google Access Token. You can use it to access the Google API.
                 const credential = GoogleAuthProvider.credentialFromResult(result);
                 const token = credential.accessToken;
+
                 // The signed-in user info.
                 const user = result.user;
+                setUser(user.uid);
                 console.log("Signed In!");
+                console.log(user);
                 setPage({type: "home"});
                 // ...
             }).catch((error) => {
-            // Handle Errors here.
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            // The email of the user's account used.
-            const email = error.email;
-            // The AuthCredential type that was used.
-            const credential = GoogleAuthProvider.credentialFromError(error);
-            // ...
+                // Handle Errors here.
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                // The email of the user's account used.
+                const email = error.email;
+                // The AuthCredential type that was used.
+                const credential = GoogleAuthProvider.credentialFromError(error);
+                console.log("try signing in again!");
+                setValidity(false);
+                // ...
         });
     }
 
@@ -210,12 +219,13 @@ function App(props) {
             <>
                 <img tabIndex="0" onKeyPress={(event) => {(event.key === "Enter"||event.code === "Space") && setPage({type: "trueHome"})}} onClick={() => setPage({type: "trueHome"})} alt={"Back Arrow"} src={"long-arrow-alt-left-solid.svg"} className={"back-arrow"}/>
                 <h1 className={"homeName"}>Sign into your Account</h1>
+                {!passwordValid && <p className={"wrongPass"}>Wrong username or password</p>}
                 <div className={"authbuttons"}>
                     <input className="authitems" placeholder={"Email"} type="text" name="email" onChange={(e) => setEmail(e.target.value)}/>
                     <input className="authitems" placeholder={"Password"} type="text" name="password" onChange={(e) => setPassword(e.target.value)}/>
                     <button className="authitems" className={"authSubmit"} onClick={() => handleSignIn(userEmail, userPassword)}> Sign In </button>
                     <p className={"authOption"}>or</p>
-                    <button className="authitems" className={"authSubmit"} onClick={() => handleGoogleSignIn(userEmail, userPassword)}>Sign In with Google</button>
+                    <button className="authitems" className={"authSubmit"} onClick={() => handleGoogleSignIn()}>Sign In with Google</button>
                 </div>
             </>
         ),
@@ -223,12 +233,13 @@ function App(props) {
             <>
                 <img tabIndex="0" onKeyPress={(event) => {(event.key === "Enter"||event.code === "Space") && setPage({type: "trueHome"})}} onClick={() => setPage({type: "trueHome"})} alt={"Back Arrow"} src={"long-arrow-alt-left-solid.svg"} className={"back-arrow"}/>
                 <h1 className={"homeName"}>Create an Account</h1>
+                {!signupValid && <p className={"wrongPass"}>Invalid email or password</p>}
                 <div className={"authbuttons"}>
                     <input className={"authitems"} placeholder={"Email"} type="text" name="email" onChange={(e) => setEmail(e.target.value)}/>
                     <input className="authitems" placeholder={"Password"} type="text" name="password" onChange={(e) => setPassword(e.target.value)}/>
                     <button className="authitems" className={"authSubmit"} onClick={() => handleSignUp(userEmail, userPassword)}> Sign Up </button>
                     <p className={"authOption"}>or</p>
-                    <button className="authitems" className={"authSubmit"} onClick={() => handleGoogleSignIn(userEmail, userPassword)}>Sign Up with Google</button>
+                    <button className="authitems" className={"authSubmit"} onClick={() => handleGoogleSignIn()}>Sign Up with Google</button>
                 </div>
             </>
         ),

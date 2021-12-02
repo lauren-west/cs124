@@ -257,3 +257,11 @@ img {
 .authitems{
     margin-bottom: 10px;
 }
+.wrongPass{
+    font-family: 'Montserrat', sans-serif;
+    color: red;
+    text-align: center;
+    font-weight: bold;
+    margin-left: 15%;
+    margin-right: 15%;
+}
