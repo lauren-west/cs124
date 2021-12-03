@@ -50,7 +50,7 @@ function MainPage(props) {
     return (
         <Wrapper>
             <h1 id="MyLists">My Lists</h1>
-            {props.data.map((x) => <ListsDisplay handleDelete={props.handleDelete} updateList={props.updateList} setData={props.setData} data={props.data} list={x} onClick={props.onListClick}/>)}
+            {props.data && props.data.map((x) => <ListsDisplay handleDelete={props.handleDelete} updateList={props.updateList} setData={props.setData} data={props.data} list={x} onClick={props.onListClick}/>)}
             <div id="button1">
                 <button onClick={() => setShowAlert(true)} className="addList addTask">
                     <img alt={"Add +"} src="plus-solid.svg"/>

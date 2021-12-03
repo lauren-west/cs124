@@ -10,15 +10,6 @@ import { getAnalytics } from "firebase/analytics";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import './main.css';
 
-import {
-    useAuthState,
-    useCreateUserWithEmailAndPassword,
-    useSignInWithEmailAndPassword
-} from 'react-firebase-hooks/auth';
-// let firebase = require('firebase');
-// let firebaseui = require('firebaseui');
-// let ui = new firebaseui.auth.AuthUI(firebase.auth());
-
 const firebaseConfig = {
     apiKey: "AIzaSyB8G1WCYinf4GWK7GMzLkP8PlLujGnNqHM",
     authDomain: "cs124-lab.firebaseapp.com",
@@ -32,28 +23,11 @@ const firebaseConfig = {
 const app = firebase.initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const db = firebase.firestore();
-
 const auth = getAuth();
 const provider = new GoogleAuthProvider();
-// const auth = firebase.auth();
-// const googleProvider = new firebase.auth.GoogleAuthProvider();
-
 
 function App(props) {
 
-    // const collectionName = "lewing-hmc-tasks2"
-    // const query = db.collection(collectionName);
-    // const [hasFetchedTask, setFetch] = useState(false);
-    // let collectionRef = db.collection(collectionName)
-    // const [value, loading, error] = useCollection(query)
-    // if (!loading) {
-    //     value.docs.map(async (x) => console.log((await getDoc(x.ref)).data().title))
-    // }
-    // const data = loading === false ? value.docs.map((element)=> element.data()) : []
-    //
-    // const [showAlert, setShowAlert] = useState(false);
-    // const [showEditAlert, setShowEditAlert] = useState(false);
-    // let [listId, setListId] = useState(0);
     let [selectedPage, setPage] = useState({
         type: "trueHome"
     })
@@ -139,76 +113,6 @@ function App(props) {
         });
     }
 
-
-
-    // End Auth
-    //
-    // function handleAddList(listName) {
-    //     const List = {
-    //         id: generateUniqueID(),
-    //         title: listName,
-    //     }
-    //     collectionRef.doc(List.id).set(List)
-    //
-    // }
-    //
-    //
-    // function handleDeleteList(id, e){
-    //     collectionRef.doc(id).delete()
-    //     e.stopPropagation()
-    // }
-    //
-    // function setFetchAndPage(){
-    //     setFetch(false);
-    //     setPage({type: "home"});
-    // }
-    //
-    // function addListItem(list, itemName, priority){
-    //     const Task = {
-    //         id: generateUniqueID(),
-    //         title: itemName,
-    //         completed: false,
-    //         priority: priority, // planning on tiny, medium, high
-    //         created: firebase.database.ServerValue.TIMESTAMP
-    //     }
-    //     list.collection(list.id).doc(Task.id).set(Task)
-    //     setFetch(false)
-    // }
-    //
-    // async function getDocInfo(id){
-    //     let currTasks = [];
-    //     if(!loading){
-    //         const q = collectionRef.doc(id).collection(id);
-    //         const querySnapshot = await getDocs(q);
-    //         querySnapshot.forEach((doc) => {
-    //             currTasks.push([doc.data().id, doc.data().title, doc.data().completed, doc.data().priority]);
-    //     });}
-    //     return currTasks;
-    // }
-    //
-    // async function updateTask(listid, taskid, title_val, comp_value, priority_value){
-    //     await collectionRef.doc(listid)
-    //         .collection(listid)
-    //         .doc(taskid)
-    //         .update({
-    //             title: title_val,
-    //             completed: comp_value,
-    //             priority: priority_value
-    //         });
-    //     setFetch(false)
-    // }
-    //
-    // async function updateList(id, title_val){
-    //     await collectionRef.doc(id).update({
-    //             title: title_val
-    //         })
-    // }
-    //
-    // async function deleteTask(listid, taskid){
-    //     await collectionRef.doc(listid).collection(listid).doc(taskid).delete();
-    //     setFetch(false)
-    //
-    // }
     function handleSignOut(){
         setPage({type: "trueHome"});
 
@@ -222,7 +126,7 @@ function App(props) {
                 {!passwordValid && <p className={"wrongPass"}>Wrong username or password</p>}
                 <div className={"authbuttons"}>
                     <input className="authitems" placeholder={"Email"} type="text" name="email" onChange={(e) => setEmail(e.target.value)}/>
-                    <input className="authitems" placeholder={"Password"} type="text" name="password" onChange={(e) => setPassword(e.target.value)}/>
+                    <input className="authitems" placeholder={"Password"} type="password" name="password" onChange={(e) => setPassword(e.target.value)}/>
                     <button className="authitems" className={"authSubmit"} onClick={() => handleSignIn(userEmail, userPassword)}> Sign In </button>
                     <p className={"authOption"}>or</p>
                     <button className="authitems" className={"authSubmit"} onClick={() => handleGoogleSignIn()}>Sign In with Google</button>
@@ -236,7 +140,7 @@ function App(props) {
                 {!signupValid && <p className={"wrongPass"}>Invalid email or password</p>}
                 <div className={"authbuttons"}>
                     <input className={"authitems"} placeholder={"Email"} type="text" name="email" onChange={(e) => setEmail(e.target.value)}/>
-                    <input className="authitems" placeholder={"Password"} type="text" name="password" onChange={(e) => setPassword(e.target.value)}/>
+                    <input className="authitems" placeholder={"Password"} type="password" name="password" onChange={(e) => setPassword(e.target.value)}/>
                     <button className="authitems" className={"authSubmit"} onClick={() => handleSignUp(userEmail, userPassword)}> Sign Up </button>
                     <p className={"authOption"}>or</p>
                     <button className="authitems" className={"authSubmit"} onClick={() => handleGoogleSignIn()}>Sign Up with Google</button>
@@ -265,16 +169,22 @@ function App(props) {
 
 function SignedInPage(props) {
 
-    const collectionName = props.user;
-    const query = db.collection(collectionName);
+    const collectionName = "People-SharingAllowed";
+    const query = db.collection(collectionName).where('owner', "==", props.user);
     const [hasFetchedTask, setFetch] = useState(false);
-    let collectionRef = db.collection(collectionName)
+    let collectionRef = db.collection(collectionName);
     const [value, loading, error] = useCollection(query)
+    console.log(value)
     if (!loading) {
-        value.docs.map(async (x) => console.log((await getDoc(x.ref)).data().title))
-    }
-    const data = loading === false ? value.docs.map((element)=> element.data()) : []
+        if (value){
+            value.docs.map(async (x) => console.log((await getDoc(x.ref)).data().title))
 
+        }
+    }
+    let data = null;
+    if (value) {
+        data = loading === false ? value.docs.map((element) => element.data()) : []
+    }
     const [showAlert, setShowAlert] = useState(false);
     const [showEditAlert, setShowEditAlert] = useState(false);
     let [listId, setListId] = useState(0);
@@ -282,14 +192,13 @@ function SignedInPage(props) {
         type: "home"
     })
 
-
-
     // End Auth
 
     function handleAddList(listName) {
         const List = {
             id: generateUniqueID(),
             title: listName,
+            owner: props.user
         }
         collectionRef.doc(List.id).set(List)
 
@@ -355,6 +264,7 @@ function SignedInPage(props) {
     const pageRenderLookup = {
         "home": (
             <>
+            {loading && <h1>Loading</h1>}
                 <signedInPage/>
                 <button onClick={() => props.signOut()}> Sign Out </button>
                 <MainPage updateList={updateList} handleDelete={handleDeleteList} setData={handleAddList} data={data} onListClick={(n) =>
@@ -367,7 +277,7 @@ function SignedInPage(props) {
         "list": (
             <>
                 <img tabIndex="0" onKeyPress={(event) => {(event.key === "Enter"||event.code === "Space") && setFetchAndPage()}} onClick={() => setFetchAndPage()} alt={"Back Arrow"} src={"long-arrow-alt-left-solid.svg"} className={"back-arrow"}/>
-                <Lists collectionRef={collectionRef} query={useCollection} deleteTask={deleteTask} updateTask={updateTask} setFetch={setFetch} fetch={loading} data={data.filter((x) => x.id == selectedPage.selectedId)}  getDocInfo={getDocInfo} addListItem={addListItem} list={collectionRef.doc(selectedPage.selectedId)}/>
+                {data && <Lists collectionRef={collectionRef} query={useCollection} deleteTask={deleteTask} updateTask={updateTask} setFetch={setFetch} fetch={loading} data={data.filter((x) => x.id == selectedPage.selectedId)}  getDocInfo={getDocInfo} addListItem={addListItem} list={collectionRef.doc(selectedPage.selectedId)}/>}
             </>
         )
     }
