@@ -101,6 +101,8 @@ function Lists(props) {
     }
 
     const [shareEmail, setEmail] = useState("");
+    const [unShare, setUnShare] = useState("");
+
 
 
     return (
@@ -110,6 +112,12 @@ function Lists(props) {
                 {props.user.uid == props.data[0].owner && <input className="share" placeholder={"Enter Friends Email"} type="text" name="shared_email" onChange={(e) => setEmail(e.target.value)}/>}
                 {props.user.uid == props.data[0].owner && <button className="share" className={"share"} onClick={() => props.handleShare(shareEmail, props.list.id)}> Share List </button>}
             </div>
+
+            <div className={"unshare"}>
+                {props.user.uid == props.data[0].owner && <input className="unshare" placeholder={"Enter Email To Remove"} type="text" name="unshared_email" onChange={(e) => setUnShare(e.target.value)}/>}
+                {props.user.uid == props.data[0].owner && <button className="unshare" className={"unshare"} onClick={() => props.handleUnShare(unShare, props.list.id)}> Remove Collaborator</button>}
+            </div>
+
             <div className={"filters"}>
             <label className={"filter-dropdown"} htmlFor="filters">Filters</label>
                 <select name="filters" id="filter-select" onChange={(e) => setFilter(e.target.value)}>

@@ -233,7 +233,7 @@ function SignedInPage(props) {
         // const List = collectionRef.doc(id).get()
         // console.log(List);
         const docSnap = await getDoc(collectionRef.doc(id));
-        if (props.user.email != docSnap.data().owner) {
+        if (props.user.uid != docSnap.data().owner) {
             console.log("You do not have permision to do this.")
         }
         else {
@@ -250,16 +250,32 @@ function SignedInPage(props) {
         }
     }
 
-    // async function getEmails(id){
-    //     let emails = [];
-    //     if(!loading){
-    //         const q = collectionRef.doc(id);
-    //         const querySnapshot = await getDocs(q);
-    //         querySnapshot.forEach((doc) => {
-    //             emails.push([doc.data().sharedWith]);
-    //         });}
-    //     return emails;
-    // }
+    async function handleUnShare(email, id) {
+
+        // const List = collectionRef.doc(id).get()
+        // console.log(List);
+        const docSnap = await getDoc(collectionRef.doc(id));
+        if (props.user.uid != docSnap.data().owner) {
+            console.log("You do not have permision to do this.")
+        }
+        else {
+            if (docSnap.exists()) {
+                if (props.user.email == email) {
+                    console.log("You are the owner, you can't remove yourself.")
+                }
+                let unShareEmail = docSnap.data().sharedWith
+                const newSharedEmails = unShareEmail.filter((singularEmail) => singularEmail != email);
+                console.log("unShareEmail", newSharedEmails)
+
+                await collectionRef.doc(id).update({
+                    sharedWith: newSharedEmails
+                })
+            } else {
+                console.log("No such document!");
+            }
+        }
+    }
+
 
     async function getDocInfo(id){
         let currTasks = [];
@@ -311,7 +327,7 @@ function SignedInPage(props) {
         "list": (
             <>
                 <img tabIndex="0" onKeyPress={(event) => {(event.key === "Enter"||event.code === "Space") && setFetchAndPage()}} onClick={() => setFetchAndPage()} alt={"Back Arrow"} src={"long-arrow-alt-left-solid.svg"} className={"back-arrow"}/>
-                {data && <Lists handleShare={handleShare} user={props.user} collectionRef={collectionRef} query={useCollection} deleteTask={deleteTask} updateTask={updateTask} setFetch={setFetch} fetch={loading} data={data.filter((x) => x.id == selectedPage.selectedId)} getDocInfo={getDocInfo} addListItem={addListItem} list={collectionRef.doc(selectedPage.selectedId)}/>}
+                {data && <Lists handleUnShare={handleUnShare} handleShare={handleShare} user={props.user} collectionRef={collectionRef} query={useCollection} deleteTask={deleteTask} updateTask={updateTask} setFetch={setFetch} fetch={loading} data={data.filter((x) => x.id == selectedPage.selectedId)} getDocInfo={getDocInfo} addListItem={addListItem} list={collectionRef.doc(selectedPage.selectedId)}/>}
             </>
         )
     }
