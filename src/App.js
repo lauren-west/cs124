@@ -233,16 +233,20 @@ function SignedInPage(props) {
         // const List = collectionRef.doc(id).get()
         // console.log(List);
         const docSnap = await getDoc(collectionRef.doc(id));
-
-        if (docSnap.exists()) {
-            if(props.user.email == email) {
-                console.log("You are the owner, you already have access to this list")
+        if (props.user.email != docSnap.data().owner) {
+            console.log("You do not have permision to do this.")
+        }
+        else {
+            if (docSnap.exists()) {
+                if (props.user.email == email) {
+                    console.log("You are the owner, you already have access to this list")
+                }
+                await collectionRef.doc(id).update({
+                    sharedWith: [...docSnap.data().sharedWith, email]
+                })
+            } else {
+                console.log("No such document!");
             }
-            await collectionRef.doc(id).update({
-                sharedWith: [...docSnap.data().sharedWith, email]
-            })
-        } else {
-            console.log("No such document!");
         }
     }
 

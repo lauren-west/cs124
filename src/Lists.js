@@ -107,8 +107,8 @@ function Lists(props) {
         <Wrapper>
             <h1>{props.data[0].title}</h1>
             <div className={"share"}>
-                <input className="share" placeholder={"Enter Friends Email"} type="text" name="shared_email" onChange={(e) => setEmail(e.target.value)}/>
-                <button className="share" className={"share"} onClick={() => props.handleShare(shareEmail, props.list.id)}> Share List </button>
+                {props.user.uid == props.data[0].owner && <input className="share" placeholder={"Enter Friends Email"} type="text" name="shared_email" onChange={(e) => setEmail(e.target.value)}/>}
+                {props.user.uid == props.data[0].owner && <button className="share" className={"share"} onClick={() => props.handleShare(shareEmail, props.list.id)}> Share List </button>}
             </div>
             <div className={"filters"}>
             <label className={"filter-dropdown"} htmlFor="filters">Filters</label>
