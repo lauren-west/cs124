@@ -100,9 +100,16 @@ function Lists(props) {
         tasks.filter((y) => y.completed).map((x) => props.deleteTask(props.list.id, x.id))
     }
 
+    const [shareEmail, setEmail] = useState("");
+
+
     return (
         <Wrapper>
             <h1>{props.data[0].title}</h1>
+            <div className={"share"}>
+                <input className="share" placeholder={"Enter Friends Email"} type="text" name="shared_email" onChange={(e) => setEmail(e.target.value)}/>
+                <button className="share" className={"share"} onClick={() => props.handleShare(shareEmail, props.list.id)}> Share List </button>
+            </div>
             <div className={"filters"}>
             <label className={"filter-dropdown"} htmlFor="filters">Filters</label>
                 <select name="filters" id="filter-select" onChange={(e) => setFilter(e.target.value)}>

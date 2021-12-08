@@ -228,6 +228,35 @@ function SignedInPage(props) {
         setFetch(false)
     }
 
+    async function handleShare(email, id) {
+
+        // const List = collectionRef.doc(id).get()
+        // console.log(List);
+        const docSnap = await getDoc(collectionRef.doc(id));
+
+        if (docSnap.exists()) {
+            if(props.user.email == email) {
+                console.log("You are the owner, you already have access to this list")
+            }
+            await collectionRef.doc(id).update({
+                sharedWith: [...docSnap.data().sharedWith, email]
+            })
+        } else {
+            console.log("No such document!");
+        }
+    }
+
+    // async function getEmails(id){
+    //     let emails = [];
+    //     if(!loading){
+    //         const q = collectionRef.doc(id);
+    //         const querySnapshot = await getDocs(q);
+    //         querySnapshot.forEach((doc) => {
+    //             emails.push([doc.data().sharedWith]);
+    //         });}
+    //     return emails;
+    // }
+
     async function getDocInfo(id){
         let currTasks = [];
         if(!loading){
@@ -278,7 +307,7 @@ function SignedInPage(props) {
         "list": (
             <>
                 <img tabIndex="0" onKeyPress={(event) => {(event.key === "Enter"||event.code === "Space") && setFetchAndPage()}} onClick={() => setFetchAndPage()} alt={"Back Arrow"} src={"long-arrow-alt-left-solid.svg"} className={"back-arrow"}/>
-                {data && <Lists user={props.user} collectionRef={collectionRef} query={useCollection} deleteTask={deleteTask} updateTask={updateTask} setFetch={setFetch} fetch={loading} data={data.filter((x) => x.id == selectedPage.selectedId)} getDocInfo={getDocInfo} addListItem={addListItem} list={collectionRef.doc(selectedPage.selectedId)}/>}
+                {data && <Lists handleShare={handleShare} user={props.user} collectionRef={collectionRef} query={useCollection} deleteTask={deleteTask} updateTask={updateTask} setFetch={setFetch} fetch={loading} data={data.filter((x) => x.id == selectedPage.selectedId)} getDocInfo={getDocInfo} addListItem={addListItem} list={collectionRef.doc(selectedPage.selectedId)}/>}
             </>
         )
     }
