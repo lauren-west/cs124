@@ -37,7 +37,7 @@ function App(props) {
     // Start Auth
     const [userEmail, setEmail] = useState("");
     const [userPassword, setPassword] = useState("");
-    const [user, setUser] = useState("");
+    const [user, setUser] = useState(null);
     const [passwordValid, setValidity] = useState(true)
     const [signupValid, setSignupValid] = useState(true);
 
@@ -47,7 +47,7 @@ function App(props) {
                 // Signed in
                 const user = userCredential.user;
                 console.log("Signed Up!");
-                setUser(user.uid);
+                setUser(user);
                 setPage({type: "home"});
 
                 // ...
@@ -69,7 +69,7 @@ function App(props) {
             .then((userCredential) => {
                 // Signed in
                 const user = userCredential.user;
-                setUser(user.uid);
+                setUser(user);
                 // ...
                 console.log("Signed In!");
                 console.log(user);
@@ -94,7 +94,7 @@ function App(props) {
 
                 // The signed-in user info.
                 const user = result.user;
-                setUser(user.uid);
+                setUser(user);
                 console.log("Signed In!");
                 console.log(user);
                 setPage({type: "home"});
@@ -169,16 +169,14 @@ function App(props) {
 
 function SignedInPage(props) {
 
-    const collectionName = "People-SharingAllowed";
-    const query = db.collection(collectionName).where('owner', "==", props.user);
+    const collectionName = "App_Data";
+    const query = db.collection(collectionName).where("sharedWith", "array-contains", props.user.email);
     const [hasFetchedTask, setFetch] = useState(false);
     let collectionRef = db.collection(collectionName);
     const [value, loading, error] = useCollection(query)
-    console.log(value)
     if (!loading) {
         if (value){
             value.docs.map(async (x) => console.log((await getDoc(x.ref)).data().title))
-
         }
     }
     let data = null;
@@ -198,7 +196,8 @@ function SignedInPage(props) {
         const List = {
             id: generateUniqueID(),
             title: listName,
-            owner: props.user
+            owner: props.user.uid,
+            sharedWith: [props.user.email]
         }
         collectionRef.doc(List.id).set(List)
 
@@ -221,9 +220,11 @@ function SignedInPage(props) {
             title: itemName,
             completed: false,
             priority: priority, // planning on tiny, medium, high
-            created: firebase.database.ServerValue.TIMESTAMP
+            created: firebase.database.ServerValue.TIMESTAMP,
+            owner: props.user.uid,
+            sharedWith: [props.user.email]
         }
-        list.collection(list.id).doc(Task.id).set(Task)
+        list.collection("tasks").doc(Task.id).set(Task)
         setFetch(false)
     }
 
@@ -240,7 +241,7 @@ function SignedInPage(props) {
 
     async function updateTask(listid, taskid, title_val, comp_value, priority_value){
         await collectionRef.doc(listid)
-            .collection(listid)
+            .collection("tasks")
             .doc(taskid)
             .update({
                 title: title_val,
@@ -257,7 +258,7 @@ function SignedInPage(props) {
     }
 
     async function deleteTask(listid, taskid){
-        await collectionRef.doc(listid).collection(listid).doc(taskid).delete();
+        await collectionRef.doc(listid).collection("tasks").doc(taskid).delete();
         setFetch(false)
     }
 
@@ -277,7 +278,7 @@ function SignedInPage(props) {
         "list": (
             <>
                 <img tabIndex="0" onKeyPress={(event) => {(event.key === "Enter"||event.code === "Space") && setFetchAndPage()}} onClick={() => setFetchAndPage()} alt={"Back Arrow"} src={"long-arrow-alt-left-solid.svg"} className={"back-arrow"}/>
-                {data && <Lists collectionRef={collectionRef} query={useCollection} deleteTask={deleteTask} updateTask={updateTask} setFetch={setFetch} fetch={loading} data={data.filter((x) => x.id == selectedPage.selectedId)}  getDocInfo={getDocInfo} addListItem={addListItem} list={collectionRef.doc(selectedPage.selectedId)}/>}
+                {data && <Lists user={props.user} collectionRef={collectionRef} query={useCollection} deleteTask={deleteTask} updateTask={updateTask} setFetch={setFetch} fetch={loading} data={data.filter((x) => x.id == selectedPage.selectedId)} getDocInfo={getDocInfo} addListItem={addListItem} list={collectionRef.doc(selectedPage.selectedId)}/>}
             </>
         )
     }
