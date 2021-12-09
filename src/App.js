@@ -332,7 +332,6 @@ function SignedInPage(props) {
         )
     }
     return <div>{pageRenderLookup[selectedPage.type]}</div>
-
 }
 
 export default App;
