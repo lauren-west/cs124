@@ -153,9 +153,9 @@ function App(props) {
                 <p className={"subtitle"}>By Lucas and Lauren</p>
                 <div className={"buttons-box"}>
                     <div className={"authbuttons"}>
-                        <button onClick={() => setPage({type: "signIn"})}>Sign In</button>
+                        <button className={"front-page-buttons"} onClick={() => setPage({type: "signIn"})}>Sign In</button>
                         <p className={"authOption"}>or</p>
-                        <button className={"authSubmit"} onClick={() => setPage({type: "signUp"})}>Create an Account</button>
+                        <button className={"front-page-buttons"} onClick={() => setPage({type: "signUp"})}>Create an Account</button>
                     </div>`
                 </div>
             </div>
