@@ -317,7 +317,7 @@ img {
     background-color: #8cabf1;
     border-color: #8cabf1;
     border-radius: 4px;
-    padding: 4px;
+    padding: 8px 10px 8px 10px;
 }
 
 .authOption{
