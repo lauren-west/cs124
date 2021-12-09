@@ -1,0 +1,40 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() {
+      return request.auth.uid != null && request.auth.uid != null;
+    }
+    
+    function isDocOwner() {
+      return request.auth.uid == request.resource.data.owner;
+    }
+    
+    function updatedDocHasCorrectOwner() {
+      return request.auth.uid == request.resource.data.owner;
+    }
+    
+    function updatedDocHasSameOwner() {
+      return resource.data.owner == request.resource.data.owner;
+    }
+    
+    function updatedDocHasSameSharing() {
+      return resource.data.sharedWith == request.resource.data.sharedWith;
+    }
+    
+    function isSharedWithMe() {
+      return request.auth.token.email in resource.data.sharedWith;
+    }
+    
+    match /App_Data/{document} {
+      allow read: if signedIn() && isSharedWithMe();
+      allow create: if signedIn() || updatedDocHasCorrectOwner();
+      allow update: if signedIn() || isSharedWithMe() ||
+        updatedDocHasSameOwner() || updateDocHasSameSharing();
+      allow delete: if signedIn() || isDocOwner();
+      
+    }
+    match /App_Data/{document}/{task=**} {
+          allow read, write, create, update, delete: if true;
+        }     
+  }
+}
