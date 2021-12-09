@@ -1,4 +1,4 @@
-# Lab 4
+# Lab 5
 ##### Lucas Ewing and Lauren West
 
 In this lab, we designed and implemented a simple interface for a mobile web app. This app manages a list of items the user desires to complete. Our web app is written in React and has full functionality. 
@@ -92,6 +92,10 @@ We updated our design slightly in Lab 4 so that depending on the screen size acc
 
 
 
+For Lab 5 we implemented Authentication. Our goal was to create a simple sign-up/sign-in page in order to most rapidly get our users using our app. We went with a sleek design that did little to distract the user from the goal of the page - to get them logged in.
+
+
+
 ## User Testing
 It was mentioned in Design Designs that we used User Testing to decide on a pencil icon vs touch to edit. We set up an experiment and asked User A to comment on the design with the pencil feature and a design that would be touch to edit. User A said that the touch to edit was clear enough, and made for better aesthetics. We also took this test to User B, who shared similar remarks in favor of touch to edit. User C reminded us that we did not have a list box on our main page, so we made sure to add that in our final design. Lastly, User C remarked on our radio buttons and requested them to be changed to checkboxes which we did in our final design.
 ![)](https://user-images.githubusercontent.com/54875885/134599216-2724e8e7-9b9a-4954-bc96-4c50a109f02f.png)
@@ -106,8 +110,13 @@ For our Lab 3 user-resting we received the following feedback:
 - User D, a new tester, wanted the filter list location moved from the right of the screen to the left above the task items.
 - User D also wanted the add/edit list buttons spaced apart further.
 
-For our Lab 4 
+For our Lab 4 user-resting we received the following feedback:
 - User C requested for left alignment of our "Filter" and "Delete Completed" sections.
+
+For our Lab5 user-testing we received the following feedback:
+- User D requested for less clutter in the log in screen - simply seperating our log in sections and sign up sections would do much to facilitate easy access to our app.
+- User E wanted an option to use Google to log in in order to make the process faster.
+- User A wanted an indicator for sharead lists.
 
 ## Final Design
 ### Implemented Features:
@@ -139,6 +148,12 @@ For our Lab 4
 - Added full keyboard functionality
 
 
+#### LAB 5
+- Added a sign-in/sign-up section (on seperate pages)
+- Allowed lists to be shareable
+- Added an indicator to shared lists
+
+
 ## Challenges We Faced
 #### LAB 1
 We often found ourselves struggling to meet every expectation while simultaneously keeping our application as sleek-looking as possible. For example, we wanted a way to edit names that were both intuitive and easy, while also not cluttering the screen. At first, we had a pen in the corner of the screen that we wanted users to click on, however, through user feedback we were told the pencil icon was bothersome. The user-preferred clicking on the name to edit. This was a contemplated change to make for us, as we found that without the pencil icon there was no obvious indication for editing; however as stated by our user testers, our technique is common enough that most users would understand it intuitively anyways. Something we learned through lab 1 was that users already have a lot of experience with mobile applications, allowing us to create simpler design decisions such as clicking to edit the task names.
@@ -153,6 +168,9 @@ We ran into numerous bugs during this lab. In total, we spent over 20 hours work
 #### LAB 4
 We struggled for a little while with figuring out how to get our lists to tab in the right order, yet after some research we were able to solve the problem quickly. Luckily we did not have to edit the way we display our lists for this lab as we already allowed multiple lists displayed at once. In general because we had already completed many of the requirements for this lab we did not have too many challenges.
 
+#### LAB 5
+Authentication was challenging to figure out given the confusing ways firebase deals with their permissions. We went through a lot of trail/error prior to figuring out rules. However, through some assistance from our professor, we were able to figure out a good system for managing our permissions which made sense to us. Further, we spent a lot of time modifying small details of our design, it proved difficult creting a simple authetnication section that fit the look of our app.
+
 ## What we are proud of
 #### LAB 1
 We are very proud of our simple aesthetic. From the start, we decided to apply a simple design to our app - black, white, and blue - with straightforward tasks. It is oddly difficult however to find a simple design that is simultaneously good-looking and usable, which is why we had many iterations, however, our final design is better than we originally imagined it could be. 
@@ -162,3 +180,5 @@ We are very proud of the working functionality. At first, we had deleted items f
 We are most proud of our own drive to complete this lab. This past week we spent numerous hours every night working on the project and debugging it. We are confident that we have grown a lot as both developers and designers over this lab, and have a stronger grasp on firebase. Further our struggle with rendering taught us important lessons in reading documents provided by the developers. Our intuition when it comes to bugs has also grown immensely. Debugging is a very important skill when it comes to development and we are proud to be flexing our debugging muscles so well.
 #### LAB 4
 We are happy that we already had implemented many of the needed new features, so in a sense we are proud of our forethought! Additionally, we are proud of making our app fully accessible, allowing all users to experience it the same.
+#### LAB 5
+We are very proud of completing our app! Through our iterative journey we have gotten a lot better at both front-end design programming and general design topics. We both feel like we approach our code from a more design oriented perspective now, as compared to teh start where we rushed into our code prior to fully laying out how we wanted the app to be interacted with.
