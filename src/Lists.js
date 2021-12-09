@@ -80,22 +80,6 @@ function Lists(props) {
 
     let tasks = loading === false ? value.docs.map((element) => element.data()) : [];
 
-
-    // if (value){
-    //     tasks = loading === false ? value.docs.map((element) => element.data()) : []
-    // }
-    //original
-
-
-    // const [value, loading, error] = useCollection(query)
-    // console.log(props.user)
-    // if (!loading) {
-    //     if (value){
-    //         value.docs.map(async (x) => console.log((await getDoc(x.ref)).data().title))
-    //     }
-    // }
-
-
     function deleteCompleted(tasks){
         tasks.filter((y) => y.completed).map((x) => props.deleteTask(props.list.id, x.id))
     }
