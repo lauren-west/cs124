@@ -92,7 +92,10 @@ We updated our design slightly in Lab 4 so that depending on the screen size acc
 
 
 
-For Lab 5 we implemented Authentication. Our goal was to create a simple sign-up/sign-in page in order to most rapidly get our users using our app. We went with a sleek design that did little to distract the user from the goal of the page - to get them logged in.
+For Lab 5 we implemented Authentication. Our goal was to create a simple sign-up/sign-in page in order to most rapidly get our users using our app. We went with a sleek design that did little to distract the user from the goal of the page - to get them logged in. You can see our log-in page below.
+
+![image](https://user-images.githubusercontent.com/63129821/145352125-58890d83-6895-446a-b863-15f8e3e43f29.png)
+
 
 
 
