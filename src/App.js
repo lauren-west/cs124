@@ -148,14 +148,18 @@ function App(props) {
             </>
         ),
         "trueHome": (
-            <>
-                <h1 className={"homeName"}>Home</h1>
-                <div className={"authbuttons"}>
-                <button onClick={() => setPage({type: "signIn"})}>Sign In</button>
-                <p className={"authOption"}>or</p>
-                <button className={"authSubmit"} onClick={() => setPage({type: "signUp"})}>Create an Account</button>
+            <div className={"home-page"}>
+                <h1 className={"homeName"}>CATA LIST</h1>
+                <p className={"subtitle"}>By Lucas and Lauren</p>
+                <div className={"buttons-box"}>
+                    <div className={"authbuttons"}>
+                        <button onClick={() => setPage({type: "signIn"})}>Sign In</button>
+                        <p className={"authOption"}>or</p>
+                        <button className={"authSubmit"} onClick={() => setPage({type: "signUp"})}>Create an Account</button>
+                    </div>`
                 </div>
-            </>
+            </div>
+
         ),
         "home": (
             <div>
