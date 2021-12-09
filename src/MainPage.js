@@ -18,8 +18,8 @@ function ListsDisplay(props) {
             <div tabIndex="0" onKeyPress={(event) => {(event.key === "Enter"||event.code === "Space") && props.onClick(props.list.id)}} onClick={() => props.onClick(props.list.id)} className="boxes" id="list-box-1">
                 <img alt={"List Icon"} src="list-solid.svg"/>
                 <span>{props.list.title}</span>
+                {(props.list.sharedWith.length > 1) && <img tabIndex="0" alt={"Shared List"} src={"user-friends-solid.svg"}></img>}
                 <div className={"edit-delete-button-container"}>
-                    {(props.list.sharedWith.length > 1) && <img tabIndex="0" alt={"Shared List"} src={"user-friends-solid.svg"}></img>}
                     <img tabIndex="0" className="edit-delete-button" onClick={(e) => {
                         e.stopPropagation()
                         setShowAlert(true)
