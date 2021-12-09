@@ -120,36 +120,40 @@ function App(props) {
 
     const pageRenderLookup = {
         "signIn": (
-            <>
+            <div className={"home-page"}>
                 <img tabIndex="0" onKeyPress={(event) => {(event.key === "Enter"||event.code === "Space") && setPage({type: "trueHome"})}} onClick={() => setPage({type: "trueHome"})} alt={"Back Arrow"} src={"long-arrow-alt-left-solid.svg"} className={"back-arrow"}/>
-                <h1 className={"homeName"}>Sign into your Account</h1>
+                <h1 className={"sign-in-up-h1s"}>Sign into your Account</h1>
                 {!passwordValid && <p className={"wrongPass"}>Wrong username or password</p>}
-                <div className={"authbuttons"}>
-                    <input className="authitems" placeholder={"Email"} type="text" name="email" onChange={(e) => setEmail(e.target.value)}/>
-                    <input className="authitems" placeholder={"Password"} type="password" name="password" onChange={(e) => setPassword(e.target.value)}/>
-                    <button className="authitems" className={"authSubmit"} onClick={() => handleSignIn(userEmail, userPassword)}> Sign In </button>
-                    <p className={"authOption"}>or</p>
-                    <button className="authitems" className={"authSubmit"} onClick={() => handleGoogleSignIn()}>Sign In with Google</button>
+                <div className={"buttons-box"}>
+                    <div className={"authbuttons"}>
+                        <input className="authitems" placeholder={"Email"} type="text" name="email" onChange={(e) => setEmail(e.target.value)}/>
+                        <input className="authitems" placeholder={"Password"} type="password" name="password" onChange={(e) => setPassword(e.target.value)}/>
+                        <button className="front-page-buttons" onClick={() => handleSignIn(userEmail, userPassword)}> Sign In </button>
+                        <p className={"authOption"}>or</p>
+                        <button className="front-page-buttons" onClick={() => handleGoogleSignIn()}>Sign In with Google</button>
+                    </div>
                 </div>
-            </>
+            </div>
         ),
         "signUp": (
-            <>
+            <div className={"home-page"}>
                 <img tabIndex="0" onKeyPress={(event) => {(event.key === "Enter"||event.code === "Space") && setPage({type: "trueHome"})}} onClick={() => setPage({type: "trueHome"})} alt={"Back Arrow"} src={"long-arrow-alt-left-solid.svg"} className={"back-arrow"}/>
-                <h1 className={"homeName"}>Create an Account</h1>
+                <h1 className={"sign-in-up-h1s"}>Create an Account</h1>
                 {!signupValid && <p className={"wrongPass"}>Invalid email or password</p>}
-                <div className={"authbuttons"}>
-                    <input className={"authitems"} placeholder={"Email"} type="text" name="email" onChange={(e) => setEmail(e.target.value)}/>
-                    <input className="authitems" placeholder={"Password"} type="password" name="password" onChange={(e) => setPassword(e.target.value)}/>
-                    <button className="authitems" className={"authSubmit"} onClick={() => handleSignUp(userEmail, userPassword)}> Sign Up </button>
-                    <p className={"authOption"}>or</p>
-                    <button className="authitems" className={"authSubmit"} onClick={() => handleGoogleSignIn()}>Sign Up with Google</button>
+                <div className={"buttons-box"}>
+                    <div className={"authbuttons"}>
+                        <input className={"authitems"} placeholder={"Email"} type="text" name="email" onChange={(e) => setEmail(e.target.value)}/>
+                        <input className="authitems" placeholder={"Password"} type="password" name="password" onChange={(e) => setPassword(e.target.value)}/>
+                        <button className="front-page-buttons" onClick={() => handleSignUp(userEmail, userPassword)}> Sign Up </button>
+                        <p className={"authOption"}>or</p>
+                        <button className="front-page-buttons" onClick={() => handleGoogleSignIn()}>Sign Up with Google</button>
+                    </div>
                 </div>
-            </>
+            </div>
         ),
         "trueHome": (
             <div className={"home-page"}>
-                <h1 className={"homeName"}>CATA LIST</h1>
+                <h1 className={"homeName"}>LISTIES</h1>
                 <p className={"subtitle"}>By Lucas and Lauren</p>
                 <div className={"buttons-box"}>
                     <div className={"authbuttons"}>
