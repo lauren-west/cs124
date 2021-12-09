@@ -18,6 +18,7 @@ function ListsDisplay(props) {
             <div tabIndex="0" onKeyPress={(event) => {(event.key === "Enter"||event.code === "Space") && props.onClick(props.list.id)}} onClick={() => props.onClick(props.list.id)} className="boxes" id="list-box-1">
                 <img alt={"List Icon"} src="list-solid.svg"/>
                 <div>
+                    {console.log(props.list.sharedWith.length > 1)}
                     {(props.list.sharedWith.length > 1) && <img tabIndex="0" alt={"Shared List"} src={"user-friends-solid.svg"}></img>}
                 </div>
                 <span>{props.list.title}</span>
