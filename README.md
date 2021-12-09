@@ -1,4 +1,4 @@
-# cs124
+# CS124
 
 We created a React Application that helps people manage their tasks. 
 
