@@ -324,8 +324,12 @@ function SignedInPage(props) {
             <>
             {loading && <h1>Loading</h1>}
                 <signedInPage/>
-                <button onClick={() => props.signOut()}> Sign Out </button>
-                <MainPage updateList={updateList} handleDelete={handleDeleteList} setData={handleAddList} data={data} onListClick={(n) =>
+                <div>
+                    <div className={"sign-out-container"}>
+                        <button className={"sign-out-button"} onClick={() => props.signOut()}>Sign Out</button>
+                    </div>
+                </div>
+                    <MainPage updateList={updateList} handleDelete={handleDeleteList} setData={handleAddList} data={data} onListClick={(n) =>
                     setPage({
                         type: "list",
                         selectedId: n
@@ -335,6 +339,9 @@ function SignedInPage(props) {
         "list": (
             <>
                 <img tabIndex="0" onKeyPress={(event) => {(event.key === "Enter"||event.code === "Space") && setFetchAndPage()}} onClick={() => setFetchAndPage()} alt={"Back Arrow"} src={"long-arrow-alt-left-solid.svg"} className={"back-arrow"}/>
+                <div className={"sign-out-container"}>
+                    <button className={"sign-out-button"} onClick={() => props.signOut()}>Sign Out</button>
+                </div>
                 {data && <Lists handleUnShare={handleUnShare} handleShare={handleShare} user={props.user} collectionRef={collectionRef} query={useCollection} deleteTask={deleteTask} updateTask={updateTask} setFetch={setFetch} fetch={loading} data={data.filter((x) => x.id == selectedPage.selectedId)} getDocInfo={getDocInfo} addListItem={addListItem} list={collectionRef.doc(selectedPage.selectedId)}/>}
             </>
         )

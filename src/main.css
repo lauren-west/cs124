@@ -10,6 +10,15 @@ body {
 
 button {
     font-family: 'Montserrat', sans-serif;
+    border-radius: 4px;
+    border-width: 1px;
+    padding: 4px;
+}
+.sign-out-button{
+    margin: 20px 20px 0px 0px;
+}
+.sign-out-container{
+    float: right;
 }
 
 h1 {
