@@ -14,7 +14,7 @@ function ShowEditAlert(props) {
 
 function ListsItemDisplay(props){
     console.log(props.currentTasks);
-    const [checked, setChecked] = useState(props.completed); //useState(props.listitem.completed)
+    const [checked, setChecked] = useState(props.completed);
     const [showAlert, setShowAlert] = useState(false);
 
     function handleAlertOKListItem(listitem, priority) {
@@ -56,7 +56,6 @@ function ListsItemDisplay(props){
                 props.updateTask(props.list.id, props.id, props.listitem, !props.completed, props.priority) 
             }}/>
             <label>{props.listitem}</label><br/>
-
             <div className={"edit-delete-button-container"}>
                 {showPriorityImage(props.priority)}
             <img tabIndex="0" className="edit-delete-button" alt={"Edit Pen"} onKeyPress={(event) => {event.preventDefault()
@@ -76,8 +75,6 @@ function Lists(props) {
     const [filter, setFilter] = useState("title");
     const query = props.collectionRef;
     const [value, loading, error] = useCollection(props.collectionRef.doc(props.list.id).collection("tasks").orderBy(filter))
-    // const tasks = loading === false ? value.docs.map((element) => element.data()) : []
-
     let tasks = loading === false ? value.docs.map((element) => element.data()) : [];
 
     function deleteCompleted(tasks){

@@ -49,16 +49,12 @@ function App(props) {
                 console.log("Signed Up!");
                 setUser(user);
                 setPage({type: "home"});
-
-                // ...
             })
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
                 console.log("try signing up again!")
                 setSignupValid(false);
-
-                // ..
             });
 
 
@@ -70,12 +66,9 @@ function App(props) {
                 // Signed in
                 const user = userCredential.user;
                 setUser(user);
-                // ...
                 console.log("Signed In!");
                 console.log(user);
                 setPage({type: "home"});
-
-
             })
             .catch((error) => {
                 const errorCode = error.code;
@@ -115,7 +108,6 @@ function App(props) {
 
     function handleSignOut(){
         setPage({type: "trueHome"});
-
     }
 
     const pageRenderLookup = {
@@ -198,8 +190,6 @@ function SignedInPage(props) {
         type: "home"
     })
 
-    // End Auth
-
     function handleAddList(listName) {
         const List = {
             id: generateUniqueID(),
@@ -237,9 +227,6 @@ function SignedInPage(props) {
     }
 
     async function handleShare(email, id) {
-
-        // const List = collectionRef.doc(id).get()
-        // console.log(List);
         const docSnap = await getDoc(collectionRef.doc(id));
         if (props.user.uid != docSnap.data().owner) {
             console.log("You do not have permision to do this.")
@@ -259,9 +246,6 @@ function SignedInPage(props) {
     }
 
     async function handleUnShare(email, id) {
-
-        // const List = collectionRef.doc(id).get()
-        // console.log(List);
         const docSnap = await getDoc(collectionRef.doc(id));
         if (props.user.uid != docSnap.data().owner) {
             console.log("You do not have permision to do this.")
