@@ -92,14 +92,14 @@ function Lists(props) {
     return (
         <Wrapper>
             <h1>{props.data[0].title}</h1>
-            <div className={"share"}>
-                {props.user.uid == props.data[0].owner && <input className="share" placeholder={"Enter Friends Email"} type="text" name="shared_email" onChange={(e) => setEmail(e.target.value)} id={"input-id"}/>}
+            <div className={"sharing"}>
+                {props.user.uid == props.data[0].owner && <input className="share input" placeholder={"Enter Friends Email"} type="text" name="shared_email" onChange={(e) => setEmail(e.target.value)} id={"input-id"}/>}
                 {props.user.uid == props.data[0].owner && <button className="share" className={"share"} onClick={() => props.handleShare(shareEmail, props.list.id) && (document.getElementById('input-id').value='')}> Share List </button>}
             </div>
 
-            <div className={"unshare"}>
-                {props.user.uid == props.data[0].owner && <input className="unshare" placeholder={"Enter Email To Remove"} type="text" name="unshared_email" onChange={(e) => setUnShare(e.target.value)} id={'input2-id'}/>}
-                {props.user.uid == props.data[0].owner && <button className="unshare" className={"unshare"} onClick={() => props.handleUnShare(unShare, props.list.id) && (document.getElementById('input2-id').value='')}> Remove Collaborator</button>}
+            <div className={"sharing"}>
+                {props.user.uid == props.data[0].owner && <input className="input" placeholder={"Enter Email To Remove"} type="text" name="unshared_email" onChange={(e) => setUnShare(e.target.value)} id={'input2-id'}/>}
+                {props.user.uid == props.data[0].owner && <button onClick={() => props.handleUnShare(unShare, props.list.id) && (document.getElementById('input2-id').value='')}> Remove Collaborator</button>}
             </div>
 
             <div className={"filters"}>
