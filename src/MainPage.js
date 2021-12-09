@@ -33,7 +33,6 @@ function ListsDisplay(props) {
                         setShowAlert(true)}
                     }} alt={"Edit Pen"} src={"edit-solid.svg"}/>
                     <img tabIndex="0" alt={"Delete X"} className="edit-delete-button" onKeyPress={(e) => {e.key === "Enter" && props.handleDelete(props.list.id, e)}} onClick={(e) => props.handleDelete(props.list.id, e)} src={"times-solid.svg"}></img>
-                {/*    (e) => props.handleDelete(e.target.id)*/}
                 </div>
 
             </div>
