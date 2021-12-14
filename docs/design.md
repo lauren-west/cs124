@@ -1,9 +1,10 @@
-# Lab 5
+# Lab 6
 ##### Lucas Ewing and Lauren West
-
-In this lab, we designed and implemented a simple interface for a mobile web app. This app manages a list of items the user desires to complete. Our web app is written in React and has full functionality. 
+In this lab, we ported our react task list aplication as to an iOS native application using Cordova. We used Lab 5 as a starting point for this lab.
 
 ## Design Decisions
+Design decisions for Lab 6 included deciding to write a React Native App from scratch or use Cordova to facilitate this process (with a couple of built-in drawbacks). Consequences include that our Cordova apps is slower, since hybrid apps are less optimal than native ones. However, the choice was clear in our particular situation; since finals-weeks gave us a strict time-constraint, we decided to use Cordova to port our React app to iOS. 
+
 Design decisions we made included: using list items vs tiles and using pencil icon vs touch to edit. For the first option, the team decided to use list items, seeing that it would be easier for the user to scroll through the list on mobile. Also, since items are added sequentially and deleted when checked, it seemed that the list display would be more intuitive. 
 The second design choice was much less clear--both choices had their pros and cons. Using a pencil icon to make edits would seemingly help a new user, but touching a pencil icon was not very elegant. Using touch simplifies the mobile interface where space is a commodity, but it may not be very clear what the user should do. At first, we decided on touch-to-edit, however further user testing changed our minds and we brought back the pencil-edit icon. The main reason was due to the difficult distinction between clicking to enter a list versus editing its name, and thus in order to avoid confusion we used the pencil-edit icon.
 
@@ -34,6 +35,9 @@ Further in Lab 3 we added a "delete all completed" feature. This will allow for 
 Lastly we took advice from our design lecture and aligned our elements properly and changed our fonts to match those recommended. 
 
 ![imglab4](https://user-images.githubusercontent.com/54875885/140462252-cf768e90-90e3-452c-a879-7aa7fe7c12d3.jpg)
+
+In Lab 5, we designed and implemented a simple interface for a mobile web app. This app manages a list of items the user desires to complete. Our web app is written in React and has full functionality. 
+
 
 
 ## Walkthrough
@@ -96,6 +100,8 @@ For Lab 5 we implemented Authentication. Our goal was to create a simple sign-up
 
 ![image](https://user-images.githubusercontent.com/63129821/145352125-58890d83-6895-446a-b863-15f8e3e43f29.png)
 
+For Lab 6 we ported the React App to iOS mobile app using Cordova, and made small changes to aloow for a better user experience.
+
 
 
 
@@ -120,6 +126,8 @@ For our Lab5 user-testing we received the following feedback:
 - User D requested for less clutter in the log in screen - simply seperating our log in sections and sign up sections would do much to facilitate easy access to our app.
 - User E wanted an option to use Google to log in in order to make the process faster.
 - User A wanted an indicator for sharead lists.
+
+User A did not know how to escape autozoom. We thus disabled this feature that automatically occurs when clicking on an input box.
 
 ## Final Design
 ### Implemented Features:
@@ -156,6 +164,9 @@ For our Lab5 user-testing we received the following feedback:
 - Allowed lists to be shareable
 - Added an indicator to shared lists
 
+### Lab 6
+- Ported React App to iOS mobile app using Cordova.
+
 
 ## Challenges We Faced
 #### LAB 1
@@ -174,6 +185,9 @@ We struggled for a little while with figuring out how to get our lists to tab in
 #### LAB 5
 Authentication was challenging to figure out given the confusing ways firebase deals with their permissions. We went through a lot of trail/error prior to figuring out rules. However, through some assistance from our professor, we were able to figure out a good system for managing our permissions which made sense to us. Further, we spent a lot of time modifying small details of our design, it proved difficult creting a simple authetnication section that fit the look of our app.
 
+### LAB 6
+We faced some challenges trying to port our app to iOS app. We found this article (https://fjolt.com/article/react-apache-cordova-ios-android) which helped us to figure out how to use Cordova, but we encountered issues that the article did not mention. For example, when we click on the input text to sign into the app, there is an autozoom that occurs, and does not exit. The user may or may not figure out that they had to double tap to exit autozoom and see the whole screen. To solve this, we disabled autozoom, seeing that we wanted the user to have full acccess to the viewport (unless they decide to use pinching to zoom and unzoom, that still works).
+
 ## What we are proud of
 #### LAB 1
 We are very proud of our simple aesthetic. From the start, we decided to apply a simple design to our app - black, white, and blue - with straightforward tasks. It is oddly difficult however to find a simple design that is simultaneously good-looking and usable, which is why we had many iterations, however, our final design is better than we originally imagined it could be. 
@@ -185,3 +199,8 @@ We are most proud of our own drive to complete this lab. This past week we spent
 We are happy that we already had implemented many of the needed new features, so in a sense we are proud of our forethought! Additionally, we are proud of making our app fully accessible, allowing all users to experience it the same.
 #### LAB 5
 We are very proud of completing our app! Through our iterative journey we have gotten a lot better at both front-end design programming and general design topics. We both feel like we approach our code from a more design oriented perspective now, as compared to teh start where we rushed into our code prior to fully laying out how we wanted the app to be interacted with.
+### LAB 6
+We are proud of finding an alternative way to create an iOS app outside of rewriting the code. Given the time constraints of finals week, we are happy and proud to have a functioning iOS mobile app that we have used personally and can show out friends. 
+
+Acknowledgement:
+Thank you Prof. Rhodes for teaching this class. We are excited to use these skills on personal projects and in our nacent software engineering careers.
