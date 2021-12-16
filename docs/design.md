@@ -100,7 +100,7 @@ For Lab 5 we implemented Authentication. Our goal was to create a simple sign-up
 
 ![image](https://user-images.githubusercontent.com/63129821/145352125-58890d83-6895-446a-b863-15f8e3e43f29.png)
 
-For Lab 6 we ported the React App to iOS mobile app using Cordova, and made small changes to aloow for a better user experience.
+For Lab 6 we ported the React App to iOS mobile app using Cordova, and made small changes to allow for a better user experience. See the walkthrough here: https://drive.google.com/file/d/1Kl1XhA9wiH0QoRjyuiH1RYxk3cMC3AQ0/view?usp=sharing
 
 
 
