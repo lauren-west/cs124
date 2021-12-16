@@ -1,6 +1,6 @@
 # Lab 6
 ##### Lucas Ewing and Lauren West
-In this lab, we ported our react task list application to an iOS native application using Cordova. We used Lab 5 as a starting point for this lab.
+In this lab, we ported our react task list application to an iOS native application using Cordova. We used Lab 5 as a starting point for this lab. Here is a video of us using the app: https://drive.google.com/file/d/1Kl1XhA9wiH0QoRjyuiH1RYxk3cMC3AQ0/view?usp=sharing
 
 ## Design Decisions
 Design decisions for Lab 6 included deciding to write a React Native App from scratch or use Cordova to facilitate this process (with a couple of built-in drawbacks). Consequences include that our Cordova app is slower, since hybrid apps are less optimal than native ones. However, the choice was clear in our particular situation; since finals-weeks gave us a strict time constraint, we decided to use Cordova to port our React app to iOS. 
