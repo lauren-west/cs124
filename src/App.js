@@ -118,7 +118,7 @@ function App(props) {
                 {!passwordValid && <p className={"wrongPass"}>Wrong username or password</p>}
                 <div className={"buttons-box"}>
                     <div className={"authbuttons"}>
-                        <input className="authitems" placeholder={"Email"} type="text" name="email" onChange={(e) => setEmail(e.target.value)}/>
+                        <input className="authitems" placeholder={"Email"} type="email" autoCorrect="off" autoCapitalize="off" name="email" onChange={(e) => setEmail(e.target.value)}/>
                         <input className="authitems" placeholder={"Password"} type="password" name="password" onChange={(e) => setPassword(e.target.value)}/>
                         <button className="front-page-buttons" onClick={() => handleSignIn(userEmail, userPassword)}> Sign In </button>
                         <p className={"authOption"}>or</p>
@@ -134,7 +134,7 @@ function App(props) {
                 {!signupValid && <p className={"wrongPass"}>Invalid email or password</p>}
                 <div className={"buttons-box"}>
                     <div className={"authbuttons"}>
-                        <input className={"authitems"} placeholder={"Email"} type="text" name="email" onChange={(e) => setEmail(e.target.value)}/>
+                        <input className={"authitems"} placeholder={"Email"} type="email" autoCorrect="off" autoCapitalize="off" name="email" onChange={(e) => setEmail(e.target.value)}/>
                         <input className="authitems" placeholder={"Password"} type="password" name="password" onChange={(e) => setPassword(e.target.value)}/>
                         <button className="front-page-buttons" onClick={() => handleSignUp(userEmail, userPassword)}> Sign Up </button>
                         <p className={"authOption"}>or</p>
