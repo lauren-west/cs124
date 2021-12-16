@@ -1,16 +1,16 @@
 # Lab 6
 ##### Lucas Ewing and Lauren West
-In this lab, we ported our react task list aplication as to an iOS native application using Cordova. We used Lab 5 as a starting point for this lab.
+In this lab, we ported our react task list application to an iOS native application using Cordova. We used Lab 5 as a starting point for this lab.
 
 ## Design Decisions
-Design decisions for Lab 6 included deciding to write a React Native App from scratch or use Cordova to facilitate this process (with a couple of built-in drawbacks). Consequences include that our Cordova apps is slower, since hybrid apps are less optimal than native ones. However, the choice was clear in our particular situation; since finals-weeks gave us a strict time-constraint, we decided to use Cordova to port our React app to iOS. 
+Design decisions for Lab 6 included deciding to write a React Native App from scratch or use Cordova to facilitate this process (with a couple of built-in drawbacks). Consequences include that our Cordova app is slower, since hybrid apps are less optimal than native ones. However, the choice was clear in our particular situation; since finals-weeks gave us a strict time constraint, we decided to use Cordova to port our React app to iOS. 
 
 Design decisions we made included: using list items vs tiles and using pencil icon vs touch to edit. For the first option, the team decided to use list items, seeing that it would be easier for the user to scroll through the list on mobile. Also, since items are added sequentially and deleted when checked, it seemed that the list display would be more intuitive. 
 The second design choice was much less clear--both choices had their pros and cons. Using a pencil icon to make edits would seemingly help a new user, but touching a pencil icon was not very elegant. Using touch simplifies the mobile interface where space is a commodity, but it may not be very clear what the user should do. At first, we decided on touch-to-edit, however further user testing changed our minds and we brought back the pencil-edit icon. The main reason was due to the difficult distinction between clicking to enter a list versus editing its name, and thus in order to avoid confusion we used the pencil-edit icon.
 
 We decided to go for a simplistic design. In minimalist spirit, we eliminated the border around our header after receiving user feedback that it looked out of place. Our goal was to have easily recognizable elements that reduced clutter for greater user experiences. 
 
-Our updated minimalist deisgn:
+Our updated minimalist design:
 
 ![image](https://user-images.githubusercontent.com/54875885/137419050-5f976fed-ed06-4251-a0d0-820cf5e0f74d.png)
 
@@ -26,13 +26,13 @@ Our final design for delete/edit:
 ![image](https://user-images.githubusercontent.com/54875885/137418905-37a725ee-dd0b-4fcc-ba8b-7cf074791331.png)
 
 
-In Lab 3 we have added priorities to tasks. Now each task can be one of three priorities: High priority, Medium priority, Low priority. WE chose our names based off of USER C and their input into the decision between using numbers to indicate priority or simple strings. They felt that it made more sense using strings. The way to recognize a tasks priority is via the number of exclamation marks: (2 !! = high priority, 1 ! = medium priority, 0 ! = low priority.) 
+In Lab 3 we have added priorities to tasks. Now each task can be one of three priorities: High priority, Medium priority, Low priority. We chose our names based off of USER C and their input into the decision between using numbers to indicate priority or simple strings. They felt that it made more sense using strings. The way to recognize a tasks priority is via the number of exclamation marks: (2 !! = high priority, 1 ! = medium priority, 0 ! = low priority.) 
 
-We also added a way to organize by filters our list in Lab 3, you can do so via our filter drop down. The different filters are: creation date, alphabetical, and lastly by priority. The filter is also a simple drop down, just like adding a priority, and it can be changed at will. 
+We also added a way to organize by filters our list in Lab 3, you can do so via our filter drop-down. The different filters are: creation date, alphabetical, and lastly by priority. The filter is also a simple drop- down, just like adding a priority, and it can be changed at will. 
 
-Further in Lab 3 we added a "delete all completed" feature. This will allow for users to more quickly delete their checked lists.
+Further, in Lab 3 we added a "delete all completed" feature. This will allow for users to more quickly delete their checked lists.
 
-Lastly we took advice from our design lecture and aligned our elements properly and changed our fonts to match those recommended. 
+Lastly, we took advice from our design lecture and aligned our elements properly and changed our fonts to match those recommended. 
 
 ![imglab4](https://user-images.githubusercontent.com/54875885/140462252-cf768e90-90e3-452c-a879-7aa7fe7c12d3.jpg)
 
@@ -123,7 +123,7 @@ For our Lab 4 user-resting we received the following feedback:
 - User C requested for left alignment of our "Filter" and "Delete Completed" sections.
 
 For our Lab5 user-testing we received the following feedback:
-- User D requested for less clutter in the log in screen - simply seperating our log in sections and sign up sections would do much to facilitate easy access to our app.
+- User D requested for less clutter in the log in screen - simply separating our log in sections and sign up sections would do much to facilitate easy access to our app.
 - User E wanted an option to use Google to log in in order to make the process faster.
 - User A wanted an indicator for sharead lists.
 
@@ -160,7 +160,7 @@ User A did not know how to escape autozoom. We thus disabled this feature that a
 
 
 #### LAB 5
-- Added a sign-in/sign-up section (on seperate pages)
+- Added a sign-in/sign-up section (on separate pages)
 - Allowed lists to be shareable
 - Added an indicator to shared lists
 
@@ -177,7 +177,7 @@ Our main priority when porting our code to react involved avoiding repetitive co
 We struggled with finding the most efficient way to generically input code such as our prompt feature, and applying it to multiple similar but uniquely different elements. Specifically, we had to refactor our code multiple times in order to make our implementation simple yet effective, covering both the edit list/task feature and the add list/task feature. This took multiple iterations but we learned through the process that repeated drafts and restructuring of code tends to clear a lot of bugs and mistakes up, so while it was time consuming and challenging we are happy to have gone through it.
 
 #### LAB 3
-We ran into numerous bugs during this lab. In total, we spent over 20 hours working on understanding firebase and debugging issues. One of the hardest challenges was understanding how to use Firestores' subcollections and the modification of data within a subcollecion. Further, we had so many issues with how our page renderd (and the amount of times it updated) that it took us an entire day to solve them. Lastly we struggled through adding keypress events as our code repeatedly called the enter and escape key more than one time causing huge errors, which we have yet to solve but plan on working on in Lab 4.
+We ran into numerous bugs during this lab. In total, we spent over 20 hours working on understanding firebase and debugging issues. One of the hardest challenges was understanding how to use Firestores' subcollections and the modification of data within a subcollection. Further, we had so many issues with how our page rendered (and the amount of times it updated) that it took us an entire day to solve them. Lastly, we struggled through adding keypress events as our code repeatedly called the enter and escape key more than one time causing huge errors, which we have yet to solve but plan on working on in Lab 4.
 
 #### LAB 4
 We struggled for a little while with figuring out how to get our lists to tab in the right order, yet after some research we were able to solve the problem quickly. Luckily we did not have to edit the way we display our lists for this lab as we already allowed multiple lists displayed at once. In general because we had already completed many of the requirements for this lab we did not have too many challenges.
@@ -186,7 +186,7 @@ We struggled for a little while with figuring out how to get our lists to tab in
 Authentication was challenging to figure out given the confusing ways firebase deals with their permissions. We went through a lot of trail/error prior to figuring out rules. However, through some assistance from our professor, we were able to figure out a good system for managing our permissions which made sense to us. Further, we spent a lot of time modifying small details of our design, it proved difficult creting a simple authetnication section that fit the look of our app.
 
 ### LAB 6
-We faced some challenges trying to port our app to iOS app. We found this article (https://fjolt.com/article/react-apache-cordova-ios-android) which helped us to figure out how to use Cordova, but we encountered issues that the article did not mention. For example, when we click on the input text to sign into the app, there is an autozoom that occurs, and does not exit. The user may or may not figure out that they had to double tap to exit autozoom and see the whole screen. To solve this, we disabled autozoom, seeing that we wanted the user to have full acccess to the viewport (unless they decide to use pinching to zoom and unzoom, that still works).
+We faced some challenges trying to port our app to iOS app. We found this article (https://fjolt.com/article/react-apache-cordova-ios-android) which helped us to figure out how to use Cordova, but we encountered issues that the article did not mention. For example, when we click on the input text to sign in to the app, there is an autozoom that occurs and does not exit. The user may or may not figure out that they had to double-tap to exit autozoom and see the whole screen. To solve this, we disabled autozoom, seeing that we wanted the user to have full access to the viewport (unless they decide to use pinching to zoom in and out, that still works).
 
 ## What we are proud of
 #### LAB 1
@@ -198,9 +198,9 @@ We are most proud of our own drive to complete this lab. This past week we spent
 #### LAB 4
 We are happy that we already had implemented many of the needed new features, so in a sense we are proud of our forethought! Additionally, we are proud of making our app fully accessible, allowing all users to experience it the same.
 #### LAB 5
-We are very proud of completing our app! Through our iterative journey we have gotten a lot better at both front-end design programming and general design topics. We both feel like we approach our code from a more design oriented perspective now, as compared to teh start where we rushed into our code prior to fully laying out how we wanted the app to be interacted with.
+We are very proud of completing our app! Through our iterative journey, we have gotten a lot better at both front-end design programming and general design topics. We both feel like we approach our code from a more design-oriented perspective now, as compared to the start where we rushed into our code prior to fully laying out how we wanted the app to be interacted with.
 ### LAB 6
-We are proud of finding an alternative way to create an iOS app outside of rewriting the code. Given the time constraints of finals week, we are happy and proud to have a functioning iOS mobile app that we have used personally and can show out friends. 
+We are proud of finding an alternative way to create an iOS app outside of rewriting the code. Given the time constraints of finals week, we are happy and proud to have a functioning iOS mobile app that we have used personally and can show our friends. 
 
 Acknowledgement:
-Thank you Prof. Rhodes for teaching this class. We are excited to use these skills on personal projects and in our nacent software engineering careers.
+Thank you Prof. Rhodes for teaching this class. We are excited to use these skills on personal projects and in our nascent software engineering careers.
